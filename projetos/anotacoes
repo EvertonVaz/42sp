@@ -1,0 +1,155 @@
+exerecicios
+shell00
+	ex00:
+		aqui eu utilizei o comando echo "Z \n" para criar o arquivo z com a string Z e um enter
+
+	ex 01:
+		nesse exercicio eu criei o arquivo com o comando touch testShell00, apos eu alterei as permissoes do arquivo com chmod
+			chmod u-w para remover a opção de escrita do usuario
+			chmod go+x para adicionar a opção de execução de grupo e outros
+
+	ex02:
+		criar diretorios
+			mkdir test0 test2
+		criar arquivos
+			touch test1 test3 test4
+		criar ligações entre arquivos ou diretorios
+			ln test3 test5
+				criar o arquivo test5 com uma ligação ao arquvio test3
+			ln -s test0 test6
+				cria o diretorio test6 com uma ligação simbolica, como link, para o diretorio test0
+
+		chmod em octal:
+			0 - nenhuma permissao // ---
+			1 - executar // --x
+			2 - gravar // -w-
+			3 - gravar e executar // -wx
+			4 - ler // r--
+			5 - ler e executar // rx-
+			6 - ler e gravar // r-w
+			7 - todas as permissoes // rwx
+		alterando as permissoes
+			chmod 777 test6
+			chmod 715 test0
+			chmod 714 test1
+			chmod 504 test2
+			chmod 404 test3 
+			chmod 641 test4 
+			chmod 404 test5
+		alterando as datas
+			touch -t 202306012047 test0
+			touch -t 202306012146 test1
+			touch -t 202306012245 test2
+			touch -t 202306012344 test3 
+			touch -t 202306012343 test4
+			touch -t 202306012344 test5
+			touch -h -t 202306012220 test6
+		compacta todos os arquivos da pasta
+			tar -cf exo2.tar *
+
+	ex03:
+		aqui eu criei um par de chaves publico privada com o comando ssh-keygen e copiei as informações da chave publica com cat ~/.ssh/id_rsa.pub >> id_rsa_pub e copiei o conteudo dela dentro da intranet
+
+	ex04:
+		listar os arquivos exceto ocultos ou que inicie com qualquer tipo de pontuação e em ordem de data de modificação, e certificar que as pastas tem uma barra no final
+
+		ls -t -p -m
+
+		-t : lista os arquivos por ordem decrescente das datas de atualização
+		-m : lista arquivos e diretórios separados por vírgulas.
+		-p : lista diretorios com a barra no final
+
+	ex05:
+		git log --format='%H' -n5
+
+		git log para me devolver os logs dos commits
+		-- format para trazer somente as hash
+		-n5 as ultimas 5 hash dos commits
+
+	ex06:
+		git ls-files -o -i --exclude-standard
+		-o exibe outros arquivos (não mostrados) na saida
+		-i exibe os arquivos ignorados na saida, ele precisa de pelo menos uma opção de --exclude
+		--exclude-standard
+			Adicione as exclusões padrão do Git: .git/info/exclude, .gitignore em cada diretório e o arquivo de exclusão global do usuário.
+
+	ex07:
+		fiz um patch a sw.diff apos fiz um cat a > b
+
+	ex08:
+		find . -type f \( -name "*~" -o -name "#*#" \) -print -delete
+
+
+		find encontra arquivos, o ponto logo apos find significa o diretorio atual
+		em -type f -name e o comando para que possamos filtrar os arquvios
+		-print é para listar eles e -delete para deleta-los
+
+
+	ex09:
+		o primeiro campo do arquivo é o deslocamento de bytes
+		o segundo campo é o tipo de valor
+		e os especificadores validos sao listados a seguir
+		
+
+
+shell01
+	ex01:
+		id -Gn o G lista o numeros dos grupos e n troca o numero pelos nomes dos grupos
+		#FT_USER e a variavel do usuario
+		tr é para substituir caracteres, a opção -d é para excluir
+
+	ex02:
+		find . lista os arquivos do diretorio atual e os subdiretorios
+		type f -name vai buscar os arquivos com ".sh" no nome
+		-execdir basename -s ".sh" {} \;  vai remover o
+
+	ex03:
+		comando find . | wc -l
+		find . lista todos os arquivos e diretorios da pasta atual o pipe manda o output para outro comando
+		o wc é um comando para contar caracteres, linhas e palavras
+		wc -l conta as linhas
+		entao o output de find . seria todas as linhas a partir do diretorio atual
+		e o wc contaria a quantidade de linhas desse output
+
+
+
+	ex04:
+		ifconfig -a | grep ether | tr -s ' ' '\t' | cut -f 3
+
+		ifconfig -a para mostrar todos as infos de rede
+		grep é para pegar uma parte do texto, neste caso as linhas que contem ether
+		tr é para substituir
+			-s substituir cada sequência de um caractere repetido listado no conjunto1 com uma única ocorrência do caractere
+			nesse caso estamos substituindo espaços por uma tabulação
+		cut seleciona partes do texto
+
+
+	ex05:
+		precisamos escrever o nome de um arquivo com varios caracteres especiais
+		a forma de fazer isso é utilizar "\" antes de cada caracter especial
+
+
+	ex06:
+		ls -l | awk 'NR % 2 == 1'
+		esse comando ira listar somente as linhas impares
+		o NR é utilizado para manipular as linhas de arquivos, o ls -l devolve como se fosse um arquivo	
+
+	ex07:
+		cat /etc/passwd |
+	       	grep -v '^\#' | 			#remove os comentarios
+	       	awk "NR%2==0" | 			#mostra somente as linhas pares
+	       	cut -d':' -f1 | 			#separa a string em colunas e corta
+	       	rev | 					#inverte a ordem dos caracteres
+	       	sort -r | 				#classifica os dados em ordem alfabetica -r inversa
+	       	sed -n "$FT_LINE1,${FT_LINE2}p" | 	#filtra os dados a partir das variaveis
+	       	paste -s -d"," - | 			#remove a quebra de linha e coloca virgula
+	       	sed 's/,/, /g' | 			#da um espaço apos a virgula
+	       	sed 's/$/./' | 			#coloca ponto final no fim da linha
+	       	tr -d '\n'				#apaga a ultima quebra de linha
+
+
+
+
+\"\\\?\$\*\'MaRViN\'\*\$\?\\\"
+
+\"\\\\\?\$\*\'MaRViN\'\*\$\?\\\\\"
