@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:09:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/05 20:18:34 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:33:40 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ char	*ft_strlowcase(char *str);
 
 char	*ft_strlowcase(char *str)
 {
-	while (*str)
+	char	*temp;
+	
+	temp = str;
+	while (*temp)
 	{
-		if (!(*str < 'A' || *str > 'Z'))
+		if ((*temp >= 'A' && *temp <= 'Z'))
 		{	
-			*str = *str + 32;
+			*temp += 32;
 		}
-		str++;
+		temp++;
 	}
 	return (str);
 }

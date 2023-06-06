@@ -1,61 +1,50 @@
-#include "C00/ex00/ft_putchar.c"
-#include "C01/ex06/ft_strlen.c"
-#include "C02/ex00/ft_strcpy.c"
-#include "C02/ex01/ft_strncpy.c"
-#include "C02/ex02/ft_str_is_alpha.c"
-#include "C02/ex03/ft_str_is_numeric.c"
-#include "C02/ex04/ft_str_is_lowercase.c"
-#include "C02/ex05/ft_str_is_uppercase.c"
-#include "C02/ex06/ft_str_is_printable.c"
-#include "C02/ex07/ft_strupcase.c"
-#include "C02/ex08/ft_strlowcase.c"
-#include "C02/ex09/ft_strcapitalize.c"
-#include "C02/ex10/ft_strlcpy.c"
-#include "C02/ex11/ft_putstr_non_printable.c"
+#include "C03/ex00/ft_strcmp.c"
+#include "C03/ex01/ft_strncmp.c"
+
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
 
+int strncmp(const char *str1, const char *str2, size_t n);
+
 int	main(void)
 {
-	char src[] = "oi, tudo bem? 42palavras quarenta-e-duas; cinquenta+e+um\n";
-	char test_isalpha1[] = "Abc";
-	char test_isalpha2[] = "Abc123";
-	char test_isnumeric1[] = "0123456789";
-	char test_isnumeric2[] = "0123456789abC";
-	char test_strcpy[100];
-	char dest[strlen(src)];
-	char *test_no_print = "Oi\nvoce esta bem? \b, \a";
-	int t;
+	char	*c1;
+	char	*c2;
+	int		res;
 
-	ft_strcpy(test_strcpy, src);
-	printf("EX00 - %s\n", test_strcpy);
-
-	ft_strncpy(test_strcpy, src, 25);
-	printf("EX01 - %s\n\n", test_strcpy);
-
-	printf("EX02 - retorno 1 -> %d\n", ft_str_is_alpha(test_isalpha1));
-	printf("EX02 - retorno 0 -> %d\n\n", ft_str_is_alpha(test_isalpha2));
-
-	printf("EX03 - retorno 1 -> %d\n", ft_str_is_numeric(test_isnumeric1));
-	printf("EX03 - retorno 0 -> %d\n\n", ft_str_is_numeric(test_isnumeric2));
-
-	printf("EX04 - retorno 0 -> %d - %s\n", ft_str_is_lowercase(test_isalpha1), test_isalpha1);
-	ft_strlowcase(test_isalpha1); // TESTE DO EX08
-	printf("EX04 - retorno 1 -> %d - %s\n\n", ft_str_is_lowercase(test_isalpha1), test_isalpha1);
-
-	printf("EX05 - retorno 0 -> %d - %s\n", ft_str_is_uppercase(test_isalpha1), test_isalpha1);
-	ft_strupcase(test_isalpha1); // TESTE DO EX07
-	printf("EX05 - retorno 1 -> %d - %s\n\n", ft_str_is_uppercase(test_isalpha1), test_isalpha1);
-
-	printf("EX06 - retorno 0 -> %d\n", ft_str_is_printable(src));
-	printf("EX06 - retorno 1 -> %d\n\n", ft_str_is_printable(test_isnumeric2));
-
-	ft_strcapitalize(src);
-	printf("EX09 - %s\n", src);
-
-	t = ft_strlcpy(dest, src, 10);
-	printf("EX10 - %i - %s\n", t, dest);
-	ft_putstr_non_printable(test_no_print);
-	printf("\n");
+	printf("Exercicio - 00\n");
+	c1 = "hello";
+	c2 = "hell";
+	res = strncmp(c1, c2, 7);
+	printf("TESTE AQUI %d\n", res);
+	printf("str1 é maior que str2 -> %d\n", ft_strcmp(c1, c2));
+	printf("str1 é maior que str2 (função nativa) -> %d\n", strcmp(c1, c2));
+	c1 = "hell";
+	c2 = "hello";
+	res = strncmp(c1, c2, 7);
+	printf("TESTE AQUI %d\n", res);
+	printf("str1 é menor que str2 -> %d\n", ft_strcmp(c1, c2));
+	printf("str1 é menor que str2 (função nativa)-> %d\n", strcmp(c1, c2));
+	c1 = "hello";
+	c2 = "hello";
+	printf("str1 igual a str2 -> %d\n", ft_strcmp(c1, c2));
+	printf("str1 igual a str2 (função nativa) -> %d\n", strcmp(c1, c2));
+	
+	printf("\nExercicio - 01\n");;
+	c1 = "hello";
+	c2 = "hell";
+	res = strncmp(c1, c2, 5);
+	printf("str1 é maior que str2 -> %d\n", ft_strncmp(c1, c2, 7));
+	printf("str1 é maior que str2 (função nativa) -> %d\n", res);
+	c1 = "hell";
+	c2 = "hello";
+	res = strncmp(c1, c2, 5);
+	printf("str1 é menor que str2 -> %d\n", ft_strncmp(c1, c2, 7));
+	printf("str1 é menor que str2 (função nativa)-> %d\n", res);
+	c1 = "hello";
+	c2 = "hello";
+	res = strncmp(c1, c2, 5);
+	printf("str1 igual a str2 -> %d\n", ft_strncmp(c1, c2, 7));
+	printf("str1 igual a str2 (função nativa) -> %d\n", res);
 }

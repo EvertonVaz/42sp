@@ -18,21 +18,27 @@
 
 int	main(void)
 {
-	char src[] = "oi, tudo bem? 42palavras quarenta-e-duas; cinquenta+e+um\n";
+	char src[] = "oi, tudo bem?"; //42palavras quarenta-e-duas; cinquenta+e+um\n";
 	char test_isalpha1[] = "Abc";
 	char test_isalpha2[] = "Abc123";
 	char test_isnumeric1[] = "0123456789";
 	char test_isnumeric2[] = "0123456789abC";
 	char test_strcpy[100];
+	char test_strcpy2[100];
 	char dest[strlen(src)];
 	char *test_no_print = "Oi\nvoce esta bem? \v, \f";
 	int t;
+	char *test;
 
+	// TESTES
 	ft_strcpy(test_strcpy, src);
 	printf("EX00 - %s\n", test_strcpy);
 
-	ft_strncpy(test_strcpy, src, 25);
-	printf("EX01 - %s\n\n", test_strcpy);
+	strcpy(test_strcpy2, src);
+	printf("EX00 - %s - função nativa\n", test_strcpy2);
+
+	test = ft_strncpy(test_strcpy, src, 25);
+	printf("EX01 - %s\n\n", test);
 
 	printf("EX02 - retorno 1 -> %d\n", ft_str_is_alpha(test_isalpha1));
 	printf("EX02 - retorno 0 -> %d\n\n", ft_str_is_alpha(test_isalpha2));

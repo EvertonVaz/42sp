@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 15:48:05 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/02 14:44:36 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/05 22:01:48 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_putstr(char *str)
 {
 	while (*str != '\0')
 	{
-		write(1, str, 1);
-		str++;
+		write(1, str++, 1);
 	}
 }

@@ -28,6 +28,7 @@ int	main(void)
 	printf("q3 - a = %d, b = %d, div = %d, mod = %d\n", a, b, div, mod);
 	ft_ultimate_div_mod(&a, &b);
 	printf("q4 - a = %d, b = %d\n", a, b);
+	
 	ft_putstr("q5 - everton\n");
 	printf("q6 - %d\n", ft_strlen("everton"));
 	ft_rev_int_tab(tab, 7);
