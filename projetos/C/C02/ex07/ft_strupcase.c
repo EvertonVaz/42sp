@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/31 19:25:21 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/05 21:01:46 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/06/04 18:58:57 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/06/05 20:13:18 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_sort_int_tab(int *tab, int size);
+// • Escreva uma função que deixe todas as letras em maiúsculo.
+// • Ela deverá retornar str.
 
-// bubble sort
-void	ft_sort_int_tab(int *tab, int size)
+char	*ft_strupcase(char *str);
+
+char	*ft_strupcase(char *str)
 {
-	int	i;
-	int	temp;
-	int	aux;
-
-	aux = 0;
-	while (aux < size)
+	while (*str)
 	{
-		i = 0;
-		while (i < size)
-		{
-			if (tab[i] > tab[i + 1])
-			{
-				temp = tab[i];
-				tab[i] = tab[i +1];
-				tab[i + 1] = temp;
-			}
-			i++;
+		if (!(*str < 'a' || *str > 'z'))
+		{	
+			*str = *str - 32;
 		}
-		aux++;
+		str++;
 	}
+	return (str);
 }

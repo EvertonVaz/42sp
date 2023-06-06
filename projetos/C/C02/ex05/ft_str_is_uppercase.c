@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_uppercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/31 15:48:05 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/02 14:44:36 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/06/04 18:44:11 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/06/04 18:48:17 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+// • Escreva uma função que retorne 1 se a string passada 
+// como parâmetro só contiver
+// caracteres alfabéticos maiúsculos e retorne 0 
+// se a função contiver outros tipos de
+// caracteres.
+// • Ela deverá retornar 1 se str for uma string vazia
 
-void	ft_putstr(char *str);
+int	ft_str_is_uppercase(char *str);
 
-void	ft_putstr(char *str)
+int	ft_str_is_uppercase(char *str)
 {
-	while (*str != '\0')
+	while (*str)
 	{
-		write(1, str, 1);
+		if ((*str < 'A' || *str > 'Z'))
+			return (0);
 		str++;
 	}
+	return (1);
 }

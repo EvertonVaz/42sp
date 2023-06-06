@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
+/*   ft_str_is_numeric.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/31 19:25:21 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/05 21:01:46 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/06/04 16:59:21 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/06/04 17:01:29 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_sort_int_tab(int *tab, int size);
+// função que retorne 1 se a string passada como parâmetro só contiver números
+// e retorne 0 se a função contiver outros tipos de caracteres.
+// • Ela deverá retornar 1 se str for uma string vazia.
 
-// bubble sort
-void	ft_sort_int_tab(int *tab, int size)
+int	ft_str_is_numeric(char *str);
+
+int	ft_str_is_numeric(char *str)
 {
-	int	i;
-	int	temp;
-	int	aux;
-
-	aux = 0;
-	while (aux < size)
+	while (*str)
 	{
-		i = 0;
-		while (i < size)
-		{
-			if (tab[i] > tab[i + 1])
-			{
-				temp = tab[i];
-				tab[i] = tab[i +1];
-				tab[i + 1] = temp;
-			}
-			i++;
-		}
-		aux++;
+		if ((*str < '0' || *str > '9'))
+			return (0);
+		str++;
 	}
+	return (1);
 }

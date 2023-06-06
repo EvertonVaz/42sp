@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/31 19:25:21 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/05 21:01:46 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/06/02 15:28:30 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/06/05 20:17:12 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_sort_int_tab(int *tab, int size);
+char	*ft_strcpy(char *dest, char *src);
 
-// bubble sort
-void	ft_sort_int_tab(int *tab, int size)
+char	*ft_strcpy(char *dest, char *src)
 {
-	int	i;
-	int	temp;
-	int	aux;
+	char	*temp;
+	int		i;
 
-	aux = 0;
-	while (aux < size)
+	i = 0;
+	temp = dest;
+	while (src[i] != '\0')
 	{
-		i = 0;
-		while (i < size)
-		{
-			if (tab[i] > tab[i + 1])
-			{
-				temp = tab[i];
-				tab[i] = tab[i +1];
-				tab[i + 1] = temp;
-			}
-			i++;
-		}
-		aux++;
+		dest[i] = src[i];
+		i++;
 	}
+	i++;
+	src[i] = '\0';
+	return (temp);
 }
