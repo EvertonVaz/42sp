@@ -25,7 +25,7 @@ int	main(void)
 	char test_isnumeric2[] = "0123456789abC";
 	char test_strcpy[100];
 	char dest[strlen(src)];
-	char *test_no_print = "Oi\nvoce esta bem? \b, \a";
+	char *test_no_print = "Oi\nvoce esta bem? \v, \f";
 	int t;
 
 	ft_strcpy(test_strcpy, src);
@@ -42,11 +42,11 @@ int	main(void)
 
 	printf("EX04 - retorno 0 -> %d - %s\n", ft_str_is_lowercase(test_isalpha1), test_isalpha1);
 	ft_strlowcase(test_isalpha1); // TESTE DO EX08
-	printf("EX04 - retorno 1 -> %d - %s\n\n", ft_str_is_lowercase(test_isalpha1), test_isalpha1);
+	printf("EX04 - retorno 1 -> %d - %s,  e EX08\n\n", ft_str_is_lowercase(test_isalpha1), test_isalpha1);
 
 	printf("EX05 - retorno 0 -> %d - %s\n", ft_str_is_uppercase(test_isalpha1), test_isalpha1);
 	ft_strupcase(test_isalpha1); // TESTE DO EX07
-	printf("EX05 - retorno 1 -> %d - %s\n\n", ft_str_is_uppercase(test_isalpha1), test_isalpha1);
+	printf("EX05 - retorno 1 -> %d - %s,  e EX07\n\n", ft_str_is_uppercase(test_isalpha1), test_isalpha1);
 
 	printf("EX06 - retorno 0 -> %d\n", ft_str_is_printable(src));
 	printf("EX06 - retorno 1 -> %d\n\n", ft_str_is_printable(test_isnumeric2));
@@ -55,7 +55,10 @@ int	main(void)
 	printf("EX09 - %s\n", src);
 
 	t = ft_strlcpy(dest, src, 10);
-	printf("EX10 - %i - %s\n", t, dest);
+	printf("EX10 - %i - %s\n\n", t, dest);
+
+	printf("EX11: \n");
+
 	ft_putstr_non_printable(test_no_print);
 	printf("\n");
 }
