@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/04 21:04:08 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/06 21:13:41 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/06/06 21:27:12 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/06/06 21:30:22 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// • Reproduzir de forma idêntica o funcionamento da função strlcpy
-// (man strlcpy).
+// Reproduzir de forma idêntica o funcionamento da função strncat (man strncat).
+// • Ela deverá ser prototipada da seguinte maneira:
 
-unsigned	int	ft_strlcpy(char *dest, char *src, unsigned int size);
+char	*ft_strncat(char *dest, char *src, unsigned int nb);
 
-unsigned	int	ft_strlcpy(char *dest, char *src, unsigned int size)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	unsigned int	strlen;
-	unsigned int	i;
+	char	*temp;
 
-	strlen = 0;
-	i = 0;
-	while (src[i] && i < size - 1)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
+	temp = dest;
 	while (*dest)
 	{
-		strlen++;
 		dest++;
 	}
-	return (strlen);
+	while (*src && nb > 0)
+	{
+		*dest = *src;
+		dest++;
+		src++;
+		nb--;
+	}
+	*dest = '\0';
+	return (temp);
 }

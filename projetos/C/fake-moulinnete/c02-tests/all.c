@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:11:51 by emendes-          #+#    #+#             */
-/*   Updated: 2023/06/06 19:18:00 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/06 19:50:14 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,31 +272,31 @@ EX07:
 
 	printf("-- Exercicio 10: ");
 
-	// size_t ret0s, ret1s;
+	size_t ret0s, ret1s;
 
-	// if (ret0s = ft_strlcpy(buffer0, str0, str0l), strlcpy(buffer1, str0, str0l), strncmp(buffer0, buffer1, str0l) != 0)
-	// 	printf("KO, expected %s got %s", buffer1, buffer0);
-	// else if (ret1s = strlcpy(buffer0, str0, str0l), ret0s != ret1s)
-	// 	printf("KO, expected return %zu got %zu in str0", ret1s, ret0s);
+	if (ret0s = ft_strlcpy(buffer0, str0, str0l), strlcpy(buffer1, str0, str0l), strncmp(buffer0, buffer1, str0l) != 0)
+		printf("KO, expected %s got %s", buffer1, buffer0);
+	else if (ret1s = strlcpy(buffer0, str0, str0l), ret0s != ret1s)
+		printf("KO, expected return %zu got %zu in str0", ret1s, ret0s);
 
-	// else if (ret0s = ft_strlcpy(buffer0, str1, str1l), strlcpy(buffer1, str1, str1l), strncmp(buffer0, buffer1, str1l) != 0)
-	// 	printf("KO, expected %s got %s", buffer1, buffer0);
-	// else if (ret1s = strlcpy(buffer0, str1, str1l), ret0s != ret1s)
-	// 	printf("KO, expected return %zu got %zu in str1", ret1s, ret0s);
+	else if (ret0s = ft_strlcpy(buffer0, str1, str1l), strlcpy(buffer1, str1, str1l), strncmp(buffer0, buffer1, str1l) != 0)
+		printf("KO, expected %s got %s", buffer1, buffer0);
+	else if (ret1s = strlcpy(buffer0, str1, str1l), ret0s != ret1s)
+		printf("KO, expected return %zu got %zu in str1", ret1s, ret0s);
 
-	// else if (ret0s = ft_strlcpy(buffer0, str2, str2l), strlcpy(buffer1, str2, str2l), strncmp(buffer0, buffer1, str2l) != 0)
-	// 	printf("KO, expected %s got %s", buffer1, buffer0);
-	// else if (ret1s = strlcpy(buffer0, str2, str2l), ret0s != ret1s)
-	// 	printf("KO, expected return %zu got %zu in str2", ret1s, ret0s);
+	else if (ret0s = ft_strlcpy(buffer0, str2, str2l), strlcpy(buffer1, str2, str2l), strncmp(buffer0, buffer1, str2l) != 0)
+		printf("KO, expected %s got %s", buffer1, buffer0);
+	else if (ret1s = strlcpy(buffer0, str2, str2l), ret0s != ret1s)
+		printf("KO, expected return %zu got %zu in str2", ret1s, ret0s);
 
-	// else if (ret0s = ft_strlcpy(buffer0, str3, str3l), strlcpy(buffer1, str3, str3l), strncmp(buffer0, buffer1, str3l) != 0)
-	// 	printf("KO, expected %s got %s", buffer1, buffer0);
-	// else if (ret1s = strlcpy(buffer0, str3, str3l), ret0s != ret1s)
-	// 	printf("KO, expected return %zu got %zu in str3", ret1s, ret0s);
+	else if (ret0s = ft_strlcpy(buffer0, str3, str3l), strlcpy(buffer1, str3, str3l), strncmp(buffer0, buffer1, str3l) != 0)
+		printf("KO, expected %s got %s", buffer1, buffer0);
+	else if (ret1s = strlcpy(buffer0, str3, str3l), ret0s != ret1s)
+		printf("KO, expected return %zu got %zu in str3", ret1s, ret0s);
 
-	// else
-	// 	printf("OK");
-	// printf("\n");
+	else
+		printf("OK");
+	printf("\n");
 
 	printf("-- Exercicio 11: Compare as strings\n");
 	char strtest0[] = {'0', '1', 3, 26, '2', '3', 12, 'f', '\n', 'a', 'b', '\0'};

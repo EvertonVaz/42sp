@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ex02.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vgoncalv <vgoncalv@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 15:14:17 by vgoncalv          #+#    #+#             */
-/*   Updated: 2021/04/14 19:08:52 by vgoncalv         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:26:23 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	main(void)
 	char *ft_dest;
 	char *result;
 	char *ft_result;
+	char str0[] = "string";
+	char str1[] = "string1";
 
 	src = calloc(7, sizeof(char));
 	dest = calloc(12, sizeof(char));
@@ -41,5 +43,33 @@ int	main(void)
 		printf("KO, value returned from strcmp with ft_strcat and strcat is different of zero(%d).\n", strcmp(result, ft_result));
 	else
 		printf("OK.\nresult: %s\n", ft_result);
+	
+	printf("-- Exercício 02: ");
+	char buffer0[100];
+	char buffer1[100];
+
+	int i = 0;
+	while (i < 100)
+	{
+		buffer0[i] = 'a';
+		buffer1[i] = 'a';
+		++i;
+	}
+
+
+	strcpy(buffer0, str1);
+	strcpy(buffer1, str1);
+
+	if (strcat(buffer1, str0), buffer0 != ft_strcat(buffer0, str0))
+		printf("KO, test00 wrong return\n");
+	else if (strcmp(buffer0, buffer1) != 0)
+		printf("KO, test00 expected %s got %s\n", buffer1, buffer0);
+	else if (strcat(buffer1, "ba ba ta ta"), buffer0 != ft_strcat(buffer0,  "ba ba ta ta"))
+		printf("KO, test00 wrong return\n");
+	else if (strcmp(buffer0, buffer1) != 0)
+		printf("KO, test00 expected %s got %s\n", buffer1, buffer0);
+	else
+		printf("OK\n");
+
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:03:56 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/05 20:44:52 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/06 21:13:53 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,19 @@
 
 void	ft_putstr_non_printable(char *str);
 
-//hex = "0123456789abcdef";
 void	ft_putstr_non_printable(char *str)
 {
 	char	hex_str[3];
+	char	*hex_table;
 
+	hex_table = "0123456789abcdef";
 	while (*str)
 	{
 		if (*str < 32 || *str == 127)
 		{
 			hex_str[0] = '\\';
-			hex_str[1] = '0' + ((*str / 16) % 16);
-			if (hex_str[1] > '9')
-				hex_str[1] += 'a' - '9' - 1;
-			hex_str[2] = '0' + (*str % 16);
-			if (hex_str[2] > '9')
-				hex_str[2] += 'a' - '9' - 1;
+			hex_str[1] = hex_table[((*str / 16) % 16)];
+			hex_str[2] = hex_table[(*str % 16)];
 			write(1, hex_str, 3);
 		}
 		else

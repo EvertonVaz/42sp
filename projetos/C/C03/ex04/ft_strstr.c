@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/04 19:09:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/06 21:13:26 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/06/06 21:30:58 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/06/06 21:51:39 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// • Escreva uma função que deixe todas as letras em minúsculo.
+// Reproduzir de forma idêntica o funcionamento da função strstr (man strstr).
 // • Ela deverá ser prototipada da seguinte maneira:
-// • Ela deverá retornar str.
 
-char	*ft_strlowcase(char *str);
+char	*ft_strstr(char *str, char *to_find);
 
-char	*ft_strlowcase(char *str)
+char	*ft_strstr(char *str, char *to_find)
 {
-	char	*temp;
+	int	i;
+	int	temp;
 
-	temp = str;
-	while (*temp)
+	if (*to_find == '\0')
+		return (str);
+	while (*str != '\0')
 	{
-		if ((*temp >= 'A' && *temp <= 'Z'))
-		{	
-			*temp += 32;
+		if (*str == *to_find)
+		{
+			i = 0;
+			temp = 0;
+			while (to_find[i] != '\0')
+			{
+				if (str[i] != to_find[i])
+					temp = 1;
+				i++;
+			}
+			if (temp == 0)
+				return (str);
 		}
-		temp++;
+		str++;
 	}
-	return (str);
+	return (0);
 }
