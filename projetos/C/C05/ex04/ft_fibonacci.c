@@ -1,13 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/10 21:05:08 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/11 14:48:52 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/06/11 19:13:38 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/06/11 19:35:36 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi_base(char *str, char *base);
+int	ft_fibonacci(int index);
+
+int	ft_fibonacci(int index)
+{
+	if (index < 0)
+		return (-1);
+	if (index == 0)
+		return (0);
+	if (index == 1)
+		return (1);
+	return (ft_fibonacci(index - 1) + ft_fibonacci(index - 2));	
+}
+
+#include <stdio.h>
+
+int	main(void)
+{
+	int	i;
+
+	i = 0;
+	while (i < 13)
+	{
+		printf("%d\n", ft_fibonacci(i));
+		i++;
+	}
+	return (0);
+}

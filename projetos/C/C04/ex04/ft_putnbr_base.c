@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 18:24:33 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/10 21:22:08 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:28:58 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	check_base(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '-' || base[i] == '+' || base[i] < '!' || base[i] > '~')
+		if (base[i] == '-' || base[i] == '+' || base[i] < ' ' || base[i] > '~')
 			return (0);
 		j = i + 1;
 		while (base[j])
@@ -55,31 +55,42 @@ int	check_base(char *base)
 	return (1);
 }
 
+void	is_negative(int base_div, int nbr, char *base)
+{
+	if (nbr == -2147483648)
+	{
+		ft_putchar('-');
+		ft_putnbr_base(-(nbr / base_div), base);
+	}
+	else
+	{
+		ft_putchar('-');
+		nbr = -nbr;
+		ft_putnbr_base(nbr, base);
+	}
+}
+
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	i;
 	int	base_div;
+	int	test;
 
 	base_div = ft_strlen(base);
 	if (!check_base(base))
 		return ;
 	if (nbr < 0)
 	{
-		if (nbr == -2147483648)
-		{
-			write(1, "-2", 2);
-			nbr = 147483648;
-		}
-		else
-		{
-			ft_putchar('-');
-			nbr = -nbr;			
-		}
+		is_negative(base_div, nbr, base);
 	}
-	i = 0;
-	if (nbr > 1)
+	if (nbr > 2)
 		ft_putnbr_base(nbr / base_div, base);
-	ft_putchar(nbr % base_div + '0');
+	if (nbr % base_div < 0)
+	{
+		test = nbr % base_div * -1;
+		ft_putchar(base[test]);
+	}
+	else
+		ft_putchar(base[nbr % base_div]);
 }
 
 // #include <stdio.h>
@@ -87,13 +98,15 @@ void	ft_putnbr_base(int nbr, char *base)
 // int	main(void)
 // {
 // 	printf("teste do teste, octal\n");
-// 	ft_putnbr_base(-12345, "everton!");
+// 	ft_putnbr_base(-2147483648, "ev rton!");
 // 	printf("\nteste01, binario\n");
-// 	ft_putnbr_base(12345, "01");
+// 	ft_putnbr_base(2147483647, "ab");
 // 	printf("\nteste02, octal\n");
 // 	ft_putnbr_base(-12345, "poneyvif");
 // 	printf("\nteste03, decimal\n");
-// 	ft_putnbr_base(12345, "0123456789");
+// 	ft_putnbr_base(-2147483648, "0123456789");
+// 	printf("\n");
+// 	ft_putnbr_base(2147483647, "abcdefghij");
 // 	printf("\nteste04, hexadecimal\n");
 // 	ft_putnbr_base(-12345, "0123456789ABCDEF");
 // 	return (0);
