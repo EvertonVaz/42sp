@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:11:51 by emendes-          #+#    #+#             */
-/*   Updated: 2023/06/06 20:45:25 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/07 19:36:17 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,88 @@
 #include <stdio.h>
 #include <limits.h>
 #include <ctype.h>
+
+#ifndef HAVE_STRLCAT
+/*
+ * '_cups_strlcat()' - Safely concatenate two strings.
+ */
+
+size_t                  /* O - Length of string */
+strlcat(char       *dst,        /* O - Destination string */
+              const char *src,      /* I - Source string */
+          size_t     size)      /* I - Size of destination string buffer */
+{
+  size_t    srclen;         /* Length of source string */
+  size_t    dstlen;         /* Length of destination string */
+
+
+ /*
+  * Figure out how much room is left...
+  */
+
+  dstlen = strlen(dst);
+  size   -= dstlen + 1;
+
+  if (!size)
+    return (dstlen);        /* No room, return immediately... */
+
+ /*
+  * Figure out how much room is needed...
+  */
+
+  srclen = strlen(src);
+
+ /*
+  * Copy the appropriate amount...
+  */
+
+  if (srclen > size)
+    srclen = size;
+
+  memcpy(dst + dstlen, src, srclen);
+  dst[dstlen + srclen] = '\0';
+
+  return (dstlen + srclen);
+}
+#endif /* !HAVE_STRLCAT */
+
+#ifndef HAVE_STRLCPY
+/*
+ * '_cups_strlcpy()' - Safely copy two strings.
+ */
+
+size_t                  /* O - Length of string */
+strlcpy(char       *dst,        /* O - Destination string */
+              const char *src,      /* I - Source string */
+          size_t      size)     /* I - Size of destination string buffer */
+{
+  size_t    srclen;         /* Length of source string */
+
+
+ /*
+  * Figure out how much room is needed...
+  */
+
+  size --;
+
+  srclen = strlen(src);
+
+ /*
+  * Copy the appropriate amount...
+  */
+
+  if (srclen > size)
+    srclen = size;
+
+  memcpy(dst, src, srclen);
+  dst[srclen] = '\0';
+
+  return (srclen);
+}
+#endif /* !HAVE_STRLCPY */
+
+unsigned	int	ft_strlcpy(char *dest, char *src, unsigned int size);
+
 
 size_t	strlcat(char *dst, const char *src, size_t size);
 
@@ -23,6 +105,9 @@ char	*ft_strcat(char *dest, char *src);
 char	*ft_strncat(char *dest, char *src, unsigned int nb);
 char	*ft_strstr(char *str, char *to_find);
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+int	ft_strlen(char *str);
+
+
 
 int	same_sign(int a, int b)
 {
@@ -175,21 +260,144 @@ int main(void)
 	unsigned int ret1l;
 
 	if ((ret1l = strlcat(buffer1, str0, 7)) != (ret0l = ft_strlcat(buffer0, str0, 7)))
-		printf("KO, test00 wrong return expected %i got %i\n", ret1l, ret0l);
+		printf("KO1, test00 wrong return expected %i got %i\n", ret1l, ret0l);
 	else if (strncmp(buffer0, buffer1, 100) != 0)
-		printf("KO, test00 expected %s got %s\n", buffer1, buffer0);
+		printf("KO2, test00 expected %s got %s\n", buffer1, buffer0);
 
 	else if ((ret1l = strlcat(buffer1, str0, 20)) != (ret0l = ft_strlcat(buffer0, str0, 20)))
-		printf("KO, test01 wrong return expected %i got %i\n", ret1l, ret0l);
+		printf("KO3, test01 wrong return expected %i got %i\n", ret1l, ret0l);
 	else if (strncmp(buffer0, buffer1, 100) != 0)
-		printf("KO, test01 expected %s got %s\n", buffer1, buffer0);
+		printf("KO4, test01 expected %s got %s\n", buffer1, buffer0);
 
 	else if ((ret1l = strlcat(buffer1, str2, 1)) != (ret0l = ft_strlcat(buffer0, str2, 1)))
-		printf("KO, test02 wrong return expected %i got %i\n", ret1l, ret0l);
+		printf("KO5, test02 wrong return expected %i got %i\n", ret1l, ret0l);
 	else if (strncmp(buffer0, buffer1, 100) != 0)
-		printf("KO, test02 expected %s got %s\n", buffer1, buffer0);
+		printf("KO6, test02 expected %s got %s\n", buffer1, buffer0);
 	else
 		printf("OK\n");
 
 }
 
+// int	ft_strlen(char *str)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (*str != '\0')
+// 	{
+// 		str++;
+// 		i++;
+// 	}
+// 	return (i);
+// }
+
+// unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+// {
+// 	unsigned int	dest_len;
+// 	unsigned int	src_len;
+// 	unsigned int	total_len;
+// 	unsigned int	i;
+
+// 	dest_len = ft_strlen(dest);
+// 	src_len = ft_strlen(src);
+// 	total_len = dest_len + src_len;
+// 	if (src_len > size)
+// 		return (total_len);
+// 	i = 0;
+// 	while (src[i] != '\0' && i < (size - dest_len - 1))
+// 	{
+// 		dest[dest_len + i] = src[i];
+// 		i++;
+// 	}
+// 	dest[dest_len + i] = '\0';
+// 	return (total_len);
+// }
+
+// char	*ft_strstr(char *str, char *to_find)
+// {
+// 	int	i;
+// 	int	temp;
+
+// 	if (*to_find == '\0')
+// 		return (str);
+// 	while (*str != '\0')
+// 	{
+// 		if (*str == *to_find)
+// 		{
+// 			i = 0;
+// 			temp = 0;
+// 			while (to_find[i] != '\0')
+// 			{
+// 				if (str[i] != to_find[i])
+// 					temp = 1;
+// 				i++;
+// 			}
+// 			if (temp == 0)
+// 				return (str);
+// 		}
+// 		str++;
+// 	}
+// 	return (0);
+// }
+
+// char	*ft_strncat(char *dest, char *src, unsigned int nb)
+// {
+// 	char	*temp;
+
+// 	temp = dest;
+// 	while (*dest)
+// 	{
+// 		dest++;
+// 	}
+// 	while (*src && nb > 0)
+// 	{
+// 		*dest = *src;
+// 		dest++;
+// 		src++;
+// 		nb--;
+// 	}
+// 	*dest = '\0';
+// 	return (temp);
+// }
+
+// char	*ft_strcat(char *dest, char *src)
+// {
+// 	char	*temp;
+
+// 	temp = dest;
+// 	while (*dest)
+// 	{
+// 		dest++;
+// 	}
+// 	while (*src)
+// 	{
+// 		*dest = *src;
+// 		dest++;
+// 		src++;
+// 	}
+// 	*dest = '\0';
+// 	return (temp);
+// }
+
+// int	ft_strncmp(char *s1, char *s2, unsigned int n)
+// {
+// 	while (n > 0 && (*s1 != '\0' || *s2 != '\0'))
+// 	{
+// 		if (*s1 != *s2)
+// 			return (*(unsigned char *)s1 - *(unsigned char *)s2);
+// 		s1++;
+// 		s2++;
+// 		n--;
+// 	}
+// 	return (0);
+// }
+
+// int	ft_strcmp(char *s1, char *s2)
+// {
+// 	while (*s1 != '\0' && *s1 == *s2)
+// 	{
+// 		s1++;
+// 		s2++;
+// 	}
+// 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
+// }

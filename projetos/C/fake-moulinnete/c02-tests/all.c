@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 13:11:51 by emendes-          #+#    #+#             */
-/*   Updated: 2023/06/06 19:50:14 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/07 14:45:18 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,42 @@
 #include <limits.h>
 #include <ctype.h>
 
-//size_t			strlcpy(char *dest, const char* src, size_t n);
+#ifndef HAVE_STRLCPY
+/*
+ * '_cups_strlcpy()' - Safely copy two strings.
+ */
+
+size_t                  /* O - Length of string */
+strlcpy(char       *dst,        /* O - Destination string */
+              const char *src,      /* I - Source string */
+          size_t      size)     /* I - Size of destination string buffer */
+{
+  size_t    srclen;         /* Length of source string */
+
+
+ /*
+  * Figure out how much room is needed...
+  */
+
+  size --;
+
+  srclen = strlen(src);
+
+ /*
+  * Copy the appropriate amount...
+  */
+
+  if (srclen > size)
+    srclen = size;
+
+  memcpy(dst, src, srclen);
+  dst[srclen] = '\0';
+
+  return (srclen);
+}
+#endif /* !HAVE_STRLCPY */
+
+size_t			strlcpy(char *dest, const char* src, size_t n);
 
 char			*ft_strcpy(char *dest, char *src);
 char			*ft_strncpy(char *dest, char *src, unsigned int n);
