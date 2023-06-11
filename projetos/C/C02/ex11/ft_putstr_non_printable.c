@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:03:56 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/06 21:13:53 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/08 16:40:44 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_putstr_non_printable(char *str);
 
 void	ft_putstr_non_printable(char *str)
 {
-	char	hex_str[3];
-	char	*hex_table;
+	unsigned char	hex_str[3];
+	char			*hex_table;
 
 	hex_table = "0123456789abcdef";
 	while (*str)

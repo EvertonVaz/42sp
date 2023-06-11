@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 21:04:08 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/06 21:13:41 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/08 19:57:38 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,15 @@ unsigned	int	ft_strlcpy(char *dest, char *src, unsigned int size)
 
 	strlen = 0;
 	i = 0;
-	while (src[i] && i < size - 1)
+	while (src[i] != '\0' && i < size - 1 && size != 0)
 	{
 		dest[i] = src[i];
 		i++;
 	}
 	dest[i] = '\0';
-	while (*dest)
+	while (*src++ != '\0')
 	{
 		strlen++;
-		dest++;
 	}
 	return (strlen);
 }

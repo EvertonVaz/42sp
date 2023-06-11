@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 19:09:20 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/05/30 11:00:08 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/08 19:21:19 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	ft_print_comb2(void);
 
-void	ft_putchar(char c)
+void	ft_putchar(char one_letter)
 {
-	write(1, &c, 1);
+	write(1, &one_letter, 1);
 }
 
 // The division obtains the decimal, and the modulus obtains the units.

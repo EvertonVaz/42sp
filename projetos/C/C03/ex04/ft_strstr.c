@@ -6,12 +6,13 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 21:30:58 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/06 21:51:39 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/08 17:14:01 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // Reproduzir de forma idêntica o funcionamento da função strstr (man strstr).
-// • Ela deverá ser prototipada da seguinte maneira:
+// A strstr()função retorna um ponteiro 
+// para a primeira ocorrência de uma string em outra string.
 
 char	*ft_strstr(char *str, char *to_find);
 

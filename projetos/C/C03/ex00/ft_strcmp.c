@@ -6,12 +6,12 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 21:41:58 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/06 11:12:50 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/07 19:03:52 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // • Reproduzir de forma idêntica o funcionamento da função strcmp (man strcmp).
-// • Ela deverá ser prototipada da seguinte maneira:
+
 // Essa função compara duas strings, str1 e str2, 
 // retorna um valor inteiro que indica a relação entre as duas strings. 
 // Os possíveis valores de retorno são:

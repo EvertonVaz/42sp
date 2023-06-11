@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 18:58:57 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/06 21:13:14 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/07 11:19:39 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ char	*ft_strupcase(char *str);
 
 char	*ft_strupcase(char *str)
 {
-	char	*temp;
+	int	i;
 
-	temp = str;
-	while (*temp)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if ((*temp >= 'a' && *temp <= 'z'))
-			*temp -= 32;
-		temp++;
+		if ((str[i] >= 'a' && str[i] <= 'z'))
+			str[i] -= 32;
+		i++;
 	}
 	return (str);
 }
