@@ -6,44 +6,34 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:43:15 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/10 20:54:54 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/13 11:18:04 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+int	ft_atoi(char *str);
 
 int	ft_atoi(char *str)
 {
 	int	i;
 	int	mult;
-	int	nb;
+	int	result;
 
-	i = 0;
 	mult = 1;
-	nb = 0;
-	while (str[i] != '\0')
+	result = 0;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+		i++;
+	while (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			mult = -mult;
-		if (str[i] >= '0' && str[i] <= '9')
-			nb = nb * 10 + (str[i] - '0');
-		if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A'
-				&& str[i] <= 'Z'))
-			break ;
+			mult *= -1;
 		i++;
 	}
-	nb *= mult;
-	return (nb);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + (str[i] - '0');
+		i++;
+	}
+	result *= mult;
+	return (result);
 }
-
-// #include <stdio.h>
-// #include <stdlib.h>
-
-// int        main(void)
-// {
-//     char    *str;
-
-//     str = "    \v   \n   +-+-++-8415a64546";
-//     char str2[] = "   ---+--+1234ab567";
-//     // str2 = "-1234ab567";
-//     printf("%d\n", ft_atoi(str));
-//     printf("%d\n", ft_atoi(str2));
-// }

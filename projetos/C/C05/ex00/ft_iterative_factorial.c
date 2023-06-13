@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/11 15:12:58 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/11 18:50:47 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/13 13:17:49 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	ft_iterative_factorial(int nb)
 
 	aux = nb;
 	i = 1;
+	if (nb == 0)
+		return (1);
 	while (aux > i)
 	{
 		nb *= i++;
@@ -27,16 +29,3 @@ int	ft_iterative_factorial(int nb)
 		return (0);
 	return (nb);
 }
-
-// #include <stdio.h>
-// int	main(void)
-// {
-// 	int n;
-
-// 	n = -2;
-// 	while (n <= 12)
-// 	{
-// 		printf("fact(%d) = %d\n", n, ft_iterative_factorial(n));
-// 		n++;
-// 	}
-// }

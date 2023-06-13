@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_sort_params.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 21:41:58 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/12 19:30:21 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/06/12 19:06:51 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/06/13 11:25:55 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// • Reproduzir de forma idêntica o funcionamento da função strcmp (man strcmp).
+#include <unistd.h>
 
-// Essa função compara duas strings, str1 e str2, 
-// retorna um valor inteiro que indica a relação entre as duas strings. 
-// Os possíveis valores de retorno são:
-// Um valor menor que zero, se str1 é menor que str2
-// Zero, se str1 é igual a str2.
-// Um valor maior que zero, se str1 é maior que str2
+void	ft_putstr(char *str)
+{
+	while (*str != '\0')
+	{
+		write(1, str++, 1);
+	}
+	write(1, "\n", 1);
+}
 
-int	ft_strcmp(char *s1, char *s2);
+void	ft_swap(char **s1, char **s2)
+{
+	char	*temp;
+
+	temp = *s1;
+	*s1 = *s2;
+	*s2 = temp;
+}
 
 int	ft_strcmp(char *s1, char *s2)
 {
@@ -31,8 +40,27 @@ int	ft_strcmp(char *s1, char *s2)
 	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }
 
-#include <stdio.h>
-int main()
+int	main(int argc, char *argv[])
 {
-	printf("%i", ft_strcmp("a", "b"));
+	int	i;
+	int	j;
+
+	i = 1;
+	while (i < argc)
+	{
+		j = 1;
+		while (j < argc)
+		{
+			if (ft_strcmp(argv[j - 1], argv[j]) > 0)
+				ft_swap(&argv[j - 1], &argv[j]);
+			j++;
+		}
+		i++;
+	}
+	i = 1;
+	while (i < argc)
+	{
+		ft_putstr(argv[i]);
+		i++;
+	}
 }

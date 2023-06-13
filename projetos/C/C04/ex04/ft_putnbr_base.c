@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 18:24:33 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/11 16:28:58 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:02:53 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int	ft_strlen(char *str)
+int	len(char *str)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ int	check_base(char *base)
 	int	i;
 	int	j;
 
-	if (ft_strlen(base) < 1)
+	if (len(base) < 2)
 		return (0);
 	i = 0;
 	while (base[i])
@@ -55,59 +55,29 @@ int	check_base(char *base)
 	return (1);
 }
 
-void	is_negative(int base_div, int nbr, char *base)
-{
-	if (nbr == -2147483648)
-	{
-		ft_putchar('-');
-		ft_putnbr_base(-(nbr / base_div), base);
-	}
-	else
-	{
-		ft_putchar('-');
-		nbr = -nbr;
-		ft_putnbr_base(nbr, base);
-	}
-}
-
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int	base_div;
-	int	test;
+	int	base_len;
+	int	neg;
 
-	base_div = ft_strlen(base);
+	base_len = len(base);
 	if (!check_base(base))
 		return ;
 	if (nbr < 0)
 	{
-		is_negative(base_div, nbr, base);
+		ft_putchar('-');
+		if (nbr == -2147483648)
+			ft_putnbr_base(-(nbr / base_len), base);
+		else
+			nbr = -nbr;
 	}
-	if (nbr > 2)
-		ft_putnbr_base(nbr / base_div, base);
-	if (nbr % base_div < 0)
+	if (nbr >= base_len)
+		ft_putnbr_base(nbr / base_len, base);
+	if (nbr == -2147483648)
 	{
-		test = nbr % base_div * -1;
-		ft_putchar(base[test]);
+		neg = nbr % base_len * -1;
+		ft_putchar(base[neg]);
 	}
 	else
-		ft_putchar(base[nbr % base_div]);
+		ft_putchar(base[nbr % base_len]);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	printf("teste do teste, octal\n");
-// 	ft_putnbr_base(-2147483648, "ev rton!");
-// 	printf("\nteste01, binario\n");
-// 	ft_putnbr_base(2147483647, "ab");
-// 	printf("\nteste02, octal\n");
-// 	ft_putnbr_base(-12345, "poneyvif");
-// 	printf("\nteste03, decimal\n");
-// 	ft_putnbr_base(-2147483648, "0123456789");
-// 	printf("\n");
-// 	ft_putnbr_base(2147483647, "abcdefghij");
-// 	printf("\nteste04, hexadecimal\n");
-// 	ft_putnbr_base(-12345, "0123456789ABCDEF");
-// 	return (0);
-// }
