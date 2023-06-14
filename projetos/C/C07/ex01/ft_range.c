@@ -6,14 +6,14 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:44:15 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/13 16:10:30 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:32:46 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// • Escreva uma função ft_range que retorne uma matriz de int. 
+// • Escreva uma função ft_range que retorne uma matriz de int.
 // Essa matriz de int deverá conter todos os valores entre min e max.
 // • Min incluído - max excluído.
-// • Se o valor min for superior ou igual ao valor max, 
+// • Se o valor min for superior ou igual ao valor max,
 // um ponteiro nulo será retornado.
 
 #include <stdlib.h>
@@ -36,13 +36,13 @@ int	*ft_range(int min, int max)
 	return (arr);
 }
 
-#include <stdio.h>
+/* #include <stdio.h>
 
-int main()
+int	main(void)
 {
 	int *arr = ft_range(1, 5);
 	while (*arr)
 	{
 		printf("%i, ", *arr++);
 	}
-}
+} */

@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 16:03:40 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/13 20:21:40 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:32:57 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 	return (max - min);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	int *range;
 	int i = 0;
@@ -48,4 +48,4 @@ int	main(void)
 		printf("%i, ", range[i++]);
 	printf("\nretorno da função %i\n", test);
 	printf("\nretorno da função %i\n", test2);
-}
+} */
