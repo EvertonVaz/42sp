@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:06:51 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/14 11:51:01 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/06/14 13:33:25 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ int	main(int argc, char *argv[])
 		j = 1;
 		while (j < argc)
 		{
-			if (ft_strcmp(argv[j - 1], argv[j]) > 0)
-				ft_swap(&argv[j - 1], &argv[j]);
+			if (ft_strcmp(argv[i], argv[j]) < 0)
+				ft_swap(&argv[i], &argv[j]);
 			j++;
 		}
 		i++;
