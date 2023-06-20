@@ -14,7 +14,7 @@
 
 char	*ft_strjoin(int size, char **strs, char *sep);
 
-int	ft_strlen2(char *str)
+int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -24,15 +24,17 @@ int	ft_strlen2(char *str)
 	return (i);
 }
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strcat(char *dest, char *src, int size)
 {
 	char	*temp;
 
 	temp = dest;
-	while (*dest)
+	if (size > 1)
 	{
-		dest++;
+		while (*dest)
+			dest++;
 	}
+	
 	while (*src)
 	{
 		*dest = *src;
@@ -52,11 +54,12 @@ int	alloc_len(char **strs, char *sep, int size)
 	i = 0;
 	while (i < size)
 	{
-		count += ft_strlen2(strs[i]);
+		count += ft_strlen(strs[i]);
+		if ((i != size - 1))
+			count += ft_strlen(sep);
 		i++;
 	}
-	count += ft_strlen2(sep);
-	return (count);
+	return (count + 1);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
@@ -64,44 +67,45 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	char	*arr;
 	int		i;
 
-	arr = malloc(alloc_len(strs, sep, size));
 	if (size == 0)
 		return ((char *)malloc(1));
+	arr = (char *)malloc(alloc_len(strs, sep, size));
 	i = 0;
 	while (i < size)
 	{
-		ft_strcat(arr, strs[i]);
+		ft_strcat(arr, strs[i], i+1);
 		if ((i != size - 1))
-			ft_strcat(arr, sep);
+			ft_strcat(arr, sep, i+2);
 		i++;
 	}
 	return (arr);
 }
 
-/* #include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int	main(void)
 {
 	int index;
-	char **strs;
+	char **strs = malloc(10);
 	char *separator;
 	char *result;
-	int size = 4;
-	char *arr;
+	int	len;
 
 	strs[0] = "abc";
 	strs[1] = "def";
 	strs[2] = "ghi";
 	strs[3] = "jkl";
-	separator = ", ";
+	separator = " | ";
 
 	index = 0;
 	while (index <= 4)
 	{
 		result = ft_strjoin(index, strs, separator);
-		printf("result with size = %d : $%s$\n", index, result);
+		len = ft_strlen(result);
+		printf("result with size = %d : $ %s $ and len : %i\n", index, result, len);
 		free(result);
 		index++;
 	}
 	return (0);
-} */
+}
