@@ -6,7 +6,7 @@
 /*   By: etovaz <etovaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 09:18:31 by etovaz            #+#    #+#             */
-/*   Updated: 2023/07/04 10:31:05 by etovaz           ###   ########.fr       */
+/*   Updated: 2023/07/04 10:42:22 by etovaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	fill_corners(int x, int y, int lin)
 	col = 1;
 	while (col != x + 1)
 	{
-
 		if (lin == 1 && (col == 1 || col == x))
 			ft_putchar('A');
 		else if (lin == y && (col == 1 || col == x))
