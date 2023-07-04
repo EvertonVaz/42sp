@@ -6,7 +6,7 @@
 /*   By: etovaz <etovaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 21:05:08 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/06/22 17:15:38 by etovaz           ###   ########.fr       */
+/*   Updated: 2023/06/22 17:46:20 by etovaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ int		ft_atoi_base(char *str, char *base);
 
 int	char_to_int(char c, char *base)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (base[++i] != '\0')
@@ -48,8 +48,8 @@ int	check_base(char *base)
 void	pass_whitespace(char *str, int *index, int *signal)
 {
 	int	i;
-	int sign;
-	
+	int	sign;
+
 	i = 0;
 	sign = 1;
 	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
@@ -70,13 +70,12 @@ int	ft_atoi_base(char *str, char *base)
 	int	sign;
 	int	base_size;
 	int	digit;
-	int i;
+	int	i;
 
 	if ((base_size = check_base(base)) < 2)
 		return (0);
 	result = 0;
 	pass_whitespace(str, &i, &sign);
-
 	while ((digit = char_to_int(str[i], base)) >= 0)
 	{
 		result = result * base_size + digit;
@@ -86,6 +85,7 @@ int	ft_atoi_base(char *str, char *base)
 }
 
 #include <stdio.h>
+
 int	main(void)
 {
 	char str1[] = " ++-+-+-0111";
@@ -102,7 +102,7 @@ int	main(void)
 	char base3[] = "0123456789";
 	int result3 = ft_atoi_base(str3, base3);
 	printf("Result 3: %d\n", result3);
-	
+
 	char str4[] = "-jihga";
 	char base4[] = "abcdefghij";
 	int result4 = ft_atoi_base(str4, base4);
