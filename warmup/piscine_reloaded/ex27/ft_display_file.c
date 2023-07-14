@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:12:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/12 20:07:58 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/14 19:47:36 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,15 @@ int	main(int argc, char *argv[])
 		ft_putstr("Too many arguments.\n");
 	else
 	{
-		fd = open(argv[1], O_RDONLY);
-		while (read(fd, buff, 1))
-			ft_putchar(*buff);
-		close(fd);
+		if ((fd = open(argv[1], O_RDONLY)) == -1)
+			ft_putstr("Cannot read file.\n");
+		else
+		{
+			while (read(fd, buff, 1))
+				ft_putchar(*buff);
+			close(fd);
+		}
+		
 	}
 	return (0);
 }

@@ -47,6 +47,30 @@ shell00
 		compacta todos os arquivos da pasta
 			tar -cf exo2.tar *
 
+	todos os comandos necessarios pro ex02
+		mkdir test0 test2
+		touch test1 test3 test4
+		echo "   " > test1
+		echo "" > test3
+		echo " " > test4
+		ln test3 test5
+		ln -s test0 test6
+		chmod 777 test6
+		chmod 715 test0
+		chmod 714 test1
+		chmod 504 test2
+		chmod 404 test3 
+		chmod 641 test4 
+		chmod 404 test5
+		touch -t 202306012047 test0
+		touch -t 202306012146 test1
+		touch -t 202306012245 test2
+		touch -t 202306012344 test3 
+		touch -t 202306012343 test4
+		touch -t 202306012344 test5
+		touch -h -t 202306012220 test6
+		tar -cf exo.tar *
+
 	ex03:
 		aqui eu criei um par de chaves publico privada com o comando ssh-keygen e copiei as informações da chave publica com cat ~/.ssh/id_rsa.pub >> id_rsa_pub e copiei o conteudo dela dentro da intranet
 
