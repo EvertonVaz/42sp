@@ -14,7 +14,7 @@ NAME = ft_display_file
 
 SRC = ./ft_display_file.c
 
-CC = gcc -Wall -Werror -Werror -g3
+CC = gcc -Wall -Werror -Wextra -g3
 
 
 all: ${NAME}

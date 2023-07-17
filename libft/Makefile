@@ -6,15 +6,16 @@
 #    By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 19:13:08 by egeraldo          #+#    #+#              #
-#    Updated: 2023/07/14 19:13:26 by egeraldo         ###   ########.fr        #
+#    Updated: 2023/07/14 20:18:11 by egeraldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = ./srcs/ft_putchar.c ./srcs/ft_putstr.c ./srcs/ft_strcmp.c ./srcs/ft_strlen.c ./srcs/ft_strdup.c
+SRC = ./ft_*.c
 
 HEADER = libft.h
+
 FLAGS = -Wall -Wextra -Werror -g3
 
 all: $(NAME)
