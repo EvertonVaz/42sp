@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 20:34:57 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/17 20:41:12 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/07/17 20:25:33 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/07/17 20:50:35 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int c)
+#include "libft.h"
+
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	char	*ptr;
+
+	ptr = (char *)s;
+	while (n--)
+		*ptr++ = (unsigned char)c;
+	return ((void *)s);
 }
