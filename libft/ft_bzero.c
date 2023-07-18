@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 14:36:35 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/18 14:46:55 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/18 15:20:28 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_bzero(void *src, size_t n)
 {
 	char	*ptr;
-	
-	ptr = (char *)src;
+
+	ptr = src;
 	while (n--)
 		*ptr++ = 0;
 }

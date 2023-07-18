@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 20:48:34 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/14 20:54:08 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/07/18 17:34:45 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/07/18 17:46:44 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	tolower(int c)
+#include "libft.h"
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	return (c);
+	char *ptr;
+
+	ptr = dest;
+	while (n--)
+		((unsigned char *)ptr)[n] = ((unsigned char *)src)[n];
+	return (dest);
 }
-
-
-
