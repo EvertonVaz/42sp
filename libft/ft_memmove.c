@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 18:15:14 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/18 18:22:53 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/18 18:41:35 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	char	*ptr;
-	int	i;
+	int		i;
 
 	ptr = dest;
 	i = -1;
