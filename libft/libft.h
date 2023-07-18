@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:16:53 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/18 19:42:50 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/18 20:24:55 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 size_t	strlcat(char *dst, const char *src, size_t n);
 char	*ft_strchr(const char *str, int chr);
 char	*ft_strrchr(const char *str, int chr);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif
