@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 20:34:38 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/18 20:50:13 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:03:08 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ char	*ft_memchr(const void *str, int chr, size_t n)
 			return ((char *)&ptr[i]);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

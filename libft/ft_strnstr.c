@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 18:42:40 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/19 11:23:11 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/07/19 11:50:19 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/07/19 12:19:48 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t n)
+char	*ft_strnstr(const char *str, const char *substr, size_t len)
 {
-	unsigned int	dest_len;
-	unsigned int	src_len;
-	unsigned int	i;
+	int		i;
+	size_t	len_substr;
 
-	dest_len = ft_strlen(dest);
-	src_len = ft_strlen((char *)src);
 	i = 0;
-	while (src[i] && dest_len + i + 1 < n)
+	len_substr = ft_strlen((char *)substr);
+	if (*substr == '\0')
+		return ((char *)str);
+	while (i + len_substr <= len)
 	{
-		dest[dest_len + i] = src[i];
+		if (ft_strncmp(&str[i], substr, len_substr) == 0)
+			return ((char *)&str[i]);
 		i++;
 	}
-	dest[dest_len + i] = '\0';
-	if (n < dest_len)
-		return (src_len + n);
-	else
-		return (src_len + dest_len);
+	return (0);
 }

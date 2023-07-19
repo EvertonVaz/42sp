@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/18 18:42:40 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/19 11:23:11 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/07/19 12:21:30 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/07/19 12:31:13 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t n)
+void	*calloc(size_t length, size_t size_type)
 {
-	unsigned int	dest_len;
-	unsigned int	src_len;
-	unsigned int	i;
-
-	dest_len = ft_strlen(dest);
-	src_len = ft_strlen((char *)src);
-	i = 0;
-	while (src[i] && dest_len + i + 1 < n)
-	{
-		dest[dest_len + i] = src[i];
-		i++;
-	}
-	dest[dest_len + i] = '\0';
-	if (n < dest_len)
-		return (src_len + n);
-	else
-		return (src_len + dest_len);
+	void	*alloc;
+	
+	alloc = malloc(length * size_type);
+	ft_bzero(alloc, length);
+	return (alloc);
 }
