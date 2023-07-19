@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:16:53 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/19 12:29:10 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/19 14:36:17 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_memchr(const void *str, int chr, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *str, const char *substr, size_t len);
-void	*calloc(size_t length, size_t size_type);
+void	*ft_calloc(size_t length, size_t size_type);
+char	*ft_strdup(const char *src);
 
 #endif
