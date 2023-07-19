@@ -6,11 +6,13 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:37:29 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/14 21:07:21 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/19 17:17:26 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isanum(int c)
+#include "libft.h"
+
+int	ft_isalnum(int c)
 {
 	if ((c >= '0' && c <= '9'))
 		return (1);

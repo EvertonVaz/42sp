@@ -6,11 +6,12 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:52:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/14 20:52:28 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/19 17:18:46 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isascii(int c)
+
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);
