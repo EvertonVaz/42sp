@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 20:29:00 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/21 16:56:20 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/07/21 17:55:41 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/07/21 17:56:07 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+char *ft_substr(char const *s, unsigned int start, size_t len);
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	
 }
