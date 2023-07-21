@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/14 20:52:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/20 14:44:16 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/07/21 17:55:41 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/07/21 17:56:07 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+
+char *ft_substr(char const *s, unsigned int start, size_t len);
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	
 }
