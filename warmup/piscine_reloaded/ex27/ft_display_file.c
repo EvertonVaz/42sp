@@ -6,12 +6,12 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 19:12:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/20 12:20:55 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/12 20:07:58 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 void	ft_putchar(char c)
 {
