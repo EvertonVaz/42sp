@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 15:41:16 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/24 18:22:51 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/07/25 12:21:16 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/07/25 12:37:37 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_is_in(char c, const char *str)
+static int	ft_is_in(char c, const char *set)
 {
-	while (*str)
+	while (*set)
 	{
-		if (*str++ == c)
+		if (*set++ == c)
 			return (1);
 	}
 	return (0);
@@ -24,9 +24,9 @@ static int	ft_is_in(char c, const char *str)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	start;
-	size_t	end;
-	char	*result;
+	size_t start;
+	size_t end;
+	char *result;
 
 	start = 0;
 	end = ft_strlen(s1) - 1;
@@ -43,4 +43,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	s1 += start;
 	ft_strlcpy(result, s1, (end - start + 1));
 	return (result);
+}
+
+int main()
+{
+	char const *str = " asao paulo a   ";
+	char const *c = " a";
+	ft_strtrim(str, c);
 }
