@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:37:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/25 16:19:56 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/25 18:14:15 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static size_t	len(const char *str, char sep, size_t i)
 
 static void	ft_free(char **s, size_t w)
 {
-	while (w > 0)
-		free(s[w--]);
+	while (w-- > 0)
+		free(s[w]);
 	free(s);
 }
 

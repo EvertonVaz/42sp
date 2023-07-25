@@ -6,14 +6,47 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 15:42:08 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/25 15:50:37 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/25 19:24:09 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_itoa(int n)
+static size_t	ft_digits(int n)
 {
-	(void)n;
-	return (0);
+	size_t	i;
+
+	i = 1;
+	while (n > 0)
+	{
+		i++;
+		n /= 10;
+	}
+	return (i);
+}
+
+char	*ft_itoa(int n)
+{
+	char		*result;
+	size_t		digits;
+	long int	num;
+
+	num = n;
+	digits = ft_digits(n);
+	if (num < 0)
+	{
+		num = -num;
+		digits++;
+	}
+	result = (char *)ft_calloc(digits + 1, sizeof(char));
+	if (result == NULL)
+		return (NULL);
+	while (digits-- > 0)
+	{
+		result[digits] = '0' + (num % 10);
+		num /= 10;
+	}
+	if (n < 0)
+		result[0] = '-';
+	return (result);
 }
