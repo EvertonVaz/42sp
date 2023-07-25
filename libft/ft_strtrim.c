@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 12:21:16 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/25 12:37:37 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/25 12:41:28 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int	ft_is_in(char c, const char *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t start;
-	size_t end;
-	char *result;
+	size_t	start;
+	size_t	end;
+	char	*result;
 
 	start = 0;
 	end = ft_strlen(s1) - 1;
@@ -45,9 +45,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (result);
 }
 
-int main()
+int	main(void)
 {
-	char const *str = " asao paulo a   ";
-	char const *c = " a";
+	char const	*str;
+	char const	*c;
+
+	str = " asao paulo a   ";
+	c = " a";
 	ft_strtrim(str, c);
 }
