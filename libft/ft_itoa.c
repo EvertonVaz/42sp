@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/19 11:50:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/25 15:47:48 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/07/25 15:42:08 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/07/25 15:50:37 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char *ft_itoa(int n)
 {
-	int		i;
-	size_t	len_substr;
-
-	i = 0;
-	len_substr = ft_strlen(little);
-	if (*little == '\0')
-		return ((char *)big);
-	while (*big && len_substr <= len--)
-	{
-		if (ft_strncmp(big, little, len_substr) == 0)
-			return ((char *)big);
-		big++;
-	}
-	return (NULL);
+	(void)n;
+	return (0);
 }

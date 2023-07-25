@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 18:37:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/25 15:30:05 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/25 16:19:56 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ static size_t	len(const char *str, char sep, size_t i)
 	return (size);
 }
 
+static void	ft_free(char **s, size_t w)
+{
+	while (w > 0)
+		free(s[w--]);
+	free(s);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**split;
@@ -62,9 +69,10 @@ char	**ft_split(char const *s, char c)
 		size_words = len(s, c, i);
 		split[w] = ft_substr(s, i, size_words);
 		if (split[w++] == NULL)
+			ft_free(split, w);
+		if (split == NULL)
 			return (NULL);
 		i += size_words;
 	}
-	split[w] = 0;
 	return (split);
 }
