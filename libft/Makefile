@@ -6,13 +6,13 @@
 #    By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 19:13:08 by egeraldo          #+#    #+#              #
-#    Updated: 2023/07/26 12:17:37 by egeraldo         ###   ########.fr        #
+#    Updated: 2023/07/26 19:38:58 by egeraldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-SRC = ft_atoi.c     ft_isalpha.c  ft_memchr.c   ft_memset.c   ft_strlcpy.c \
+M_SRC = ft_atoi.c     ft_isalpha.c  ft_memchr.c   ft_memset.c   ft_strlcpy.c \
 	ft_strrch.c   ft_bzero.c    ft_isascii.c  ft_memcmp.c   ft_strchr.c \
 	ft_strlen.c   ft_tolower.c  ft_calloc.c   ft_isdigit.c  ft_memcpy.c \
 	ft_strdup.c   ft_strncmp.c  ft_toupper.c  ft_isalnum.c  ft_isprint.c \
@@ -20,7 +20,11 @@ SRC = ft_atoi.c     ft_isalpha.c  ft_memchr.c   ft_memset.c   ft_strlcpy.c \
 	ft_strtrim.c  ft_split.c    ft_itoa.c     ft_strmapi.c  ft_striteri.c \
 	ft_putchar_fd.c  ft_putstr_fd.c  ft_putendl_fd.c  ft_putnbr_fd.c
 
-OBJ = $(SRC:%.c=%.o)
+M_OBJ = $(M_SRC:%.c=%.o)
+
+B_SRC = ft_lstnew.c ft_lstadd_front.c
+
+B_OBJ = $(B_SRC:%.c=%.o)
 
 HEADER = libft.h
 
@@ -28,9 +32,14 @@ FLAGS = -Wall -Wextra -Werror -g3
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	gcc $(FLAGS) -c $(SRC) -I $(HEADER)
-	ar rc $(NAME) *.o
+$(NAME): $(M_OBJ)
+	ar -rcs $(NAME) $(M_OBJ)
+
+bonus: $(NAME) $(B_OBJ)
+	ar -rcs $(NAME) $(B_OBJ)
+
+%.o: %.c
+	cc $(FLAGS) -c $< -o $(<:.c=.o)
 
 clean:
 	rm -f *.o
@@ -40,4 +49,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY:		all clean fclean re
+rebonus: fclean bonus
+
+.PHONY:		all clean fclean re bonus
