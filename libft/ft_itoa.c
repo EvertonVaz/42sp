@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 15:42:08 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/25 19:24:09 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:38:51 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static size_t	ft_digits(int n)
 	size_t	i;
 
 	i = 1;
-	while (n > 0)
+	n /= 10;
+	while (n != 0)
 	{
 		i++;
 		n /= 10;

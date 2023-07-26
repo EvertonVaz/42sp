@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 19:41:45 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/21 17:11:26 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/07/26 10:55:18 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@ char	*ft_strrchr(const char *s, int c)
 	int	n;
 
 	n = ft_strlen(s);
-	while (n >= 0 && s[n] != (unsigned char)c)
+	while (n >= 0)
+	{
+		if (s[n] == (char)c)
+			return ((char *)&s[n]);
 		n--;
-	if (s[n] == (char)c)
-		return ((char *)&s[n]);
+	}
 	return (NULL);
 }
