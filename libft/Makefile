@@ -6,7 +6,7 @@
 #    By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 19:13:08 by egeraldo          #+#    #+#              #
-#    Updated: 2023/07/28 14:31:16 by egeraldo         ###   ########.fr        #
+#    Updated: 2023/07/28 16:05:55 by egeraldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ M_SRC = ft_atoi.c     ft_isalpha.c  ft_memchr.c   ft_memset.c   ft_strlcpy.c \
 
 M_OBJ = $(M_SRC:%.c=%.o)
 
-B_SRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c
+B_SRC = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c
 
 B_OBJ = $(B_SRC:%.c=%.o)
 
