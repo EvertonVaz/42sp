@@ -3,3 +3,4 @@ test/
 eu/
 *.o
 a.out
+main.c
