@@ -6,7 +6,7 @@
 #    By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 19:13:08 by egeraldo          #+#    #+#              #
-#    Updated: 2023/08/02 15:26:25 by egeraldo         ###   ########.fr        #
+#    Updated: 2023/08/02 19:27:10 by egeraldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,12 +20,12 @@ M_SRC = ft_atoi.c     ft_isalpha.c  ft_memchr.c   ft_memset.c   ft_strlcpy.c \
 	ft_strtrim.c  ft_split.c    ft_itoa.c     ft_strmapi.c  ft_striteri.c \
 	ft_putchar_fd.c  ft_putstr_fd.c  ft_putendl_fd.c  ft_putnbr_fd.c
 
-M_OBJ = $(M_SRC:%.c=%.o)
 
 B_SRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 		ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
 		ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
+M_OBJ = $(M_SRC:%.c=%.o)
 
 B_OBJ = $(B_SRC:%.c=%.o)
 
@@ -36,13 +36,12 @@ FLAGS = -Wall -Wextra -Werror -g3
 all: $(NAME)
 
 $(NAME): $(M_OBJ)
-	ar -rcs $(NAME) $(M_OBJ)
 
-bonus: $(NAME) $(B_OBJ)
-	ar -rcs $(NAME) $(B_OBJ)
+ bonus: $(B_OBJ)
 
 %.o: %.c
-	cc $(FLAGS) -c $< -o $(<:.c=.o)
+	cc $(FLAGS) -c $< -o $@
+	ar -rcs $(NAME) $@
 
 clean:
 	rm -f *.o
