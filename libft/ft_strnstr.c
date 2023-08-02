@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 11:50:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/25 15:47:48 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/02 10:09:32 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int		i;
 	size_t	len_substr;
 
-	i = 0;
 	len_substr = ft_strlen(little);
 	if (*little == '\0')
 		return ((char *)big);
