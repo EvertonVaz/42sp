@@ -6,14 +6,13 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:16:53 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/02 19:57:17 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:20:45 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
 

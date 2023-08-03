@@ -6,7 +6,7 @@
 #    By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 19:13:08 by egeraldo          #+#    #+#              #
-#    Updated: 2023/08/02 19:27:10 by egeraldo         ###   ########.fr        #
+#    Updated: 2023/08/03 14:36:43 by egeraldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,13 +44,13 @@ $(NAME): $(M_OBJ)
 	ar -rcs $(NAME) $@
 
 clean:
-	rm -f *.o
+	rm -f $(M_OBJ) $(B_OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-rebonus: fclean bonus
+rebonus: fclean all bonus
 
 .PHONY:		all clean fclean re bonus rebonus
