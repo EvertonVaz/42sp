@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:27:46 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/03 20:41:40 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/04 11:05:04 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,5 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*get_next_line(int fd);
-char	**ft_split(char const *s, char c);
-
 
 #endif
