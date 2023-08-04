@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:27:39 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/03 20:55:25 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/04 16:51:07 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		*aux++ = *s2++;
 	*aux = '\0';
 	return (join);
+}
+
+char	*ft_strdup(const char *src)
+{
+	char	*new;
+	int		len;
+
+	len = ft_strlen(src);
+	new = ft_calloc(len + 1, sizeof(char));
+	if (!new)
+		return (0);
+	len = -1;
+	while (src[++len])
+		new[len] = src[len];
+	new[len] = '\0';
+	return (new);
 }
