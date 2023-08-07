@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:47:16 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/04 17:05:02 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/07 14:37:09 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 char	*write_line(char **buffer, int fd)
 {
-	int	index;
-	char *line;
+	int		index;
+	char	*line;
 
 	index = 1;
-	line = NULL;
+	line = ft_calloc(256, 1);
 	while (*buffer != NULL && index != 0)
 	{
-		if (line == NULL)
-			line = ft_strdup(*buffer);
-		else
-			line = ft_strjoin(line, *buffer);
+		ft_strlcat(line, *buffer, ft_strlen(*buffer));
 		if (ft_strchr(line, '\n'))
 		{
 			index = ft_strlen(line) - ft_strlen(ft_strchr(line, '\n')) + 1;
