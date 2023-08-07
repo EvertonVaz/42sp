@@ -6,7 +6,7 @@
 #    By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 19:13:08 by egeraldo          #+#    #+#              #
-#    Updated: 2023/08/03 14:36:43 by egeraldo         ###   ########.fr        #
+#    Updated: 2023/08/07 16:29:26 by egeraldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,9 @@ all: $(NAME)
 
 $(NAME): $(M_OBJ)
 
- bonus: $(B_OBJ)
+bonus: $(B_OBJ)
 
-%.o: %.c
+%.o: %.c $(HEADER)
 	cc $(FLAGS) -c $< -o $@
 	ar -rcs $(NAME) $@
 
