@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:53:49 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/26 18:10:41 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/08 16:45:34 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*new_node;
 
-	new_node = (t_list *)ft_calloc(1, sizeof(t_list));
+	new_node = malloc(sizeof(t_list));
 	if (new_node == NULL)
 		return (NULL);
 	new_node->content = content;
