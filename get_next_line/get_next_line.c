@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:47:16 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/09 17:26:50 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/09 20:31:16 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static char	*after_line(char *line)
 	char	*backup;
 	char	*new_line;
 
-	if (ft_strchr(line, '\n'))
+	if (line && ft_strchr(line, '\n'))
 	{
 		new_line = ft_strchr(line, '\n');
 		index = ft_strlen(line) - ft_strlen(new_line) + 1;
@@ -56,6 +56,16 @@ static char	*get_line(char *backup, char *buffer, int fd)
 	return (backup);
 }
 
+char	*free_buffer(char *buffer, char *line)
+{
+	free(buffer);
+	buffer = NULL;
+	if (line)
+		return (line);
+	else
+		return (NULL);
+}
+
 char	*get_next_line(int fd)
 {
 	char		*buffer;
@@ -64,7 +74,7 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
-	buffer = (char *)ft_calloc(BUFFER_SIZE, sizeof(char));
+	buffer = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
 		return (0);
 	line = get_line(backup, buffer, fd);
@@ -74,7 +84,5 @@ char	*get_next_line(int fd)
 		free(backup);
 		backup = NULL;
 	}
-	free(buffer);
-	buffer = NULL;
-	return (line);
+	return (free_buffer(buffer, line));
 }
