@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:47:16 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/10 14:43:22 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/10 17:01:06 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,19 @@ char	*get_next_line(int fd)
 {
 	char		*buffer;
 	char		*line;
-	static char	*backup;
+	static char	*backup[1024];
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (!buffer)
 		return (NULL);
-	line = get_line(backup, buffer, fd);
-	backup = after_line(line);
-	if (!ft_strchr(line, '\n') || (backup != NULL && !(*backup)))
+	line = get_line(backup[fd], buffer, fd);
+	backup[fd] = after_line(line);
+	if (!ft_strchr(line, '\n') || (backup[fd] != NULL && !(*backup[fd])))
 	{
-		free(backup);
-		backup = NULL;
+		free(backup[fd]);
+		backup[fd] = NULL;
 	}
 	return (free_alloc(buffer, line));
 }
