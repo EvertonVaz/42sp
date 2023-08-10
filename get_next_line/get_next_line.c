@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:47:16 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/10 14:43:22 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/10 17:34:50 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static char	*get_line(char *backup, char *buffer, int fd)
 	return (backup);
 }
 
-char	*free_alloc(char *buffer, char *line)
+static char	*free_alloc(char *buffer, char *line)
 {
 	if (line == NULL || *line == '\0')
 	{
