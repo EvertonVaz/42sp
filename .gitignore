@@ -8,3 +8,5 @@ eu/
 subjects/
 old/
 libft-unit-test/
+dojo*
+ft_printf

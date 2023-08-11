@@ -1,9 +1,16 @@
-<div align="center"><h1>Libft [122 / 100]</h1></div>
+
+<h1 align="center"> Libft
 
 <div align="center">
+<p>
    <a href="https://github.com/EvertonVaz/42sp/tree/main/libft" target="_blank">
       <img height=170 src="https://game.42sp.org.br/static/assets/achievements/libftm.png" hspace = "10">
    </a>
+</p><p>
+	<a href="https://github.com/JaeSeoKim/badge42">
+		<img src="https://badge42.vercel.app/api/v2/clk1frjdc004908mhk2togjaz/project/3193489" alt="egeraldo's 42 Libft Score" />
+	</a>
+</p>
 </div>
 
 ## Resumo
@@ -39,7 +46,7 @@
 Para usar esta biblioteca estática em seu projeto, você deve baixar este repositório em seu pc e compilar a biblioteca
 
 ``` shell
-$> git clone https://github.com/EvertonVaz/42sp/tree/main/libft
+$> git clone git@github.com:EvertonVaz/42sp.git
 $> cd 42sp/Libft
 $> make
 $> make bonus
