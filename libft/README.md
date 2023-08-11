@@ -39,7 +39,7 @@
 Para usar esta biblioteca estática em seu projeto, você deve baixar este repositório em seu pc e compilar a biblioteca
 
 ``` shell
-$> git clone https://github.com/EvertonVaz/42sp/tree/main/libft
+$> git clone git@github.com:EvertonVaz/42sp.git
 $> cd 42sp/Libft
 $> make
 $> make bonus
