@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:47:16 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/11 14:05:09 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/17 20:08:31 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,8 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		return (NULL);
 	line = get_line(backup[fd], buffer, fd);
-	backup[fd] = after_line(line);
-	if (!ft_strchr(line, '\n') || (backup[fd] != NULL && !(*backup[fd])))
-	{
+	if (line == NULL && backup[fd])
 		free(backup[fd]);
-		backup[fd] = NULL;
-	}
+	backup[fd] = after_line(line);
 	return (free_alloc(buffer, line));
 }
