@@ -6,14 +6,13 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:27:46 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/10 16:08:25 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/17 18:18:05 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 
