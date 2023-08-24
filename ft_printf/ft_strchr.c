@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_pointer.c                                   :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 16:00:00 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/24 09:43:49 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/08/24 11:30:45 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/08/24 11:30:48 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_put_pointer(unsigned long num)
+char	*ft_strchr(const char *s, int c)
 {
-	char	*base;
-	size_t	size;
-
-	base = "0123456789abcdef";
-	size = 0;
-	if (num >= 16)
-		size += ft_put_pointer(num / 16);
-	else
-		size += ft_putstr("0x");
-	size += ft_putchar(base[num % 16]);
-	return (size);
+	while (*s != (char)c && *s != '\0')
+		s++;
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }
