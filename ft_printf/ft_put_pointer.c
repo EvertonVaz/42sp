@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:00:00 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/24 09:43:49 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/24 12:18:45 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ size_t	ft_put_pointer(unsigned long num)
 
 	base = "0123456789abcdef";
 	size = 0;
+	if (num == 0)
+		return (ft_putstr("(nil)"));
 	if (num >= 16)
 		size += ft_put_pointer(num / 16);
 	else
