@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:36:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/24 12:37:25 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:34:04 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int	choice_print(va_list arg, char type)
 	else if (type == 'p')
 		size += ft_put_pointer(va_arg(arg, unsigned long));
 	else if (type == 'd' || type == 'i')
-		size += ft_putnbr_base(va_arg(arg, int), "0123456789");
+		size += ft_putnbr_base(va_arg(arg, int), DECIMAL);
 	else if (type == 'u')
-		size += ft_putnbr_base(va_arg(arg, unsigned int), "0123456789");
+		size += ft_putnbr_base(va_arg(arg, unsigned int), DECIMAL);
 	else if (type == 'x')
-		size += ft_putnbr_base(va_arg(arg, unsigned int), "0123456789abcdef");
+		size += ft_putnbr_base(va_arg(arg, unsigned int), HEXALOW);
 	else if (type == 'X')
-		size += ft_putnbr_base(va_arg(arg, unsigned int), "0123456789ABCDEF");
+		size += ft_putnbr_base(va_arg(arg, unsigned int), HEXALOW);
 	else if (type == '%')
 		size += ft_putchar('%');
 	return (size);
@@ -40,21 +40,25 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		size;
-	int		i;
 
 	size = 0;
-	i = 0;
 	va_start(args, format);
-	while (format[i])
+	while (*format)
 	{
-		if (format[i] == '%' && ft_strchr("cspdiuxX%", format[i + 1]) != 0)
+		if (*format == '%' && *format + 1 != 0)
 		{
-			size += choice_print(args, format[i + 1]);
-			i++;
+			if (ft_strchr(FLAGS, *(format + 1)), *(format + 1))
+			{
+				if (invalid_flag(*(format + 1), *(format + 2), find_type(format + 1)))
+					return (0);
+				size += put_flag(*(format + 1), find_type(format + 1));
+			}
+			size += choice_print(args, find_type(format + 1));
+			format = ft_strchr(format, find_type(format + 1));
 		}
 		else
-			size += ft_putchar(format[i]);
-		i++;
+			size += ft_putchar(*format);
+		format++;
 	}
 	va_end(args);
 	return (size);
