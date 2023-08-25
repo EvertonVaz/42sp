@@ -1,10 +1,10 @@
 **/.git/
 avaliacoes/
 backup_projetos/
-teste/
+**/teste*
 **/.vscode/
 eu/
-*.out
+**/*.out
 subjects/
 old/
 libft-unit-test/

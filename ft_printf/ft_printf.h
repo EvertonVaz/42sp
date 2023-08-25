@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 15:27:46 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/17 18:18:05 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/08/23 15:55:05 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/08/24 12:08:15 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <stdlib.h>
+# include <stdarg.h>
 # include <unistd.h>
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
-
-size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t nmemb, size_t size);
+size_t	ft_putchar(char c);
+size_t	ft_strlen(char *s);
+size_t	ft_putstr(char *s);
+size_t	ft_put_pointer(unsigned long num);
+size_t	ft_putnbr_base(long int num, char *base);
 char	*ft_strchr(const char *s, int c);
-char	*get_next_line(int fd);
-char	*ft_strdup(const char *src);
-char	*ft_strjoin(char const *s1, char const *s2);
+int		ft_printf(const char *format, ...);
 
 #endif

@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/03 15:27:46 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/17 18:18:05 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/08/23 16:04:19 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/08/24 10:15:34 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
+size_t	ft_putnbr_base(long int num, char *base)
+{
+	int		base_len;
+	size_t	size;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1000
-# endif
-
-size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strchr(const char *s, int c);
-char	*get_next_line(int fd);
-char	*ft_strdup(const char *src);
-char	*ft_strjoin(char const *s1, char const *s2);
-
-#endif
+	base_len = ft_strlen(base);
+	size = 0;
+	if (num < 0)
+	{
+		num = -num;
+		size += ft_putchar('-');
+	}
+	if (num >= base_len)
+		size += ft_putnbr_base(num / base_len, base);
+	size += ft_putchar(base[num % base_len]);
+	return (size);
+}

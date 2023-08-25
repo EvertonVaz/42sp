@@ -3,7 +3,7 @@
 <div align="center">
 	<p>
 	<a href="https://github.com/EvertonVaz/42sp/tree/main/get_next_line" target="_blank">
-		<img height=170 src="https://game.42sp.org.br/static/assets/achievements/get_next_linen.png" hspace = "10">
+		<img height=170 src="https://game.42sp.org.br/static/assets/achievements/get_next_linem.png" hspace = "10">
 	</a>
 	</p>
 	<p>
