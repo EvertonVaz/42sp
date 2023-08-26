@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_put_flags.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: etovaz <etovaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:44:05 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/25 20:37:09 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/26 03:50:09 by etovaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ char	find_type(const char *str)
 	while(str[i])
 	{
 		if (ft_strchr(FORMATS, str[i]))
-			return(ft_strchr(FORMATS, str[i])[0]);
+		{
+			type = ft_strchr(FORMATS, str[i])[0];
+			return(type);
+		}
 		i++;
 	}
 	return (type);
@@ -49,9 +52,21 @@ int	put_flag(char flag, char type)
 	return (size);
 }
 
-int	invalid_flag(char flag, char after_flag, char type)
+int	invalid_flag(const char *format)
 {
-	if ((flag == '#' || flag == '+') && after_flag != type)
-		return (1);
+	char *flag;
+	char type;
+	
+	while (*format)
+	{
+		flag = ft_strchr(FLAGS, *format);
+		type = find_type(format);
+		if (type == '%')
+			type = 0;
+		if (flag != NULL && (*flag == '#' || *flag == '+') && *(format + 1) != type)
+			return (1);	
+		format++;
+	}
+
 	return (0);
 }

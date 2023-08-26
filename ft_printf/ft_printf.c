@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: etovaz <etovaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:36:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/25 20:34:04 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/26 02:59:07 by etovaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	ft_printf(const char *format, ...)
 
 	size = 0;
 	va_start(args, format);
+	if (invalid_flag(format))
+		return (-1);
 	while (*format)
 	{
 		if (*format == '%' && *format + 1 != 0)
 		{
 			if (ft_strchr(FLAGS, *(format + 1)), *(format + 1))
 			{
-				if (invalid_flag(*(format + 1), *(format + 2), find_type(format + 1)))
-					return (0);
 				size += put_flag(*(format + 1), find_type(format + 1));
 			}
 			size += choice_print(args, find_type(format + 1));
