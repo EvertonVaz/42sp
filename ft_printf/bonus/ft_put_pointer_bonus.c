@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_put_pointer_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 16:04:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/25 19:52:34 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/08/23 16:00:00 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/08/28 14:32:33 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
-size_t	ft_putnbr_base(long int num, char *base)
+size_t	ft_put_pointer(unsigned long num)
 {
-	int		base_len;
+	char	*base;
 	size_t	size;
 
-	base_len = ft_strlen(base);
+	base = "0123456789abcdef";
 	size = 0;
-	if (num < 0)
-	{
-		num = -num;
-		size += ft_putchar('-');
-	}
-	if (num >= base_len)
-		size += ft_putnbr_base(num / base_len, base);
-	size += ft_putchar(base[num % base_len]);
+	if (num == 0)
+		return (ft_putstr("(nil)"));
+	if (num >= 16)
+		size += ft_put_pointer(num / 16);
+	else
+		size += ft_putstr("0x");
+	size += ft_putchar(base[num % 16]);
 	return (size);
 }
