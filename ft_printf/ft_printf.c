@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: etovaz <etovaz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:36:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/26 02:59:07 by etovaz           ###   ########.fr       */
+/*   Updated: 2023/08/28 14:49:08 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	choice_print(va_list arg, char type)
 	else if (type == 'x')
 		size += ft_putnbr_base(va_arg(arg, unsigned int), HEXALOW);
 	else if (type == 'X')
-		size += ft_putnbr_base(va_arg(arg, unsigned int), HEXALOW);
+		size += ft_putnbr_base(va_arg(arg, unsigned int), HEXAUPP);
 	else if (type == '%')
 		size += ft_putchar('%');
 	return (size);
@@ -40,25 +40,21 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		size;
+	int		i;
 
 	size = 0;
+	i = 0;
 	va_start(args, format);
-	if (invalid_flag(format))
-		return (-1);
-	while (*format)
+	while (format[i])
 	{
-		if (*format == '%' && *format + 1 != 0)
+		if (format[i] == '%' && format[i + 1] != 0)
 		{
-			if (ft_strchr(FLAGS, *(format + 1)), *(format + 1))
-			{
-				size += put_flag(*(format + 1), find_type(format + 1));
-			}
-			size += choice_print(args, find_type(format + 1));
-			format = ft_strchr(format, find_type(format + 1));
+			size += choice_print(args, format[i + 1]);
+			i++;
 		}
 		else
-			size += ft_putchar(*format);
-		format++;
+			size += ft_putchar(format[i]);
+		i++;
 	}
 	va_end(args);
 	return (size);
