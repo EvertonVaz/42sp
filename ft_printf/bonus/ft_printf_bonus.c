@@ -6,17 +6,18 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:36:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/28 16:24:01 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/28 20:46:28 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	choice_print(va_list arg, char type, char flag)
+int	choice_print(va_list arg, char type, char flag, int width)
 {
 	size_t	size;
 
 	size = 0;
+	size += ft_putwidth(width);
 	if (type == 'c')
 		size += ft_putchar(va_arg(arg, int));
 	else if (type == 's')
@@ -32,7 +33,7 @@ int	choice_print(va_list arg, char type, char flag)
 	else if (type == 'X')
 		size += ft_putnbr_hex(va_arg(arg, unsigned int), type, flag, 1);
 	else if (type == '%')
-		size += ft_putchar('%');
+		size += put_porcent(flag);
 	return (size);
 }
 
@@ -40,7 +41,8 @@ int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		size;
-	char	flag;
+	unsigned char	flag;
+	int		width;
 
 	size = 0;
 	va_start(args, format);
@@ -48,10 +50,13 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%' && *(format + 1) != 0)
 		{
-			if (ft_strchr(FLAGS, *(format + 1)))
-				flag = ft_strchr(FLAGS, *(format + 1))[0];
-			size += choice_print(args, find_type(format + 1), flag);
-			format = ft_strchr(format, find_type(format + 1));
+			width = ft_atoi(format);
+			flag = get_flag(*(format + 1));
+			size += choice_print(args, find_type(format + 1), flag, width);
+			if (flag)
+				format = ft_strchr(format, find_type(format + 1));
+			else
+				format++;
 		}
 		else
 			size += ft_putchar(*format);

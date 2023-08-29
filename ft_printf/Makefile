@@ -1,39 +1,46 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/08/24 12:03:44 by egeraldo          #+#    #+#              #
-#    Updated: 2023/08/24 13:58:36 by egeraldo         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-LIBFT = ./libft/libft.a
-
 NAME = libftprintf.a
 
-SRCS =  ./ft_printf.c ./ft_printf_utils.c ./ft_put_pointer.c ./ft_putnbr_base.c
+CC = cc
 
-CC = gcc
+FLAGS = -g3 -Wall -Wextra -Werror
 
-FLAGS = -c -Wall -Wextra -Werror
+SRC =	./mandatory/ft_printf.c \
+		./mandatory/ft_printf_utils.c \
+		./mandatory/ft_put_pointer.c \
+		./mandatory/ft_putnbr_base.c \
 
-INCLUDES = -I./ft_printf.h
+OBJECTS = $(SRC:%.c=%.o)
 
-OBJS = $(SRCS:.c=.o)
+SRC_B =	./bonus/ft_printf_bonus.c \
+		./bonus/ft_printf_utils_bonus.c \
+		./bonus/ft_printf_utils2_bonus.c \
+		./bonus/ft_putnbr_base_bonus.c \
 
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
-	ar -rcs $(NAME) $(OBJS)
 
-all : $(NAME)
+OBJECTS_B = $(SRC_B:%.c=%.o)
 
-clean :
-	rm -rf $(OBJS)
+INCLUDES = ./mandatory/ft_printf.h
 
-fclean : clean
-	rm -rf $(NAME)
+INCLUDES_B = ./bonus/ft_printf_bonus.h
 
-re : fclean all
+RM = rm -f
+
+all: $(NAME)
+
+$(NAME): $(OBJECTS)
+
+bonus: $(OBJECTS_B)
+
+%.o:%.c $(INCLUDES) $(INCLUDES_B)
+	${CC} ${FLAGS} -c $< -o $@
+	ar rc $(NAME) $@
+
+clean:
+	$(RM) $(OBJECTS) $(OBJECTS_B)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY:	all clean fclean re bonus
