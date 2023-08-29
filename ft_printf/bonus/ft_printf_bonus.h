@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:55:05 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 14:53:59 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 16:53:08 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,19 @@ typedef struct s_details
 	char	flag;
 	int		width;
 	char	minus;
+	char	zero;
 }			t_details;
 
-size_t		ft_strlen(const char *s);
+size_t		ft_strlen_bonus(const char *s);
 size_t		ft_hexlen(unsigned long n, int time, t_details details);
-size_t		ft_intlen(int n, t_details details);
-char		*ft_strchr(const char *s, int c);
+size_t		ft_intlen(long int n, t_details details);
+char		*ft_strchr_bonus(const char *s, int c);
 char		find_type(const char *str);
 char		get_flag(char flag);
 int			ft_atoi(const char *str);
-size_t		ft_putwidth(int width);
-size_t		ft_putstr(char *s, t_details details, int time);
-size_t		ft_putchar(char c, t_details details, int time);
+size_t		ft_putwidth(int width, t_details details);
+size_t		ft_putstr_bonus(char *s, t_details details, int time);
+size_t		ft_putchar_bonus(char c, t_details details, int time);
 size_t		ft_putnbr_base(long int n, t_details details, int time);
 size_t		ft_putnbr_hex(unsigned long num, t_details details, int time);
 size_t		ft_put_pointer(unsigned long num, t_details details, int time);

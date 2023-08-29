@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:36:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 14:53:59 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 16:47:16 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	choice_print(va_list arg, t_details details)
 
 	size = 0;
 	if (details.type == 'c')
-		size += ft_putchar(va_arg(arg, int), details, 1);
+		size += ft_putchar_bonus(va_arg(arg, int), details, 1);
 	else if (details.type == 's')
-		size += ft_putstr(va_arg(arg, char *), details, 1);
+		size += ft_putstr_bonus(va_arg(arg, char *), details, 1);
 	else if (details.type == 'p')
 		size += ft_put_pointer(va_arg(arg, unsigned long), details, 1);
 	else if (details.type == 'd' || details.type == 'i')
@@ -54,10 +54,10 @@ int	ft_printf(const char *format, ...)
 			if (details.type == '%')
 				format++;
 			else
-				format = ft_strchr(format, details.type);
+				format = ft_strchr_bonus(format, details.type);
 		}
 		else
-			size += ft_putchar(*format, details, 0);
+			size += ft_putchar_bonus(*format, details, 0);
 		format++;
 	}
 	va_end(args);

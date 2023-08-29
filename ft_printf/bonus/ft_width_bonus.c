@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:18:09 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 14:37:03 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:13:05 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,17 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
-size_t	ft_putwidth(int width)
+size_t	ft_putwidth(int width, t_details details)
 {
 	size_t	size;
 
+	if (!details.zero)
+		size = 0;
 	size = 0;
 	while (width > 0 && width--)
+	{
 		size += write(1, " ", 1);
+	}
 	return (size);
 }
 
@@ -50,6 +54,7 @@ void	reset_details(t_details *details)
 	details->minus = 0;
 	details->type = 0;
 	details->width = 0;
+	details->zero = 0;
 }
 
 void	wirte_details(t_details *details, const char *str)
@@ -57,8 +62,8 @@ void	wirte_details(t_details *details, const char *str)
 	details->type = find_type(str + 1);
 	details->flag = get_flag(*(str + 1));
 	details->width = ft_atoi(str);
-	if (ft_strchr(str, '-'))
-		details->minus = ft_strchr(str, '-')[0];
-	else
-		details->minus = 0;
+	if (ft_strchr_bonus(str, '-'))
+		details->minus = ft_strchr_bonus(str, '-')[0];
+	if (ft_strchr_bonus(str, '0'))
+		details->zero = ft_strchr_bonus(str, '0')[0];
 }
