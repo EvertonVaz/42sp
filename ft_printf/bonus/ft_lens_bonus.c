@@ -6,13 +6,13 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 19:27:53 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 16:40:34 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:38:28 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-size_t	ft_intlen(long int n, t_details details)
+size_t	ft_intlen(long long int n, t_details details)
 {
 	size_t	size;
 
@@ -31,7 +31,7 @@ size_t	ft_intlen(long int n, t_details details)
 	return (size);
 }
 
-size_t	ft_hexlen(unsigned long n, int time, t_details details)
+size_t	ft_hexlen(unsigned long long n, int time, t_details details)
 {
 	size_t	size;
 

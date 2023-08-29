@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:18:09 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 17:13:05 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 17:57:37 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,13 @@ size_t	ft_putwidth(int width, t_details details)
 {
 	size_t	size;
 
-	if (!details.zero)
-		size = 0;
 	size = 0;
 	while (width > 0 && width--)
 	{
-		size += write(1, " ", 1);
+		if (details.zero)
+			size += write(1, "0", 1);
+		else
+			size += write(1, " ", 1);
 	}
 	return (size);
 }
