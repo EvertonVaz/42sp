@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:53:54 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/28 16:25:50 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 12:20:03 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,15 @@ size_t	ft_putchar(char c)
 	return (1);
 }
 
-size_t	ft_putstr(char *s)
+size_t	put_porcent(char flag)
 {
-	int	i;
+	size_t	size;
 
-	i = 0;
-	if (s)
-	{
-		while (s[i])
-			write(1, &s[i++], 1);
-	}
-	else
-		i += ft_putstr("(null)");
-	return (i);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	size = 0;
+	if (flag == ' ')
+		size += ft_putchar(' ');
+	size += ft_putchar('%');
+	return (size);
 }
 
 char	*ft_strchr(const char *s, int c)
@@ -69,4 +55,11 @@ char	find_type(const char *str)
 		i++;
 	}
 	return (type);
+}
+
+char	get_flag(char flag)
+{
+	if (ft_strchr(FLAGS, flag))
+		return (ft_strchr(FLAGS, flag)[0]);
+	return (0);
 }

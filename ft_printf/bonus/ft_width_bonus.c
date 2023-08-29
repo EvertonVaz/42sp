@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils2_bonus.c                           :+:      :+:    :+:   */
+/*   ft_width_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/28 19:27:53 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/28 21:06:33 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/08/29 12:18:09 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/08/29 12:22:45 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
-
-char	get_flag(char flag)
-{
-	if (ft_strchr(FLAGS, flag))
-		return (ft_strchr(FLAGS, flag)[0]);
-	return (0);
-}
 
 int	ft_atoi(const char *str)
 {
@@ -41,25 +34,12 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
-size_t	ft_intlen(int n)
-{
-	size_t	i;
-
-	i = 0;
-	while(n)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
-}
-
 size_t	ft_putwidth(int width)
 {
 	size_t	size;
 
 	size = 0;
-	while(width--)
+	while (width > 0 && width--)
 	{
 		ft_putchar(' ');
 		size++;
