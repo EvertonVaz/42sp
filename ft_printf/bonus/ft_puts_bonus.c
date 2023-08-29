@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:04:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 12:22:28 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:53:59 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,10 @@
 size_t	ft_putnbr_base(long int n, t_details details, int time)
 {
 	size_t	size;
-	size_t	width;
 
-	width = details.width - ft_intlen(n, details);
-	if (time == 1)
-		ft_putwidth(width);
 	size = 0;
+	if (time == 1 && !details.minus)
+		size += ft_putwidth(details.width - ft_hexlen(n, time, details));
 	if (details.flag == ' ' && (details.type == 'd' || details.type == 'i')
 		&& time == 1 && n >= 0)
 		size += write(1, " ", 1);
@@ -30,11 +28,13 @@ size_t	ft_putnbr_base(long int n, t_details details, int time)
 	if (n < 0)
 	{
 		n = -n;
-		size += ft_putchar('-');
+		size += ft_putchar('-', details, 0);
 	}
 	if (n >= 10)
 		size += ft_putnbr_base(n / 10, details, 0);
-	size += ft_putchar(DECIMAL[n % 10]);
+	size += ft_putchar(DECIMAL[n % 10], details, 0);
+	if (time == 1 && details.minus)
+		size += ft_putwidth(details.width - ft_hexlen(n, time, details));
 	return (size);
 }
 
@@ -43,12 +43,10 @@ size_t	ft_putnbr_hex(unsigned long num, t_details details, int time)
 	size_t	size;
 	int		base_len;
 	char	*base;
-	size_t	width;
 
-	width = details.width - ft_hexlen(num, time, details);
-	if (time == 1)
-		ft_putwidth(width);
 	size = 0;
+	if (time == 1 && !details.minus)
+		size += ft_putwidth(details.width - ft_hexlen(num, time, details));
 	if (details.type == 'X')
 		base = HEXAUPP;
 	else
@@ -60,7 +58,9 @@ size_t	ft_putnbr_hex(unsigned long num, t_details details, int time)
 		size += write(1, "0x", 2);
 	if (num >= 16)
 		size += ft_putnbr_hex(num / 16, details, 0);
-	size += ft_putchar(base[num % 16]);
+	size += ft_putchar(base[num % 16], details, 0);
+	if (time == 1 && details.minus)
+		size += ft_putwidth(details.width - ft_hexlen(num, time, details));
 	return (size);
 }
 
@@ -68,40 +68,49 @@ size_t	ft_put_pointer(unsigned long num, t_details details, int time)
 {
 	char	*base;
 	size_t	size;
-	size_t	width;
 
-	width = details.width - ft_hexlen(num, time, details);
-	if (time == 1)
-		ft_putwidth(width);
-	base = HEXALOW;
 	size = 0;
+	base = HEXALOW;
+	if (time == 1 && !details.minus)
+		size += ft_putwidth(details.width - ft_hexlen(num, time, details));
 	if (num == 0)
 		return (ft_putstr("(nil)", details, 0));
 	if (num >= 16)
 		size += ft_put_pointer(num / 16, details, 0);
 	else
 		size += ft_putstr("0x", details, 0);
-	size += ft_putchar(base[num % 16]);
+	size += ft_putchar(base[num % 16], details, 0);
+	if (time == 1 && details.minus)
+		size += ft_putwidth(details.width - ft_hexlen(num, time, details));
 	return (size);
 }
 
 size_t	ft_putstr(char *s, t_details details, int time)
 {
-	int		i;
-	size_t	width;
+	size_t	size;
 
-	if (time == 1)
-	{
-		width = details.width - ft_strlen(s);
-		ft_putwidth(width);
-	}
-	i = 0;
+	size = 0;
+	if (time == 1 && !details.minus)
+		size += ft_putwidth(details.width - ft_strlen(s));
 	if (s)
 	{
-		while (s[i])
-			write(1, &s[i++], 1);
+		while (s[size])
+			write(1, &s[size++], 1);
 	}
 	else
-		i += ft_putstr("(null)", details, 0);
-	return (i);
+		size += ft_putstr("(null)", details, 0);
+	if (time == 1 && size == ft_strlen(s) && details.minus)
+		size += ft_putwidth(details.width - ft_strlen(s));
+	return (size);
+}
+
+size_t	put_percent(char flag, t_details details)
+{
+	size_t	size;
+
+	size = 0;
+	if (flag == ' ')
+		size += ft_putchar(' ', details, 0);
+	size += ft_putchar('%', details, 0);
+	return (size);
 }

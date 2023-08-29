@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 19:27:53 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 12:23:53 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 13:44:11 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,4 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
-}
-
-void	wirte_struct(t_details *details, const char *str)
-{
-	details->type = find_type(str + 1);
-	details->flag = get_flag(*(str + 1));
-	details->width = ft_atoi(str);
 }

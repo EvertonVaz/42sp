@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils_bonus.c                            :+:      :+:    :+:   */
+/*   ft_strings_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:53:54 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 12:20:03 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:53:59 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-size_t	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-size_t	put_porcent(char flag)
+size_t	ft_putchar(char c, t_details details, int time)
 {
 	size_t	size;
 
 	size = 0;
-	if (flag == ' ')
-		size += ft_putchar(' ');
-	size += ft_putchar('%');
+	if (details.type == 'c' && details.width && !details.minus && time == 1)
+		size += ft_putwidth(details.width - 1);
+	size += write(1, &c, 1);
+	if (details.type == 'c' && details.width && details.minus && time == 1)
+		size += ft_putwidth(details.width - 1);
 	return (size);
 }
 

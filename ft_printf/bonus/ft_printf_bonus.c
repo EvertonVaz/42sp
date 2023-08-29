@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:36:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 12:23:08 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:53:59 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	choice_print(va_list arg, t_details details)
 
 	size = 0;
 	if (details.type == 'c')
-		size += ft_putchar(va_arg(arg, int));
+		size += ft_putchar(va_arg(arg, int), details, 1);
 	else if (details.type == 's')
 		size += ft_putstr(va_arg(arg, char *), details, 1);
 	else if (details.type == 'p')
@@ -32,7 +32,7 @@ int	choice_print(va_list arg, t_details details)
 	else if (details.type == 'X')
 		size += ft_putnbr_hex(va_arg(arg, unsigned int), details, 1);
 	else if (details.type == '%')
-		size += put_porcent(details.flag);
+		size += put_percent(details.flag, details);
 	return (size);
 }
 
@@ -44,13 +44,12 @@ int	ft_printf(const char *format, ...)
 
 	size = 0;
 	va_start(args, format);
+	reset_details(&details);
 	while (*format)
 	{
 		if (*format == '%' && *(format + 1) != 0)
 		{
-			wirte_struct(&details, format);
-			if (details.type == 'c')
-				size += ft_putwidth(details.width - 1);
+			wirte_details(&details, format);
 			size += choice_print(args, details);
 			if (details.type == '%')
 				format++;
@@ -58,9 +57,10 @@ int	ft_printf(const char *format, ...)
 				format = ft_strchr(format, details.type);
 		}
 		else
-			size += ft_putchar(*format);
+			size += ft_putchar(*format, details, 0);
 		format++;
 	}
 	va_end(args);
+	reset_details(&details);
 	return (size);
 }

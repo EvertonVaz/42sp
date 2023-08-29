@@ -12,9 +12,10 @@ SRC =	./mandatory/ft_printf.c \
 OBJECTS = $(SRC:%.c=%.o)
 
 SRC_B =	./bonus/ft_printf_bonus.c \
-		./bonus/ft_printf_utils_bonus.c \
-		./bonus/ft_printf_utils2_bonus.c \
-		./bonus/ft_putnbr_base_bonus.c \
+		./bonus/ft_lens_bonus.c \
+		./bonus/ft_puts_bonus.c \
+		./bonus/ft_strings_bonus.c \
+		./bonus/ft_width_bonus.c \
 
 
 OBJECTS_B = $(SRC_B:%.c=%.o)

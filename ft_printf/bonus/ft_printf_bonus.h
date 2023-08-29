@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:55:05 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 12:23:25 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/29 14:53:59 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_details
 	char	type;
 	char	flag;
 	int		width;
+	char	minus;
 }			t_details;
 
 size_t		ft_strlen(const char *s);
@@ -39,12 +40,13 @@ char		get_flag(char flag);
 int			ft_atoi(const char *str);
 size_t		ft_putwidth(int width);
 size_t		ft_putstr(char *s, t_details details, int time);
-size_t		ft_putchar(char c);
+size_t		ft_putchar(char c, t_details details, int time);
 size_t		ft_putnbr_base(long int n, t_details details, int time);
 size_t		ft_putnbr_hex(unsigned long num, t_details details, int time);
 size_t		ft_put_pointer(unsigned long num, t_details details, int time);
-size_t		put_porcent(char flag);
-void		wirte_struct(t_details *details, const char *str);
+size_t		put_percent(char flag, t_details details);
+void		wirte_details(t_details *details, const char *str);
+void		reset_details(t_details *details);
 int			ft_printf(const char *format, ...);
 
 #endif
