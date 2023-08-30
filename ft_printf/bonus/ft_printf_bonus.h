@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:55:05 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 19:13:48 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:46:42 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_details
 	char	type;
 	char	flag;
 	int		width;
+	char	secund_flag;
 	char	minus;
 	char	zero;
 }			t_details;

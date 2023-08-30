@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:04:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 19:16:51 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:25:18 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,19 +92,28 @@ size_t	ft_put_pointer(unsigned long long num, t_details details, int time)
 size_t	ft_putstr_bonus(char *s, t_details details, int time)
 {
 	size_t	size;
+	size_t	i;
+	size_t	strlen;
+	size_t	width;
 
+	strlen = ft_strlen_bonus(s);
 	size = 0;
+	if (!s)
+		width = details.width - 6;
+	else
+		width = details.width - strlen;
 	if (time == 1 && !details.minus)
-		size += ft_putwidth(details.width - ft_strlen_bonus(s), details);
+		size += ft_putwidth(width, details);
 	if (s)
 	{
-		while (*s && s[size])
-			write(1, &s[size++], 1);
+		i = 0;
+		while (*s && s[i])
+			size += write(1, &s[i++], 1);
 	}
 	else
 		size += ft_putstr_bonus("(null)", details, 0);
-	if (time == 1 && size == ft_strlen_bonus(s) && details.minus)
-		size += ft_putwidth(details.width - ft_strlen_bonus(s), details);
+	if (time == 1 && size == strlen && details.minus)
+		size += ft_putwidth(width, details);
 	return (size);
 }
 

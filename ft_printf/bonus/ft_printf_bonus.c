@@ -6,13 +6,13 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:36:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 17:42:23 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/30 11:08:39 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	choice_print(va_list arg, t_details details)
+static int	choice_print(va_list arg, t_details details)
 {
 	size_t	size;
 
@@ -49,18 +49,18 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%' && *(format + 1) != 0)
 		{
+			reset_details(&details);
 			wirte_details(&details, format);
 			size += choice_print(args, details);
-			if (details.type == '%')
+			if (details.type == '%' && (details.flag == 0 && details.width == 0))
 				format++;
 			else
-				format = ft_strchr_bonus(format, details.type);
+				format = ft_strchr_bonus(format + 1, details.type);
 		}
 		else
 			size += ft_putchar_bonus(*format, details, 0);
 		format++;
 	}
 	va_end(args);
-	reset_details(&details);
 	return (size);
 }

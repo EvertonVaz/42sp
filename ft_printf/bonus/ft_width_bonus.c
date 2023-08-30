@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 12:18:09 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 17:57:37 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/08/30 10:50:00 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ size_t	ft_putwidth(int width, t_details details)
 	size = 0;
 	while (width > 0 && width--)
 	{
-		if (details.zero)
+		if (details.flag == '0')
 			size += write(1, "0", 1);
 		else
 			size += write(1, " ", 1);
@@ -63,8 +63,9 @@ void	wirte_details(t_details *details, const char *str)
 	details->type = find_type(str + 1);
 	details->flag = get_flag(*(str + 1));
 	details->width = ft_atoi(str);
-	if (ft_strchr_bonus(str, '-'))
-		details->minus = ft_strchr_bonus(str, '-')[0];
-	if (ft_strchr_bonus(str, '0'))
-		details->zero = ft_strchr_bonus(str, '0')[0];
+	details->secund_flag = get_flag(*(str + 2));
+	if (details->secund_flag == '-' || details->flag == '-')
+		details->minus = '-';
+	else if (details->secund_flag == '0' || details->flag == '0')
+		details->zero = '0';
 }
