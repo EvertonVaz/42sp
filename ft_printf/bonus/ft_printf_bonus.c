@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:36:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/30 11:08:39 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/09/05 11:04:51 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,25 @@ int	ft_printf(const char *format, ...)
 {
 	va_list		args;
 	int			size;
-	t_details	details;
+	t_details	data;
 
 	size = 0;
 	va_start(args, format);
-	reset_details(&details);
+	reset_details(&data);
 	while (*format)
 	{
 		if (*format == '%' && *(format + 1) != 0)
 		{
-			reset_details(&details);
-			wirte_details(&details, format);
-			size += choice_print(args, details);
-			if (details.type == '%' && (details.flag == 0 && details.width == 0))
+			reset_details(&data);
+			wirte_details(&data, format);
+			size += choice_print(args, data);
+			if (data.type == '%' && (data.flag == 0 && data.width == 0))
 				format++;
 			else
-				format = ft_strchr_bonus(format + 1, details.type);
+				format = ft_strchr_bonus(format + 1, data.type);
 		}
 		else
-			size += ft_putchar_bonus(*format, details, 0);
+			size += ft_putchar_bonus(*format, data, 0);
 		format++;
 	}
 	va_end(args);

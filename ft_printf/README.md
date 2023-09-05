@@ -3,7 +3,7 @@
 <div align="center">
 <p>
 <a href="https://github.com/EvertonVaz/42sp/tree/main/ft_printf" target="_blank">
-	<img height=170 src="https://game.42sp.org.br/static/assets/achievements/ft_printfn.png" hspace = "10">
+	<img height=170 src="https://game.42sp.org.br/static/assets/achievements/ft_printfm.png" hspace = "10">
 </a>
 </p>
 <p>
