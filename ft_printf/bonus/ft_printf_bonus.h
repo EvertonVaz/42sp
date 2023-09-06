@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 15:55:05 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/30 10:46:42 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:17:20 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ size_t	ft_putnbr_base(long long int n, t_details details, int time);
 size_t	ft_putnbr_hex(unsigned long long int num, t_details details, int time);
 size_t	ft_put_pointer(unsigned long long num, t_details details, int time);
 size_t	put_percent(char flag, t_details details);
+size_t	is_negative(int n, t_details details, int intlen, size_t size);
 void	wirte_details(t_details *details, const char *str);
 void	reset_details(t_details *details);
 int		ft_printf(const char *format, ...);

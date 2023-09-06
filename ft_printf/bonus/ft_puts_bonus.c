@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 16:04:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/09/05 18:21:25 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:17:31 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ size_t	ft_putnbr_base(long long int n, t_details details, int time)
 		size += write(1, "+", 1);
 	if (n < 0)
 	{
+		size +=	is_negative(n, details, intlen, size);
 		n = -n;
-		if (details.zero && !details.minus)
-			size += ft_putwidth(details.width - intlen, details);
-		size += ft_putchar_bonus('-', details, 0);
 	}
 	if (n >= 10)
 		size += ft_putnbr_base(n / 10, details, 0);

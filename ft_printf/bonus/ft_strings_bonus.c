@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 11:53:54 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/08/29 16:55:19 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/09/06 12:57:19 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,24 @@ char	get_flag(char flag)
 	if (ft_strchr_bonus(FLAGS, flag))
 		return (ft_strchr_bonus(FLAGS, flag)[0]);
 	return (0);
+}
+
+size_t	is_negative(int n, t_details details, int intlen, size_t size)
+{
+	if (n < 0)
+	{
+		if (details.flag == '0' && !details.minus)
+		{
+			size += ft_putchar_bonus('-', details, 0);
+			size += ft_putwidth(details.width - intlen, details);
+		}
+		else if (!details.minus)
+		{
+			size += ft_putwidth(details.width - intlen, details);
+			size += ft_putchar_bonus('-', details, 0);
+		}
+		else
+			size += ft_putchar_bonus('-', details, 0);
+	}
+	return (size);
 }
