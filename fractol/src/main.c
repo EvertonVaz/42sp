@@ -10,9 +10,9 @@
 
 void	initialize_fractol(t_fractol *fractol)
 {
-	fractol->height = 800;
-	fractol->width = 800;
-	fractol->max_iter = 100;
+	fractol->height = 512;
+	fractol->width = 512;
+	fractol->max_iter = 300;
 	fractol->xmax = 1.0;
 	fractol->xmin = -2.0;
 	fractol->ymax = 1.5;
@@ -30,6 +30,7 @@ void	ft_hook(void *param)
 	if (mlx_is_key_down(p->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(p->mlx);
 	moviment_keys(p);
+	zoom_wheel(p);
 	display_mandelbrot(p);
 }
 

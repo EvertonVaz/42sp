@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:02:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/04 18:59:55 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/05 11:10:41 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 typedef struct s_fractol {
 	mlx_image_t	*img;
 	mlx_t		*mlx;
-    int			x;
-	int			y;
+    double		pan_factor;
+	double		zoom_factor;
 	double		xmax;
 	double		xmin;
 	double		ymax;
@@ -40,5 +40,6 @@ void	display_mandelbrot(t_fractol *fractol);
 void	initialize_fractol(t_fractol *fractol);
 void	calculate_color(mlx_image_t *image, int x, int y, int iter, t_fractol *fractol);
 void	moviment_keys(t_fractol *fractol);
+void	zoom_wheel(t_fractol *fractol);
 
 #endif
