@@ -6,21 +6,19 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:59:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/04 20:12:11 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:08:46 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-
 int	mandelbrot(double real, double imag, int max_iter)
 {
-	int	iter;
-	double r;
-	double i;
-	double r2;
-	double i2;
-
+	int		iter;
+	double	r;
+	double	i;
+	double	r2;
+	double	i2;
 
 	iter = -1;
 	r = real;
@@ -37,49 +35,27 @@ int	mandelbrot(double real, double imag, int max_iter)
 	return (max_iter);
 }
 
-
-void calculate_color(mlx_image_t *image, int x, int y, int iter, t_fractol *fractol)
+void	display_mandelbrot(t_fractol *st)
 {
-    double interpolation_factor = (double)iter / (double)fractol->max_iter;
+	int		width;
+	int		heigth;
+	int		iter;
+	double	real;
+	double	imag;
 
-    if (interpolation_factor < 0.5) {
-        interpolation_factor *= 2;
-        fractol->r = (unsigned char)(150);
-        fractol->g = (unsigned char)(interpolation_factor * 255);
-        fractol->b = 10;
-    }
-    else
+	st->x = 0;
+	width = (st->img->width - 1);
+	heigth = (st->img->height - 1);
+	while (st->x++ < (int)st->img->width)
 	{
-        interpolation_factor = (interpolation_factor - 0.5) * 2;
-        fractol->r = (unsigned char)((1 - interpolation_factor) * 255);
-        fractol->g = (unsigned char)((1 - interpolation_factor) * 255);
-        fractol->b = (unsigned char)((1 - interpolation_factor) * 255);
-    }
-
-    int color = (fractol->r << 24) | (fractol->g << 16) | (fractol->b << 8) | 255;
-    mlx_put_pixel(image, x, y, color);
-}
-
-void display_mandelbrot(t_fractol *fractol)
-{
-    int	x;
-	int	y;
-	int	iter;
-
-	x = 0;
-	while(x++ < (int)fractol->img->width)
-	{
-		y = -1;
-		while(y++ < (int)fractol->img->height)
+		st->y = -1;
+		while (st->y++ < (int)st->img->height)
 		{
-			iter = mandelbrot(
-				fractol->xmin + x * (fractol->xmax - fractol->xmin) / (fractol->img->width - 1),
-				fractol->ymin + y * (fractol->ymax - fractol->ymin) / (fractol->img->height - 1),
-				fractol->max_iter);
-			calculate_color(fractol->img, x, y, iter, fractol);
+			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
+			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
+			iter = mandelbrot(real, imag, st->max_iter);
+			calculate_color(st->img, iter, st);
 		}
 	}
-
-    // Exibir a imagem na janela
-    mlx_image_to_window(fractol->mlx, fractol->img, 0, 0);
+	mlx_image_to_window(st->mlx, st->img, 0, 0);
 }
