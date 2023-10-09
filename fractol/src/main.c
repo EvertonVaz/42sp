@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:33:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/06 20:23:29 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:32:53 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	ft_hook(void *param)
 	zoom_scroll(0, 0, p);
 	display_mandelbrot(p);
 }
-
-#include <stdio.h>
 
 int	main(void)
 {

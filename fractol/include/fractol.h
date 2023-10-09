@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:02:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/06 20:12:35 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:12:27 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct s_fractol
 	mlx_t		*mlx;
 	int			x;
 	int			y;
+	int			xpos;
+	int			ypos;
+	double		xzoom;
+	double		yzoom;
 	double		xmax;
 	double		xmin;
 	double		ymax;

@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:59:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/05 16:08:46 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/09 19:33:17 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	mandelbrot(double real, double imag, int max_iter)
 	{
 		r2 = r * r;
 		i2 = i * i;
-		if ((r2 + i2) > 4.0)
+		if ((r2 + i2) > 20.0)
 			return (iter);
 		i = 2 * r * i + imag;
 		r = r2 - i2 + real;
