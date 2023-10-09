@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:33:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/09 19:32:53 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/10 13:11:48 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ void	initialize_fractol(t_fractol *fractol)
 {
 	fractol->height = 800;
 	fractol->width = 800;
-	fractol->max_iter = 100;
+	fractol->max_iter = 500;
 	fractol->xmax = 1.0;
 	fractol->xmin = -2.0;
 	fractol->ymax = 1.5;
 	fractol->ymin = -1.5;
 	fractol->x = 0;
 	fractol->y = 0;
+	fractol->creal = 0.55;
+	fractol->cimag = 0.45;
 }
 
 void	ft_hook(void *param)
@@ -35,7 +37,7 @@ void	ft_hook(void *param)
 	rigth_left(p);
 	up_down(p);
 	mouse_click_move(p);
-	zoom_scroll(0, 0, p);
+	zoom_keys(p);
 	display_mandelbrot(p);
 }
 
