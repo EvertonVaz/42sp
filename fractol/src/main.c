@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:33:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/11 15:46:50 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/11 17:43:11 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	initialize_fractol(t_fractol *fractol)
 {
-	fractol->height = 800;
-	fractol->width = 800;
+	fractol->height = 900;
+	fractol->width = 900;
 	fractol->max_iter = 500;
 	fractol->xmax = 1.0;
 	fractol->xmin = -2.0;
@@ -23,8 +23,8 @@ void	initialize_fractol(t_fractol *fractol)
 	fractol->ymin = -1.5;
 	fractol->x = 0;
 	fractol->y = 0;
-	fractol->creal = -0.55;
-	fractol->cimag = -0.45;
+	fractol->creal = -0.35;
+	fractol->cimag = -0.88;
 }
 
 void	ft_hook(void *param)
@@ -38,7 +38,8 @@ void	ft_hook(void *param)
 	up_down(p);
 	mouse_click_move(p);
 	zoom_keys(p);
-	display_julia(p);
+	display_mandelbrot(p);
+	// display_julia(p);
 }
 
 int	main(void)
@@ -48,7 +49,8 @@ int	main(void)
 	initialize_fractol(&fractol);
 	fractol.mlx = mlx_init(fractol.width, fractol.height, "Mandelbrot", true);
 	fractol.img = mlx_new_image(fractol.mlx, fractol.width, fractol.height);
-	display_julia(&fractol);
+	display_mandelbrot(&fractol);
+	// display_julia(&fractol);
 	mlx_loop_hook(fractol.mlx, ft_hook, &fractol);
 	mlx_scroll_hook(fractol.mlx, zoom_scroll, &fractol);
 	mlx_loop(fractol.mlx);

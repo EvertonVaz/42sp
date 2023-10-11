@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:54:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/11 15:48:37 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/11 18:00:37 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,45 +38,43 @@ int	interpolate_color(int col1, int col2, t_fractol *st, t_colors c)
 void	mandelbrot_color(int iter, t_fractol *st)
 {
 	int			color;
-	int			interval;
+	double		interpolate;
 	t_colors	c;
 
-	c.smooth = pow(((double)iter / (double)st->max_iter) / st->distance, 0.65);
+	interpolate = (double)iter / (double)st->max_iter;
+	c.smooth = pow(interpolate, 0.5);
 	init_color(&c);
-	interval = st->max_iter / 6;
-	if (iter < interval)
+	if (interpolate < 0.2)
 		color = interpolate_color(c.col1, c.col2, st, c);
-	else if (iter < interval * 1.5)
+	else if (interpolate < 0.4)
 		color = interpolate_color(c.col2, c.col1, st, c);
-	else if (iter < interval * 3)
+	else if (interpolate < 0.6)
 		color = interpolate_color(c.col2, c.col3, st, c);
-	else if (iter < interval * 4.5)
-		color = interpolate_color(c.col4, c.col1, st, c);
+	else if (interpolate < 0.8)
+		color = interpolate_color(c.col3, c.col4, st, c);
 	else
-		color = interpolate_color(c.col3, c.col5, st, c);
+		color = interpolate_color(c.col2, c.col5, st, c);
 	mlx_put_pixel(st->img, st->x, st->y, color);
 }
 
 void	julia_color(int iter, t_fractol *st)
 {
-	double	interpolation_factor;
-	double	smoothed_factor;
-	int		color;
+	int			color;
+	double		interpolate;
+	t_colors	c;
 
-	interpolation_factor = (double)iter / (double)st->max_iter * st->distance;
-	smoothed_factor = pow(interpolation_factor, 0.9);
-	if (interpolation_factor < 0.6)
-	{
-		st->r = 150;
-		st->g = smoothed_factor * 255;
-		st->b = 10;
-	}
+	init_color(&c);
+	interpolate = (double)iter / (double)st->max_iter;
+	c.smooth = pow(interpolate, 0.5);
+	if (iter < st->max_iter / 5)
+		color = c.col1 * (0.9 - c.smooth);
+	else if (iter < 2 * st->max_iter / 5)
+		color = c.col2 * (0.9 - c.smooth);
+	else if (iter < 3 * st->max_iter / 5)
+		color = c.col3 * (0.9 - c.smooth);
+	else if (iter < 4 * st->max_iter / 5)
+		color = c.col4 * (0.9 - c.smooth);
 	else
-	{
-		st->r = ((1 - smoothed_factor) * 200);
-		st->g = ((1 - smoothed_factor) * 255);
-		st->b = ((1 - smoothed_factor) * 200);
-	}
-	color = (st->r << 24) | (st->g << 16) | (st->b << 8) | 255;
-	mlx_put_pixel(st->img, st->x, st->y, color);
+		color = c.col5 * (0.9 - (-c.smooth));
+    mlx_put_pixel(st->img, st->x, st->y, color);
 }
