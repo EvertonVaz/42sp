@@ -6,13 +6,13 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:59:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/10 12:33:34 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:48:37 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-int	mandelbrot(double real, double imag, int max_iter)
+int	mandelbrot(double real, double imag, t_fractol *st)
 {
 	int		iter;
 	double	r;
@@ -23,16 +23,20 @@ int	mandelbrot(double real, double imag, int max_iter)
 	iter = -1;
 	r = real;
 	i = imag;
-	while (iter++ < max_iter)
+	st->distance = 1.015;
+	while (iter++ < st->max_iter)
 	{
 		r2 = r * r;
 		i2 = i * i;
-		if ((r2 + i2) > 20.0)
+		if ((r2 + i2) > 6.0)
+		{
+			st->distance = 1.015 * sqrt(r2 + i2) * log(sqrt(r2 + i2));
 			return (iter);
+		}
 		i = 2 * r * i + imag;
 		r = r2 - i2 + real;
 	}
-	return (max_iter);
+	return (st->max_iter);
 }
 
 void	display_mandelbrot(t_fractol *st)
@@ -53,8 +57,8 @@ void	display_mandelbrot(t_fractol *st)
 		{
 			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
 			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
-			iter = mandelbrot(real, imag, st->max_iter);
-			calculate_color(iter, st);
+			iter = mandelbrot(real, imag, st);
+			mandelbrot_color(iter, st);
 		}
 	}
 	mlx_image_to_window(st->mlx, st->img, 0, 0);

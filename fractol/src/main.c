@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:33:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/10 13:11:48 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/11 15:46:50 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	initialize_fractol(t_fractol *fractol)
 	fractol->ymin = -1.5;
 	fractol->x = 0;
 	fractol->y = 0;
-	fractol->creal = 0.55;
-	fractol->cimag = 0.45;
+	fractol->creal = -0.55;
+	fractol->cimag = -0.45;
 }
 
 void	ft_hook(void *param)
@@ -38,7 +38,7 @@ void	ft_hook(void *param)
 	up_down(p);
 	mouse_click_move(p);
 	zoom_keys(p);
-	display_mandelbrot(p);
+	display_julia(p);
 }
 
 int	main(void)
@@ -48,7 +48,7 @@ int	main(void)
 	initialize_fractol(&fractol);
 	fractol.mlx = mlx_init(fractol.width, fractol.height, "Mandelbrot", true);
 	fractol.img = mlx_new_image(fractol.mlx, fractol.width, fractol.height);
-	display_mandelbrot(&fractol);
+	display_julia(&fractol);
 	mlx_loop_hook(fractol.mlx, ft_hook, &fractol);
 	mlx_scroll_hook(fractol.mlx, zoom_scroll, &fractol);
 	mlx_loop(fractol.mlx);
