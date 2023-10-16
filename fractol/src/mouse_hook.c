@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:45:42 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/09 19:32:28 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/16 14:16:56 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	zoom_scroll(double xdelta, double ydelta, void *param)
 	mlx_get_mouse_pos(st->mlx, &st->xpos, &st->ypos);
 	st->xzoom = st->xmin + st->xpos * ((st->xmax - st->xmin) / st->width);
 	st->yzoom = st->ymin + st->ypos * ((st->ymax - st->ymin) / st->height);
+	printf("xzoom %f, yzoom %f\n", st->xzoom, st->yzoom);
 	if (ydelta > 0)
 	{
 		st->xmin = st->xzoom - (1.0 / zoom_factor) * (st->xzoom - st->xmin);

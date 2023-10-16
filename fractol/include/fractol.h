@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:02:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/11 15:48:37 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/16 15:58:20 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 # include "../lib/MLX42/include/MLX42/MLX42.h"
 # include <math.h>
-# include <stdbool.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_fractol
 {
+	char		*name;
+	int			argc;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
 	int			x;
@@ -45,23 +47,22 @@ typedef struct s_fractol
 
 typedef struct s_colors
 {
-	int	col1;
-	int	col2;
-	int	col3;
-	int	col4;
-	int	col5;
-	int	r1;
-	int	g1;
-	int	b1;
-	int	r2;
-	int	g2;
-	int	b2;
-	double smooth;
-}	t_colors;
+	int			col1;
+	int			col2;
+	int			col3;
+	int			col4;
+	int			col5;
+	int			r1;
+	int			g1;
+	int			b1;
+	int			r2;
+	int			g2;
+	int			b2;
+	double		smooth;
+}				t_colors;
 
 int				mandelbrot(double real, double imag, t_fractol *st);
 void			display_mandelbrot(t_fractol *fractol);
-void			initialize_fractol(t_fractol *fractol);
 void			mandelbrot_color(int iter, t_fractol *st);
 void			up_down(t_fractol *fractol);
 void			rigth_left(t_fractol *fractol);
@@ -71,5 +72,12 @@ void			mouse_click_move(t_fractol *fractol);
 int				julia(double real, double imag, t_fractol *st);
 void			display_julia(t_fractol *st);
 void			julia_color(int iter, t_fractol *st);
+double			ft_atof(char *str);
+int				ft_strcmp(const char *s1, const char *s2);
+void			initialize_fractol(t_fractol *fractol, int nargs, char **args);
+int				select_fractol(t_fractol *st);
+
+
+void			display_mountain(t_fractol *st);
 
 #endif

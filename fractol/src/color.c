@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:54:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/11 18:00:37 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:33:11 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@ void	init_color(t_colors *colors)
 	colors->col3 = 0xFFD700;
 	colors->col4 = 0xFFFF00;
 	colors->col5 = 0x000000;
+
+	/* colors->col1 = 0xFFFFFF; // Branco para as flores
+	colors->col2 = 0xFFFF00; // Amarelo para as flores
+	colors->col3 = 0xFFA500; // Laranja para os centros das flores
+	colors->col4 = 0x0000FF; // Azul profundo para o fundo
+	colors->col5 = 0x000000; // Preto */
 }
 
 int	interpolate_color(int col1, int col2, t_fractol *st, t_colors c)
@@ -64,17 +70,17 @@ void	julia_color(int iter, t_fractol *st)
 	t_colors	c;
 
 	init_color(&c);
-	interpolate = (double)iter / (double)st->max_iter;
+	interpolate = (double)iter / (double)st->max_iter; // * st->distance;
 	c.smooth = pow(interpolate, 0.5);
-	if (iter < st->max_iter / 5)
-		color = c.col1 * (0.9 - c.smooth);
-	else if (iter < 2 * st->max_iter / 5)
-		color = c.col2 * (0.9 - c.smooth);
-	else if (iter < 3 * st->max_iter / 5)
-		color = c.col3 * (0.9 - c.smooth);
-	else if (iter < 4 * st->max_iter / 5)
-		color = c.col4 * (0.9 - c.smooth);
+	if (interpolate < 0.2)
+		color = c.col1 * (0.4 - c.smooth);
+	else if (interpolate < 0.4)
+		color = c.col2 * (0.4 - c.smooth);
+	else if (interpolate < 0.6)
+		color = c.col3 * (0.4 - c.smooth);
+	else if (interpolate < 0.8)
+		color = c.col4 * (0.4 - c.smooth);
 	else
-		color = c.col5 * (0.9 - (-c.smooth));
+		color = c.col5 * (0.4 - (-c.smooth));
     mlx_put_pixel(st->img, st->x, st->y, color);
 }

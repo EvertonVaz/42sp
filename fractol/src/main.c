@@ -6,25 +6,21 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:33:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/11 17:43:11 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/16 18:32:21 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-void	initialize_fractol(t_fractol *fractol)
+void	args_error()
 {
-	fractol->height = 900;
-	fractol->width = 900;
-	fractol->max_iter = 500;
-	fractol->xmax = 1.0;
-	fractol->xmin = -2.0;
-	fractol->ymax = 1.5;
-	fractol->ymin = -1.5;
-	fractol->x = 0;
-	fractol->y = 0;
-	fractol->creal = -0.35;
-	fractol->cimag = -0.88;
+	write(1, "Welcome to egeraldo fractal's\n", 31);
+	write(1, "\nUSAGE:\n", 8);
+	write(1, "\t./fractol [fractal name][params]\n", 34);
+	write(1, "\nEXAMPLES:\n", 11);
+	write(1,"\tfractol mandelbrot\t\tMandelbrot fractal\n", 40);
+	write(1, "\tfractol julia -0.391 -0.587\tJulia fractal\n", 44);
+	// fractol newton			Newton fractal for the polynomial (z^3 - 1)
 }
 
 void	ft_hook(void *param)
@@ -38,22 +34,34 @@ void	ft_hook(void *param)
 	up_down(p);
 	mouse_click_move(p);
 	zoom_keys(p);
-	display_mandelbrot(p);
-	// display_julia(p);
+	select_fractol(p);
 }
 
-int	main(void)
+int	check_args(int argc, char **argv)
+{
+	if (ft_strcmp(argv[1], "mandelbrot") == 0 && argc == 2)
+		return (1);
+	if (ft_strcmp(argv[1], "julia") == 0 && argc == 4)
+		return (1);
+	return (0);
+}
+
+int	main(int argc, char **argv)
 {
 	t_fractol	fractol;
 
-	initialize_fractol(&fractol);
-	fractol.mlx = mlx_init(fractol.width, fractol.height, "Mandelbrot", true);
-	fractol.img = mlx_new_image(fractol.mlx, fractol.width, fractol.height);
-	display_mandelbrot(&fractol);
-	// display_julia(&fractol);
-	mlx_loop_hook(fractol.mlx, ft_hook, &fractol);
-	mlx_scroll_hook(fractol.mlx, zoom_scroll, &fractol);
-	mlx_loop(fractol.mlx);
-	mlx_terminate(fractol.mlx);
+	if(check_args(argc, argv))
+	{
+		initialize_fractol(&fractol, argc, argv);
+		fractol.mlx = mlx_init(fractol.width, fractol.height, fractol.name, true);
+		fractol.img = mlx_new_image(fractol.mlx, fractol.width, fractol.height);
+		select_fractol(&fractol);
+		mlx_loop_hook(fractol.mlx, ft_hook, &fractol);
+		mlx_scroll_hook(fractol.mlx, zoom_scroll, &fractol);
+		mlx_loop(fractol.mlx);
+		mlx_terminate(fractol.mlx);
+	}
+	else
+		args_error();
 	return (EXIT_SUCCESS);
 }

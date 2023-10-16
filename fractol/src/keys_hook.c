@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:54:49 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/11 15:24:04 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/16 13:43:07 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,16 @@ void	zoom_keys(void *param)
 
 	st = param;
 	zoom_factor = 0.08;
-	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_ADD))
+	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_ADD) ||
+		mlx_is_key_down(st->mlx, MLX_KEY_EQUAL))
 	{
 		st->xmin = st->xmin + zoom_factor * (st->xmax - st->xmin);
 		st->xmax = st->xmax - zoom_factor * (st->xmax - st->xmin);
 		st->ymin = st->ymin + zoom_factor * (st->ymax - st->ymin);
 		st->ymax = st->ymax - zoom_factor * (st->ymax - st->ymin);
 	}
-	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_SUBTRACT))
+	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_SUBTRACT) ||
+		mlx_is_key_down(st->mlx, MLX_KEY_MINUS))
 	{
 		st->xmin = st->xmin - zoom_factor * (st->xmax - st->xmin);
 		st->xmax = st->xmax + zoom_factor * (st->xmax - st->xmin);
