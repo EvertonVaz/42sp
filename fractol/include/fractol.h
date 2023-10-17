@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:02:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/16 15:58:20 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:21:20 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ typedef struct s_fractol
 	int			argc;
 	mlx_image_t	*img;
 	mlx_t		*mlx;
-	int			x;
-	int			y;
+	uint32_t	x;
+	uint32_t	y;
 	int			xpos;
 	int			ypos;
 	double		xzoom;
@@ -72,12 +72,11 @@ void			mouse_click_move(t_fractol *fractol);
 int				julia(double real, double imag, t_fractol *st);
 void			display_julia(t_fractol *st);
 void			julia_color(int iter, t_fractol *st);
+void			mouse_moviment(t_fractol *st);
 double			ft_atof(char *str);
 int				ft_strcmp(const char *s1, const char *s2);
 void			initialize_fractol(t_fractol *fractol, int nargs, char **args);
 int				select_fractol(t_fractol *st);
-
-
-void			display_mountain(t_fractol *st);
+int				check_args(int argc, char **argv);
 
 #endif

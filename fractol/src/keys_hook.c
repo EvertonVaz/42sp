@@ -6,19 +6,17 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:54:49 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/16 13:43:07 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:41:32 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
-#include <stdio.h>
 
 double	calculate_pan_factor(t_fractol *fractol)
 {
 	double	mov;
 
 	mov = (0.2 / (1.0 / (fractol->xmax - fractol->xmin)));
-	printf("pan factor %.10f\n", mov);
 	if (mov > 0.5)
 		return (0.5);
 	return (mov);

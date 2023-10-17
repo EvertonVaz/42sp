@@ -6,12 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:45:42 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/16 14:16:56 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:46:17 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
-#include <stdio.h>
 
 void	mouse_click_move(t_fractol *st)
 {
@@ -31,7 +30,7 @@ void	mouse_click_move(t_fractol *st)
 		st->ymax = st->yzoom + y_half;
 	}
 }
-
+#include <stdio.h>
 void	zoom_scroll(double xdelta, double ydelta, void *param)
 {
 	t_fractol	*st;
@@ -43,7 +42,6 @@ void	zoom_scroll(double xdelta, double ydelta, void *param)
 	mlx_get_mouse_pos(st->mlx, &st->xpos, &st->ypos);
 	st->xzoom = st->xmin + st->xpos * ((st->xmax - st->xmin) / st->width);
 	st->yzoom = st->ymin + st->ypos * ((st->ymax - st->ymin) / st->height);
-	printf("xzoom %f, yzoom %f\n", st->xzoom, st->yzoom);
 	if (ydelta > 0)
 	{
 		st->xmin = st->xzoom - (1.0 / zoom_factor) * (st->xzoom - st->xmin);
@@ -57,5 +55,24 @@ void	zoom_scroll(double xdelta, double ydelta, void *param)
 		st->xmax = st->xzoom + zoom_factor * (st->xmax - st->xzoom);
 		st->ymin = st->yzoom - zoom_factor * (st->yzoom - st->ymin);
 		st->ymax = st->yzoom + zoom_factor * (st->ymax - st->yzoom);
+	}
+}
+
+void	mouse_moviment(t_fractol *st)
+{
+	if (mlx_is_key_down(st->mlx, MLX_KEY_LEFT_SHIFT))
+	{
+		mlx_get_mouse_pos(st->mlx, &st->xpos, &st->ypos);
+		double x_range;
+		double y_range;
+		double normalized_x;
+		double normalized_y;
+
+		x_range = st->xmax - st->xmin;
+		y_range = st->ymax - st->ymin;
+		normalized_x = (double)st->xpos / (double)st->width;
+		normalized_y = (double)st->ypos / (double)st->height;
+		st->creal = st->xmin + (normalized_x * 0.85) * x_range;
+		st->cimag = st->ymin + (normalized_y * 0.85) * y_range;
 	}
 }

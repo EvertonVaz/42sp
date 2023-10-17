@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:59:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/11 15:48:37 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/17 18:42:22 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,18 @@ void	display_mandelbrot(t_fractol *st)
 	st->x = 0;
 	width = (st->img->width - 1);
 	heigth = (st->img->height - 1);
-	while (st->x++ < (int)st->img->width)
+	while (st->x < st->img->width)
 	{
-		st->y = -1;
-		while (st->y++ < (int)st->img->height)
+		st->y = 0;
+		while (st->y < st->img->height)
 		{
 			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
 			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
 			iter = mandelbrot(real, imag, st);
 			mandelbrot_color(iter, st);
+			st->y++;
 		}
+		st->x++;
 	}
 	mlx_image_to_window(st->mlx, st->img, 0, 0);
 }
