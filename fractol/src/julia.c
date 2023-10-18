@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:44:21 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/17 18:41:39 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/17 20:35:11 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,12 @@ int	julia(double real, double imag, t_fractol *st)
 	iter = -1;
 	r = real;
 	i = imag;
-	st->distance = 2.0;
-	while (iter++ < st->max_iter)
+	while (++iter < st->max_iter)
 	{
 		r2 = r * r;
 		i2 = i * i;
 		if ((r2 + i2) > 6.0)
-		{
-			st->distance = 2.0 * sqrt(r2 + i2) * log(sqrt(r2 + i2));
 			return (iter);
-		}
 		i = 2 * r * i + st->cimag;
 		r = r2 - i2 + st->creal;
 	}

@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:59:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/17 18:42:22 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/17 20:35:15 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,12 @@ int	mandelbrot(double real, double imag, t_fractol *st)
 	iter = -1;
 	r = real;
 	i = imag;
-	st->distance = 1.015;
-	while (iter++ < st->max_iter)
+	while (++iter < st->max_iter)
 	{
 		r2 = r * r;
 		i2 = i * i;
 		if ((r2 + i2) > 6.0)
-		{
-			st->distance = 1.015 * sqrt(r2 + i2) * log(sqrt(r2 + i2));
 			return (iter);
-		}
 		i = 2 * r * i + imag;
 		r = r2 - i2 + real;
 	}
