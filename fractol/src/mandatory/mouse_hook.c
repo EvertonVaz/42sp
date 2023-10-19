@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:45:42 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 13:12:40 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:16:44 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../../include/fractol.h"
 
 void	mouse_click_move(t_fractol *st)
 {

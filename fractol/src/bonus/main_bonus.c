@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:33:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 13:12:40 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:15:37 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_bonus.h"
+#include "../../include/fractol_bonus.h"
 
 void	args_error(void)
 {
@@ -20,6 +20,7 @@ void	args_error(void)
 	write(1, "\nEXAMPLES:\n", 11);
 	write(1, "\tfractol mandelbrot\t\tMandelbrot fractal\n", 40);
 	write(1, "\tfractol julia -0.391 -0.587\tJulia fractal\n", 44);
+	write(1, "\tfractol burn\t\t\tBurning ship fractal\n", 40);
 }
 
 int	check_args(t_fractol st)
@@ -27,6 +28,10 @@ int	check_args(t_fractol st)
 	if (ft_strcmp(st.name, "mandelbrot") == 0 && st.argc == 2)
 		return (1);
 	if (ft_strcmp(st.name, "julia") == 0 && st.argc == 4)
+		return (1);
+	if (ft_strcmp(st.name, "burn") == 0 && st.argc == 2)
+		return (1);
+	if (ft_strcmp(st.name, "tricorn") == 0 && st.argc == 2)
 		return (1);
 	return (0);
 }
@@ -54,17 +59,19 @@ int	main(int argc, char **argv)
 
 	initialize_fractol(&fractol, argc, argv);
 	mlx = mlx_init(fractol.width, fractol.height, fractol.name, true);
-	if (check_args(fractol))
+	fractol.img = mlx_new_image(mlx, fractol.width, fractol.height);
+	if (check_args(fractol) && mlx && fractol.img)
 	{
 		fractol.mlx = mlx;
-		fractol.img = mlx_new_image(mlx, fractol.width, fractol.height);
 		select_fractol(&fractol);
 		mlx_scroll_hook(mlx, zoom_scroll, &fractol);
 		mlx_loop_hook(mlx, ft_hook, &fractol);
 		mlx_loop(mlx);
 		mlx_terminate(mlx);
+		return (EXIT_SUCCESS);
 	}
-	else
-		args_error();
-	return (EXIT_SUCCESS);
+	args_error();
+	mlx_close_window(mlx);
+	mlx_terminate(mlx);
+	return (EXIT_FAILURE);
 }

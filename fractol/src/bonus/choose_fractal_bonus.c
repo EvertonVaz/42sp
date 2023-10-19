@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:01:11 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 13:12:40 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:15:16 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_bonus.h"
+#include "../../include/fractol_bonus.h"
 
 void	initialize_fractol(t_fractol *fractol, int nargs, char **args)
 {
@@ -40,4 +40,8 @@ void	select_fractol(t_fractol *st)
 		return (display_mandelbrot(st));
 	if (ft_strcmp(st->name, "julia") == 0)
 		return (display_julia(st));
+	if (ft_strcmp(st->name, "burn") == 0)
+		return (display_burning_ship(st));
+	if (ft_strcmp(st->name, "tricorn") == 0)
+		return (display_tricorn(st));
 }

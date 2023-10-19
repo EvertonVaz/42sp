@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:44:21 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 13:12:40 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:10:41 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_bonus.h"
+#include "../../include/fractol_bonus.h"
 
 int	julia(double real, double imag, t_fractol *st)
 {
@@ -33,33 +33,6 @@ int	julia(double real, double imag, t_fractol *st)
 		r = r2 - i2 + st->creal;
 	}
 	return (st->max_iter);
-}
-
-void	display_julia(t_fractol *st)
-{
-	int		width;
-	int		heigth;
-	int		iter;
-	double	real;
-	double	imag;
-
-	st->x = 0;
-	width = (st->img->width - 1);
-	heigth = (st->img->height - 1);
-	while (st->x < st->img->width)
-	{
-		st->y = 0;
-		while (st->y < st->img->height)
-		{
-			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
-			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
-			iter = julia(real, imag, st);
-			julia_color(iter, st);
-			st->y++;
-		}
-		st->x++;
-	}
-	mlx_image_to_window(st->mlx, st->img, 0, 0);
 }
 
 void	julia_color(int iter, t_fractol *st)
@@ -88,4 +61,31 @@ void	julia_color(int iter, t_fractol *st)
 	if (interpolate >= 0.875)
 		color = st->ccolor * interpolate_color(c.col4, c.col1, st, c);
 	mlx_put_pixel(st->img, st->x, st->y, color);
+}
+
+void	display_julia(t_fractol *st)
+{
+	int		width;
+	int		heigth;
+	int		iter;
+	double	real;
+	double	imag;
+
+	st->x = 0;
+	width = (st->img->width - 1);
+	heigth = (st->img->height - 1);
+	while (st->x < st->img->width)
+	{
+		st->y = 0;
+		while (st->y < st->img->height)
+		{
+			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
+			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
+			iter = julia(real, imag, st);
+			julia_color(iter, st);
+			st->y++;
+		}
+		st->x++;
+	}
+	mlx_image_to_window(st->mlx, st->img, 0, 0);
 }
