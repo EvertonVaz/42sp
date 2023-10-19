@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:30:47 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/16 17:40:02 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:12:40 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "fractol.h"
 
 double	ft_atof(char *str)
 {
@@ -37,7 +37,7 @@ double	ft_atof(char *str)
 		decimal_count = decimal_count * 10;
 		str++;
 	}
-	return (res = res / decimal_count * sign);
+	return (res / decimal_count * sign);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)
@@ -55,4 +55,17 @@ int	ft_strcmp(const char *s1, const char *s2)
 			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 	}
 	return (0);
+}
+
+char	*ft_strtolower(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str && str[++i])
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
+	}
+	return (str);
 }

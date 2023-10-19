@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys_hook.c                                        :+:      :+:    :+:   */
+/*   keys_hook_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:54:49 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/17 20:39:09 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:12:40 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "fractol_bonus.h"
 
 double	calculate_pan_factor(t_fractol *fractol)
 {
@@ -75,16 +75,16 @@ void	zoom_keys(void *param)
 	zoom_factor = 0.08;
 	xrange = st->xmax - st->xmin;
 	yrange = st->ymax - st->ymin;
-	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_ADD) ||
-		mlx_is_key_down(st->mlx, MLX_KEY_EQUAL))
+	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_ADD) || mlx_is_key_down(st->mlx,
+			MLX_KEY_EQUAL))
 	{
 		st->xmin = st->xmin + zoom_factor * xrange;
 		st->xmax = st->xmax - zoom_factor * xrange;
 		st->ymin = st->ymin + zoom_factor * yrange;
 		st->ymax = st->ymax - zoom_factor * yrange;
 	}
-	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_SUBTRACT) ||
-		mlx_is_key_down(st->mlx, MLX_KEY_MINUS))
+	if (mlx_is_key_down(st->mlx, MLX_KEY_KP_SUBTRACT)
+		|| mlx_is_key_down(st->mlx, MLX_KEY_MINUS))
 	{
 		st->xmin = st->xmin - zoom_factor * xrange;
 		st->xmax = st->xmax + zoom_factor * xrange;

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_hook.c                                       :+:      :+:    :+:   */
+/*   mouse_hook_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:45:42 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/17 15:46:17 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 13:12:40 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "fractol_bonus.h"
 
 void	mouse_click_move(t_fractol *st)
 {
@@ -30,7 +30,7 @@ void	mouse_click_move(t_fractol *st)
 		st->ymax = st->yzoom + y_half;
 	}
 }
-#include <stdio.h>
+
 void	zoom_scroll(double xdelta, double ydelta, void *param)
 {
 	t_fractol	*st;
@@ -60,14 +60,14 @@ void	zoom_scroll(double xdelta, double ydelta, void *param)
 
 void	mouse_moviment(t_fractol *st)
 {
+	double	x_range;
+	double	y_range;
+	double	normalized_x;
+	double	normalized_y;
+
 	if (mlx_is_key_down(st->mlx, MLX_KEY_LEFT_SHIFT))
 	{
 		mlx_get_mouse_pos(st->mlx, &st->xpos, &st->ypos);
-		double x_range;
-		double y_range;
-		double normalized_x;
-		double normalized_y;
-
 		x_range = st->xmax - st->xmin;
 		y_range = st->ymax - st->ymin;
 		normalized_x = (double)st->xpos / (double)st->width;
