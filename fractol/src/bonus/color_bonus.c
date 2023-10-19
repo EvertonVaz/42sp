@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:54:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 13:12:40 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 15:15:29 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_bonus.h"
+#include "../../include/fractol_bonus.h"
 
 void	init_color(t_colors *colors)
 {

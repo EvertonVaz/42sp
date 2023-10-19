@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:02:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 13:20:44 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:29:38 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ void			change_color(t_fractol *st);
 char			*ft_strtolower(char *str);
 void			init_color(t_colors *colors);
 int				interpolate_color(int c1, int c2, t_fractol *st, t_colors c);
+void			display_burning_ship(t_fractol *st);
 
 #endif

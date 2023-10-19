@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 10:59:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 15:16:44 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/10/19 15:23:19 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/10/19 16:30:28 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fractol.h"
+#include "../../include/fractol_bonus.h"
 
-int	mandelbrot(double real, double imag, t_fractol *st)
+int	burning_ship(double real, double imag, t_fractol *st)
 {
 	int		iter;
 	double	r;
@@ -25,6 +25,8 @@ int	mandelbrot(double real, double imag, t_fractol *st)
 	i = imag;
 	while (++iter < st->max_iter)
 	{
+		r = fabs(r);
+		i = fabs(i);
 		r2 = r * r;
 		i2 = i * i;
 		if ((r2 + i2) > 6.0)
@@ -35,34 +37,7 @@ int	mandelbrot(double real, double imag, t_fractol *st)
 	return (st->max_iter);
 }
 
-void	display_mandelbrot(t_fractol *st)
-{
-	int		width;
-	int		heigth;
-	int		iter;
-	double	real;
-	double	imag;
-
-	st->x = 0;
-	width = (st->img->width - 1);
-	heigth = (st->img->height - 1);
-	while (st->x < st->img->width)
-	{
-		st->y = 0;
-		while (st->y < st->img->height)
-		{
-			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
-			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
-			iter = mandelbrot(real, imag, st);
-			mandelbrot_color(iter, st);
-			st->y++;
-		}
-		st->x++;
-	}
-	mlx_image_to_window(st->mlx, st->img, 0, 0);
-}
-
-void	mandelbrot_color(int iter, t_fractol *st)
+void	burning_ship_color(int iter, t_fractol *st)
 {
 	int			color;
 	double		interpolate;
@@ -82,4 +57,31 @@ void	mandelbrot_color(int iter, t_fractol *st)
 	if (interpolate >= 0.8)
 		color = st->ccolor * interpolate_color(c.col4, c.col5, st, c);
 	mlx_put_pixel(st->img, st->x, st->y, color);
+}
+
+void	display_burning_ship(t_fractol *st)
+{
+	int		width;
+	int		heigth;
+	int		iter;
+	double	real;
+	double	imag;
+
+	st->x = 0;
+	width = (st->img->width - 1);
+	heigth = (st->img->height - 1);
+	while (st->x < st->img->width)
+	{
+		st->y = 0;
+		while (st->y < st->img->height)
+		{
+			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
+			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
+			iter = burning_ship(real, imag, st);
+			burning_ship_color(iter, st);
+			st->y++;
+		}
+		st->x++;
+	}
+	mlx_image_to_window(st->mlx, st->img, 0, 0);
 }

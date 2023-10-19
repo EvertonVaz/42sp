@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:33:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 13:12:40 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:36:00 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol_bonus.h"
+#include "../../include/fractol_bonus.h"
 
 void	args_error(void)
 {
@@ -20,6 +20,7 @@ void	args_error(void)
 	write(1, "\nEXAMPLES:\n", 11);
 	write(1, "\tfractol mandelbrot\t\tMandelbrot fractal\n", 40);
 	write(1, "\tfractol julia -0.391 -0.587\tJulia fractal\n", 44);
+	write(1, "\tfractol burn\t\t\tBurning ship fractal\n", 40);
 }
 
 int	check_args(t_fractol st)
@@ -27,6 +28,8 @@ int	check_args(t_fractol st)
 	if (ft_strcmp(st.name, "mandelbrot") == 0 && st.argc == 2)
 		return (1);
 	if (ft_strcmp(st.name, "julia") == 0 && st.argc == 4)
+		return (1);
+	if (ft_strcmp(st.name, "burn") == 0 && st.argc == 2)
 		return (1);
 	return (0);
 }
