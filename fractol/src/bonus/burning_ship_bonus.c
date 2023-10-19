@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   burning_ship.c                                     :+:      :+:    :+:   */
+/*   burning_ship_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 15:23:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 16:30:28 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:38:05 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,13 @@ int	burning_ship(double real, double imag, t_fractol *st)
 
 void	burning_ship_color(int iter, t_fractol *st)
 {
-	int			color;
+	uint32_t	color;
 	double		interpolate;
 	t_colors	c;
 
+	init_color(&c);
 	interpolate = (double)iter / (double)st->max_iter;
 	c.smooth = pow(interpolate, 0.347);
-	init_color(&c);
 	if (interpolate < 0.2)
 		color = st->ccolor * interpolate_color(c.col1, c.col2, st, c);
 	if (interpolate >= 0.2 && interpolate < 0.4)

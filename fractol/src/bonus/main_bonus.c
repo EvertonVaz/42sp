@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:33:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 17:24:01 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:34:12 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	args_error(void)
 	write(1, "\nEXAMPLES:\n", 11);
 	write(1, "\tfractol mandelbrot\t\tMandelbrot fractal\n", 40);
 	write(1, "\tfractol julia -0.391 -0.587\tJulia fractal\n", 44);
-	write(1, "\tfractol burn\t\t\tBurning ship fractal\n", 40);
+	write(1, "\tfractol burn\t\t\tBurning ship fractal\n", 37);
+	write(1, "\tfractol tricorn\t\t\tTricorn fractal\n", 36);
 }
 
 int	check_args(t_fractol st)

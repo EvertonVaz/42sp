@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:59:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 17:18:38 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:26:07 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,29 @@ static int	tricorn(double real, double imag, t_fractol *st)
 
 static void	tricorn_color(int iter, t_fractol *st)
 {
-	int			color;
+	uint32_t	color;
 	double		interpolate;
 	t_colors	c;
 
+	init_color(&c);
 	interpolate = (double)iter / (double)st->max_iter;
 	c.smooth = pow(interpolate, 0.347);
-	init_color(&c);
-	if (interpolate < 0.2)
-		color = st->ccolor * interpolate_color(c.col1, c.col2, st, c);
-	if (interpolate >= 0.2 && interpolate < 0.4)
-		color = st->ccolor * interpolate_color(c.col2, c.col1, st, c);
-	if (interpolate >= 0.4 && interpolate < 0.6)
-		color = st->ccolor * interpolate_color(c.col2, c.col3, st, c);
-	if (interpolate >= 0.6 && interpolate < 0.8)
-		color = st->ccolor * interpolate_color(c.col3, 0xffa94e, st, c);
-	if (interpolate >= 0.8)
-		color = st->ccolor * interpolate_color(c.col4, c.col5, st, c);
+	if (interpolate < 0.125)
+		color = st->ccolor * interpolate_color(0xDDDDDD, c.col5, st, c);
+	if (interpolate >= 0.125 && interpolate < 0.25)
+		color = st->ccolor * interpolate_color(c.col5, c.col3, st, c);
+	if (interpolate >= 0.25 && interpolate < 0.375)
+		color = st->ccolor * interpolate_color(c.col3, c.col2, st, c);
+	if (interpolate >= 0.375 && interpolate < 0.5)
+		color = st->ccolor * interpolate_color(c.col1, c.col4, st, c);
+	if (interpolate >= 0.5 && interpolate < 0.625)
+		color = st->ccolor * interpolate_color(c.col3, c.col2, st, c);
+	if (interpolate >= 0.625 && interpolate < 0.750)
+		color = st->ccolor * interpolate_color(c.col1, c.col3, st, c);
+	if (interpolate >= 0.750 && interpolate < 0.875)
+		color = st->ccolor * interpolate_color(c.col4, 0xEEEEEE, st, c);
+	if (interpolate >= 0.875)
+		color = st->ccolor * interpolate_color(c.col4, c.col1, st, c);
 	mlx_put_pixel(st->img, st->x, st->y, color);
 }
 
