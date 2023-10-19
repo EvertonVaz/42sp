@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia_bonus.c                                      :+:      :+:    :+:   */
+/*   burning_ship.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 19:44:21 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 17:20:28 by egeraldo         ###   ########.fr       */
+/*   Created: 2023/10/19 15:23:19 by egeraldo          #+#    #+#             */
+/*   Updated: 2023/10/19 16:30:28 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/fractol_bonus.h"
 
-int	julia(double real, double imag, t_fractol *st)
+int	burning_ship(double real, double imag, t_fractol *st)
 {
 	int		iter;
 	double	r;
@@ -25,45 +25,41 @@ int	julia(double real, double imag, t_fractol *st)
 	i = imag;
 	while (++iter < st->max_iter)
 	{
+		r = fabs(r);
+		i = fabs(i);
 		r2 = r * r;
 		i2 = i * i;
 		if ((r2 + i2) > 6.0)
 			return (iter);
-		i = 2 * r * i + st->cimag;
-		r = r2 - i2 + st->creal;
+		i = 2 * r * i + imag;
+		r = r2 - i2 + real;
 	}
 	return (st->max_iter);
 }
 
-void	julia_color(int iter, t_fractol *st)
+void	burning_ship_color(int iter, t_fractol *st)
 {
-	uint32_t	color;
+	int			color;
 	double		interpolate;
 	t_colors	c;
 
-	init_color(&c);
 	interpolate = (double)iter / (double)st->max_iter;
 	c.smooth = pow(interpolate, 0.347);
-	if (interpolate < 0.125)
-		color = st->ccolor * interpolate_color(0xDDDDDD, c.col5, st, c);
-	if (interpolate >= 0.125 && interpolate < 0.25)
-		color = st->ccolor * interpolate_color(c.col5, c.col3, st, c);
-	if (interpolate >= 0.25 && interpolate < 0.375)
-		color = st->ccolor * interpolate_color(c.col3, c.col2, st, c);
-	if (interpolate >= 0.375 && interpolate < 0.5)
-		color = st->ccolor * interpolate_color(c.col1, c.col4, st, c);
-	if (interpolate >= 0.5 && interpolate < 0.625)
-		color = st->ccolor * interpolate_color(c.col3, c.col2, st, c);
-	if (interpolate >= 0.625 && interpolate < 0.750)
-		color = st->ccolor * interpolate_color(c.col1, c.col3, st, c);
-	if (interpolate >= 0.750 && interpolate < 0.875)
-		color = st->ccolor * interpolate_color(c.col4, 0xEEEEEE, st, c);
-	if (interpolate >= 0.875)
-		color = st->ccolor * interpolate_color(c.col4, c.col1, st, c);
+	init_color(&c);
+	if (interpolate < 0.2)
+		color = st->ccolor * interpolate_color(c.col1, c.col2, st, c);
+	if (interpolate >= 0.2 && interpolate < 0.4)
+		color = st->ccolor * interpolate_color(c.col2, c.col1, st, c);
+	if (interpolate >= 0.4 && interpolate < 0.6)
+		color = st->ccolor * interpolate_color(c.col2, c.col3, st, c);
+	if (interpolate >= 0.6 && interpolate < 0.8)
+		color = st->ccolor * interpolate_color(c.col3, 0xffa94e, st, c);
+	if (interpolate >= 0.8)
+		color = st->ccolor * interpolate_color(c.col4, c.col5, st, c);
 	mlx_put_pixel(st->img, st->x, st->y, color);
 }
 
-void	display_julia(t_fractol *st)
+void	display_burning_ship(t_fractol *st)
 {
 	int		width;
 	int		heigth;
@@ -81,8 +77,8 @@ void	display_julia(t_fractol *st)
 		{
 			real = st->xmin + st->x * (st->xmax - st->xmin) / width;
 			imag = st->ymin + st->y * (st->ymax - st->ymin) / heigth;
-			iter = julia(real, imag, st);
-			julia_color(iter, st);
+			iter = burning_ship(real, imag, st);
+			burning_ship_color(iter, st);
 			st->y++;
 		}
 		st->x++;
