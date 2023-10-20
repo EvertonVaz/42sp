@@ -1,6 +1,6 @@
 NAME	= fractol
 CFLAGS	:= -Wunreachable-code -Ofast -g3 -Wextra -Wall -Werror
-LIBMLX	:= lib/MLX42
+LIBMLX	:= ./.lib/MLX42
 BIN		:= bin
 
 FILES	= choose_fractal.c color.c funcs_aux.c julia.c keys_hook.c \
@@ -30,8 +30,8 @@ $(NAME): $(OBJS)
 
 $(LIBS):
 ifeq ($(wildcard $(LIBMLX)/build/ ), )
-	@cd lib/MLX42/ && cmake -B build
-	@cd lib/MLX42/ && cmake --build build -j4
+	@cd ./.lib/MLX42/ && cmake -B build
+	@cd ./.lib/MLX42/ && cmake --build build -j4
 endif
 
 $(BIN):
@@ -46,7 +46,6 @@ bonus:
 
 clean:
 	@rm -rf $(BIN)
-	@rm -rf $(LIBMLX)/build
 
 fclean: clean
 	@rm -rf $(NAME)

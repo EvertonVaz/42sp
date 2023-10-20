@@ -6,14 +6,14 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:02:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/20 14:50:05 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/20 16:31:41 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_BONUS_H
 # define FRACTOL_BONUS_H
 
-# include "../lib/MLX42/include/MLX42/MLX42.h"
+# include "../.lib/MLX42/include/MLX42/MLX42.h"
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
