@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:54:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/20 14:56:37 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/20 16:15:09 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,12 @@ int	interpolate_color(int col1, int col2, t_fractol *st, t_colors c)
 	st->b = (int)(c.b1 + c.smooth * (c.b2 - c.b1));
 	return ((st->r << 24) | (st->g << 16) | (st->b << 8) | 255);
 }
-#include <stdio.h>
 
 void	change_color(t_fractol *st)
 {
-	double	zoomFactor;
-	double	xCenter;
-	double	yCenter;
+	double	zoom;
+	double	x;
+	double	y;
 
 	if (mlx_is_key_down(st->mlx, MLX_KEY_0) || mlx_is_key_down(st->mlx,
 			MLX_KEY_KP_0))
@@ -57,9 +56,9 @@ void	change_color(t_fractol *st)
 	{
 		if (mlx_is_key_down(st->mlx, MLX_KEY_5))
 			st->active = !st->active;
-		zoomFactor = (st->xmax - st->xmin) / (st->ymax - st->ymin);
-		xCenter = (st->xmax - st->xmin);
-		yCenter = (st->ymin - st->xmin);
-		st->ccolor = (zoomFactor * 0.333 + xCenter * 0.333 + yCenter * 0.333);
+		zoom = (st->xmax - st->xmin) / (st->ymax - st->ymin);
+		x = (st->xmax - st->xmin);
+		y = (st->ymin - st->xmin);
+		st->ccolor = (zoom * 0.333 + x * 0.333 + y * 0.333);
 	}
 }

@@ -2,3 +2,5 @@ fractol
 bin/
 test.c
 *.out
+.gitignore
+.vscode

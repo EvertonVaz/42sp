@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:33:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 15:16:44 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:58:59 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,19 @@ int	main(int argc, char **argv)
 
 	initialize_fractol(&fractol, argc, argv);
 	mlx = mlx_init(fractol.width, fractol.height, fractol.name, true);
-	if (check_args(fractol))
+	fractol.img = mlx_new_image(mlx, fractol.width, fractol.height);
+	if (check_args(fractol) && mlx && fractol.img)
 	{
 		fractol.mlx = mlx;
-		fractol.img = mlx_new_image(mlx, fractol.width, fractol.height);
 		select_fractol(&fractol);
-		mlx_scroll_hook(mlx, zoom_scroll, &fractol);
 		mlx_loop_hook(mlx, ft_hook, &fractol);
+		mlx_scroll_hook(mlx, zoom_scroll, &fractol);
 		mlx_loop(mlx);
 		mlx_terminate(mlx);
+		return (EXIT_SUCCESS);
 	}
-	else
-		args_error();
-	return (EXIT_SUCCESS);
+	args_error();
+	mlx_close_window(mlx);
+	mlx_terminate(mlx);
+	return (EXIT_FAILURE);
 }

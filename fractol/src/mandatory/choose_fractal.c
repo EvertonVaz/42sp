@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 12:01:11 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 15:16:44 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/20 15:58:02 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	initialize_fractol(t_fractol *fractol, int nargs, char **args)
 {
 	fractol->name = ft_strtolower(args[1]);
+	if (fractol->name == NULL)
+		fractol->name = "error";
 	fractol->argc = nargs;
 	fractol->height = 800;
 	fractol->width = 800;
