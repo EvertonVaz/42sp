@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 14:30:47 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 15:16:44 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:28:03 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ double	ft_atof(char *str)
 	res = 0;
 	sign = 1;
 	decimal_count = 1;
+	if (str == NULL)
+		return(0);
 	while (*str == 32 || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '-')
@@ -33,9 +35,8 @@ double	ft_atof(char *str)
 		str++;
 	while (*str >= '0' && *str <= '9')
 	{
-		res = res * 10 + *str - '0';
+		res = res * 10 + *str++ - '0';
 		decimal_count = decimal_count * 10;
-		str++;
 	}
 	return (res / decimal_count * sign);
 }
