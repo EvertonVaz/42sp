@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:02:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 17:23:21 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:50:05 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_fractol
 	uint8_t		g;
 	uint8_t		b;
 	double		ccolor;
+	bool		active;
 }				t_fractol;
 
 typedef struct s_colors
