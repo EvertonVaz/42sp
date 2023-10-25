@@ -14,7 +14,7 @@ Cada fractal oferece uma experiência visual única.
 
 - **Interatividade**: Com o Fractol, você pode mergulhar nos detalhes dos fractais. Você pode navegar, ampliar e aplicar zoom nos fractais para explorar suas estruturas complexas.
 
-- **Controles Personalizáveis**: Os controles do Fractol são personalizáveis para proporcionar uma experiência de usuário flexível. Você pode ajustar parâmetros como [cores](https://github.com/EvertonVaz/42sp/blob/main/fractol/src/bonus/color_bonus.c) e [iterações](https://github.com/EvertonVaz/42sp/blob/main/fractol/src/bonus/choose_fractal_bonus.c).
+- **Controles Personalizáveis**: Os controles do Fractol são personalizáveis para proporcionar uma experiência de usuário flexível. Você pode ajustar parâmetros como [cores](https://github.com/EvertonVaz/42sp/blob/main/fractol/src/color.c) e [iterações](https://github.com/EvertonVaz/42sp/blob/main/fractol/src/choose_fractal.c).
 
 ## Pré-Requisitos
 
