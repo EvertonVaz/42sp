@@ -1,6 +1,14 @@
-# Fractol - Uma Jornada Pessoal Através da Complexidade
+<h1 align="center"> Fract-ol </h1>
 
-Olá, sou Everton, estudante de engenharia de software na 42sp. Este é o meu projeto Fractol, uma exploração pessoal e desafiadora no mundo dos fractais e da programação em C.
+<div align="center">
+	<p>
+		<a href="https://github.com/EvertonVaz/42sp/tree/main/fractol" target="_blank">
+			<img height=170 src="https://game.42sp.org.br/static/assets/achievements/fract-olm.png" hspace = "10">
+		</a>
+	</p>
+
+# [125/100]
+</div>
 
 ## Sobre o Projeto
 Fractol é um projeto que me permitiu mergulhar profundamente na matemática dos fractais e na programação gráfica. Foi um desafio entender os cálculos complexos envolvidos na criação de fractais e lidar com a biblioteca gráfica minilibx da Codam. No entanto, acredito que essas dificuldades me ajudaram a crescer como programador e aprofundar minha compreensão da linguagem C.
@@ -19,6 +27,7 @@ Cada fractal oferece uma experiência visual única.
 ## Pré-Requisitos
 
 - Para executar o Fractol, você precisa ter uma máquina com a biblioteca gráfica minilibx instalada. Eu deixei um clone dela junto com o repositorio para facilitar a execução do projeto em ambiente linux
+- [Documentação](https://github.com/EvertonVaz/42sp/tree/main/fractol/.lib/MLX42) para configurar para outros ambientes
 
 ## Como Compilar e Executar
 1. Clone este repositório para o seu computador.
@@ -44,3 +53,5 @@ Cada fractal oferece uma experiência visual única.
 	o numero 5 ativa/desativa cores dinamicas conforme o movimento
 - Você pode alterar pelos fractais com os numeros 1 ao 4 (teclado numerico)
 - Especificamente no conjunto Julia você pode segurar o shift (esquerdo) e andar com o mouse o modificando
+
+##
