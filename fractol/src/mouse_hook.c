@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mouse_hook_bonus.c                                 :+:      :+:    :+:   */
+/*   mouse_hook                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:45:42 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 15:15:29 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:29:41 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fractol_bonus.h"
+#include "../include/fractol.h"
 
 void	mouse_click_move(t_fractol *st)
 {

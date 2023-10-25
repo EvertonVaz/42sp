@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tricorn_bonus.c                                    :+:      :+:    :+:   */
+/*   tricorn                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:59:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 17:26:07 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:29:41 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fractol_bonus.h"
+#include "../include/fractol.h"
 
 static int	tricorn(double real, double imag, t_fractol *st)
 {
@@ -27,9 +27,9 @@ static int	tricorn(double real, double imag, t_fractol *st)
 	{
 		r2 = r * r;
 		i2 = i * i;
-		if ((r2 + i2) > 6.0)
+		if ((r2 + i2) > 50.0)
 			return (iter);
-		i = -2.0 * r * i + imag;
+		i = -2 * r * i + imag;
 		r = r2 - i2 + real;
 	}
 	return (st->max_iter);

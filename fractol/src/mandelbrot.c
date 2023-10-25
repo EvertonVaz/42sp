@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot_bonus.c                                 :+:      :+:    :+:   */
+/*   mandelbrot                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 10:59:26 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 17:20:50 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:29:41 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fractol_bonus.h"
+#include "../include/fractol.h"
 
 int	mandelbrot(double real, double imag, t_fractol *st)
 {
@@ -42,7 +42,7 @@ void	mandelbrot_color(int iter, t_fractol *st)
 	t_colors	c;
 
 	interpolate = (double)iter / (double)st->max_iter;
-	c.smooth = pow(interpolate, 0.347);
+	c.smooth = pow(interpolate, 0.647);
 	init_color(&c);
 	if (interpolate < 0.2)
 		color = st->ccolor * interpolate_color(c.col1, c.col2, st, c);

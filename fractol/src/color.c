@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   color                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:54:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 15:16:44 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:29:41 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fractol.h"
+#include "../include/fractol.h"
 
 void	init_color(t_colors *colors)
 {
@@ -37,8 +37,11 @@ int	interpolate_color(int col1, int col2, t_fractol *st, t_colors c)
 
 void	change_color(t_fractol *st)
 {
-	if (mlx_is_key_down(st->mlx, MLX_KEY_0)
-		|| mlx_is_key_down(st->mlx, MLX_KEY_KP_0))
+	double	zoom;
+	double	x;
+	double	y;
+
+	if (mlx_is_key_down(st->mlx, MLX_KEY_0))
 		st->ccolor = 1;
 	if (mlx_is_key_down(st->mlx, MLX_KEY_1))
 		st->ccolor = 0.99999;
@@ -48,4 +51,13 @@ void	change_color(t_fractol *st)
 		st->ccolor = 0.965;
 	if (mlx_is_key_down(st->mlx, MLX_KEY_4))
 		st->ccolor = 0.99985;
+	if (mlx_is_key_down(st->mlx, MLX_KEY_5) || st->active)
+	{
+		if (mlx_is_key_down(st->mlx, MLX_KEY_5))
+			st->active = !st->active;
+		zoom = (st->xmax - st->xmin) / (st->ymax - st->ymin);
+		x = (st->xmax - st->xmin);
+		y = (st->ymin - st->xmin);
+		st->ccolor = (zoom * 0.333 + x * 0.333 + y * 0.333);
+	}
 }

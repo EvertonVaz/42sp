@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keys_hook.c                                        :+:      :+:    :+:   */
+/*   keys_hook                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 18:54:49 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 15:16:44 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:29:41 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fractol.h"
+#include "../include/fractol.h"
 
 double	calculate_pan_factor(t_fractol *fractol)
 {

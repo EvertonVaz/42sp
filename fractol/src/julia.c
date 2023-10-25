@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia_bonus.c                                      :+:      :+:    :+:   */
+/*   julia                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 19:44:21 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/10/19 17:20:28 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:29:41 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/fractol_bonus.h"
+#include "../include/fractol.h"
 
 int	julia(double real, double imag, t_fractol *st)
 {
