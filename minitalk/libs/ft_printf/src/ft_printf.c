@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 10:36:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/08 16:54:14 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/11/24 14:16:28 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	ft_printf(const char *format, ...)
 	size = 0;
 	va_start(args, format);
 	reset_details(&data);
-	while (*format)
+	while (format && *format)
 	{
 		if (*format == '%' && *(format + 1) != 0)
 		{

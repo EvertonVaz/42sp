@@ -37,7 +37,7 @@ echo "-----------------------------"
 num_tests=10
 
 # Tamanho máximo da mensagem
-max_msg_length=50
+max_msg_length=100
 
 # Gera e envia mensagens aleatórias
 for ((i=1; i<=num_tests; i++))
