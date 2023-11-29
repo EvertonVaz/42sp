@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/29 14:30:34 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:45:34 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,21 +40,40 @@ void	check_args(int n_args, char *args[])
 	}
 }
 
+int	is_sorted(t_stack *stack_a)
+{
+	while (stack_a->next)
+	{
+		if (stack_a->value > stack_a->next->value)
+			return (0);
+	}
+	return (1);
+}
+
 #include "stdio.h"
 
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
-	int		i;
+	t_stack	*stack_b;
 
-	i = 0;
 	stack_a = NULL;
+	stack_b = NULL;
 	check_args(argc, argv);
 	stack_init(&stack_a, argv + 1);
-	while (stack_a->next)
+	// swap(&stack_a);
+	rotate(&stack_a, &stack_b);
+	printf("\nstack A\n");
+	while (stack_a)
 	{
 		printf("%d, ", stack_a->value);
 		stack_a = stack_a->next;
+	}
+	printf("\nstack B\n");
+	while (stack_b)
+	{
+		printf("%d, ", stack_b->value);
+		stack_b = stack_b->next;
 	}
 	printf("\n");
 	return (EXIT_SUCCESS);

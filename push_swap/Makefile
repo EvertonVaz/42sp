@@ -17,7 +17,8 @@ BIN_PATH = ./bin/
 MANDATORY_SOURCES_PATH = ./src/
 
 MANDATORY_SOURCES = \
-	push_swap.c stack_init.c
+	main.c stack_init.c stack_utils.c swap_moves.c push_moves.c \
+	rotate_moves.c
 
 OBJECTS = $(addprefix $(BIN_PATH), $(MANDATORY_SOURCES:%.c=%.o))
 

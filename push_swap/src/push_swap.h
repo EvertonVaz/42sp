@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:03 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/29 14:26:02 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/11/29 19:45:52 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,9 @@ typedef struct s_stack
 }	t_stack;
 
 void	stack_init(t_stack **stack_a, char **argv);
+int		stack_len(t_stack *lst);
+void    swap(t_stack **head);
+void	push_move(t_stack **src, t_stack **dest);
+void	rotate(t_stack **src, t_stack **dest);
 
 #endif
