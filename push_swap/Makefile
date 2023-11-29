@@ -17,7 +17,7 @@ BIN_PATH = ./bin/
 MANDATORY_SOURCES_PATH = ./src/
 
 MANDATORY_SOURCES = \
-	push_swap.c
+	push_swap.c stack_init.c
 
 OBJECTS = $(addprefix $(BIN_PATH), $(MANDATORY_SOURCES:%.c=%.o))
 
@@ -29,8 +29,8 @@ ifeq ($(wildcard $(LIB_PATH)/$(LIB_NAME)),)
 endif
 
 $(BIN_PATH)%.o: $(MANDATORY_SOURCES_PATH)%.c
-	@echo $(GREEN)[Compiling]$(COLOR_LIMITER) $(WHITE)$(notdir $(<))...$(COLOR_LIMITER)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(MANDATORY_SOURCES_PATH)
+	@echo $(GREEN)[Compiling push_swap]$(COLOR_LIMITER) $(WHITE)$(notdir $(<))$(COLOR_LIMITER)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(MANDATORY_SOURCES_PATH)
 	@echo " "
 
 $(NAME): $(OBJECTS)

@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/28 17:27:16 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:30:34 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_args(int n_args, char *args[])
 	i = 0;
 	if (n_args < 2)
 		exit(EXIT_FAILURE);
-	while (++i < (n_args - 1))
+	while (++i < n_args)
 	{
 		if ((!ft_isnum(args[i])) || (ft_atol(args[i]) > INT_MAX)
 			|| (ft_atol(args[i]) < INT_MIN))
@@ -34,28 +34,28 @@ void	check_args(int n_args, char *args[])
 		j = i + 1;
 		while (j < (n_args))
 		{
-			if (*args[i] == *args[j++])
+			if (ft_atol(args[i]) == ft_atol(args[j++]))
 				end_program();
 		}
 	}
 }
 
 #include "stdio.h"
+
 int	main(int argc, char *argv[])
 {
-	int *stack_a;
-	int i;
+	t_stack	*stack_a;
+	int		i;
 
 	i = 0;
-	stack_a = malloc((argc - 1) * sizeof(int));
+	stack_a = NULL;
 	check_args(argc, argv);
-	while (argv[++i])
+	stack_init(&stack_a, argv + 1);
+	while (stack_a->next)
 	{
-		if (ft_isnum(argv[i]))
-			stack_a[i - 1] = ft_atol(argv[i]);
+		printf("%d, ", stack_a->value);
+		stack_a = stack_a->next;
 	}
-	i = -1;
-	while (i++ < argc - 2)
-		printf("%d, ", stack_a[i]);
-	printf("\nfuncionou");
+	printf("\n");
+	return (EXIT_SUCCESS);
 }
