@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/29 19:45:34 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/11/30 10:50:14 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,26 @@ int	is_sorted(t_stack *stack_a)
 
 #include "stdio.h"
 
+void	print_elements(t_stack *stack, char title)
+{
+	printf("                        STACK %c                       \n", title);
+	printf("|-----------------|-----------------|-----------------|\n");
+	printf("| %-15s | %-15s | %-15s |\n", "prev->value", "value",
+		"next->value");
+	printf("|-----------------|-----------------|-----------------|\n");
+	while (stack)
+	{
+		printf("| %-15d | %-15d | %-15d |\n",
+			(stack->prev != NULL) ? stack->prev->value : 0x0,
+			stack->value,
+			(stack->next != NULL) ? stack->next->value : 0x0);
+		stack = stack->next;
+		if (stack != NULL)
+			printf("|-----------------|-----------------|-----------------|\n");
+	}
+	printf("\n");
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*stack_a;
@@ -61,20 +81,6 @@ int	main(int argc, char *argv[])
 	stack_b = NULL;
 	check_args(argc, argv);
 	stack_init(&stack_a, argv + 1);
-	// swap(&stack_a);
-	rotate(&stack_a, &stack_b);
-	printf("\nstack A\n");
-	while (stack_a)
-	{
-		printf("%d, ", stack_a->value);
-		stack_a = stack_a->next;
-	}
-	printf("\nstack B\n");
-	while (stack_b)
-	{
-		printf("%d, ", stack_b->value);
-		stack_b = stack_b->next;
-	}
-	printf("\n");
+	print_elements(stack_a, 'A');
 	return (EXIT_SUCCESS);
 }

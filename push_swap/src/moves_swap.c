@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_moves.c                                       :+:      :+:    :+:   */
+/*   moves_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:16:22 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/29 19:27:18 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:13:29 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-	Swap the first 2 elements at the top of stack.
-	Do nothing if there is only one or no elements.
- */
-void    swap(t_stack **head)
+int swap(t_stack **head)
 {
-    if (head || *head || stack_len(*head) == 1)
-        return ;
+    if (!head || !*head || stack_len(*head) == 1)
+        return (0);
     *head = (*head)->next;
     (*head)->prev->prev = *head;
     (*head)->prev->next = (*head)->next;
@@ -27,4 +23,23 @@ void    swap(t_stack **head)
         (*head)->next->prev = (*head)->prev;
     (*head)->next = (*head)->prev;
     (*head)->prev = NULL;
+    return (1);
+}
+
+void    sa(t_stack **a)
+{
+    if(swap(a))
+        write(1, "sa\n", 3);
+}
+
+void    sb(t_stack **b)
+{
+    if(swap(b))
+        write(1, "sb\n", 3);
+}
+
+void    ss(t_stack **a, t_stack **b)
+{
+    if(swap(b) && swap(a))
+        write(1, "sb\n", 3);
 }
