@@ -6,13 +6,13 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:17:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/30 09:14:55 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/11/30 18:34:11 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	append_node(t_stack **stack, int value)
+void	append_node(t_stack **stack, int value, int current_pos)
 {
 	t_stack	*node;
 	t_stack	*last_node;
@@ -35,16 +35,19 @@ void	append_node(t_stack **stack, int value)
 		last_node->next = node;
 		node->prev = last_node;
 	}
+	node->current_pos = current_pos;
 }
 
 void	stack_init(t_stack **stack_a, char **argv)
 {
 	long	value;
+	int		current_pos;
 
+	current_pos = 0;
 	while (*argv)
 	{
 		value = atol(*argv++);
-		append_node(stack_a, value);
+		append_node(stack_a, value, current_pos++);
 	}
 }
 

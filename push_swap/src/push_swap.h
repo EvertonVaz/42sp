@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:03 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/30 10:39:18 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:30:40 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,8 @@ void	rr(t_stack **stack_a, t_stack **stack_b);
 void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
+void	free_list(t_stack *head);
+void	sort_3(t_stack **stack);
+void	find_index(t_stack *stack);
 
 #endif

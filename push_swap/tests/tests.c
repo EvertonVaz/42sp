@@ -288,7 +288,7 @@ void test_rrr() {
 }
 
 int main() {
-    /* test_push_move();
+    test_push_move();
     test_pa();
     test_pb();
 	test_swap();
@@ -302,8 +302,7 @@ int main() {
 	test_reverse_rotate();
     test_rra();
     test_rrb();
-    test_rrr(); */
-    test_check_args();
+    test_rrr();
     return 0;
 }
 

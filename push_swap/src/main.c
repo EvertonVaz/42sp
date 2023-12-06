@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/30 10:50:14 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/01 12:31:07 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	is_sorted(t_stack *stack_a)
 	{
 		if (stack_a->value > stack_a->next->value)
 			return (0);
+		stack_a = stack_a->next;
 	}
 	return (1);
 }
 
-#include "stdio.h"
-
+#include <stdio.h>
 void	print_elements(t_stack *stack, char title)
 {
 	printf("                        STACK %c                       \n", title);
@@ -69,7 +69,17 @@ void	print_elements(t_stack *stack, char title)
 		if (stack != NULL)
 			printf("|-----------------|-----------------|-----------------|\n");
 	}
+	printf("|-----------------|-----------------|-----------------|\n");
 	printf("\n");
+}
+
+void print_stack(t_stack *stack)
+{
+	while (stack)
+	{
+		printf("index: %d - %d\n",stack->index, stack->value);
+		stack = stack->next;
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -81,6 +91,16 @@ int	main(int argc, char *argv[])
 	stack_b = NULL;
 	check_args(argc, argv);
 	stack_init(&stack_a, argv + 1);
-	print_elements(stack_a, 'A');
+	if (is_sorted(stack_a))
+		return (EXIT_SUCCESS);
+	find_index(stack_a);
+	print_stack(stack_a);
+	if (stack_len(stack_a) == 2)
+		sa(&stack_a);
+	if (stack_len(stack_a) == 3)
+		sort_3(&stack_a);
+	find_index(stack_a);
+	print_stack(stack_a);
+	free_list(stack_a);
 	return (EXIT_SUCCESS);
 }
