@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/06 10:46:21 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/06 22:44:52 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,16 @@ int	main(int argc, char *argv[])
 
 	stack_a = NULL;
 	stack_b = NULL;
+	(void)stack_b;
 	check_args(argc, argv);
 	stack_init(&stack_a, argv + 1);
 	if (is_sorted(stack_a))
 		return (EXIT_SUCCESS);
-	find_index(stack_a);
 	print_stack(stack_a);
 	if (stack_len(stack_a) == 2)
 		sa(&stack_a);
 	if (stack_len(stack_a) == 3)
 		sort_3(&stack_a);
-	find_index(stack_a);
-	print_stack(stack_a);
 	free_list(stack_a);
 	return (EXIT_SUCCESS);
 }

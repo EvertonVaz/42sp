@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:03 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/01 12:30:40 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/06 23:07:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,12 @@ void	rra(t_stack **stack_a);
 void	rrb(t_stack **stack_b);
 void	rrr(t_stack **stack_a, t_stack **stack_b);
 void	free_list(t_stack *head);
+void	find_index(char **argv);
+void	find_current_pos(t_stack *stack);
+void	find_target_pos(t_stack *stack);
+void	find_cost(t_stack *stack);
+void	bubble_sort(char **argv);
 void	sort_3(t_stack **stack);
-void	find_index(t_stack *stack);
+void	sort_5(t_stack **stack_a, t_stack **stack_b);
 
 #endif

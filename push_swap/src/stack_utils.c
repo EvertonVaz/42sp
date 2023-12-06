@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:27:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/06 10:46:02 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/06 20:57:26 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ t_stack	*find_last_node(t_stack *head)
 	return (head);
 }
 
-void	find_index(t_stack *stack)
+void	find_current_pos(t_stack *stack)
 {
 	int		index;
 
-	index = 1;
+	index = 0;
 	while (stack)
 	{
 		stack->index = index;
