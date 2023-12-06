@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/01 12:31:07 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:46:21 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	is_sorted(t_stack *stack_a)
 }
 
 #include <stdio.h>
+
 void	print_elements(t_stack *stack, char title)
 {
 	printf("                        STACK %c                       \n", title);
@@ -62,8 +63,7 @@ void	print_elements(t_stack *stack, char title)
 	while (stack)
 	{
 		printf("| %-15d | %-15d | %-15d |\n",
-			(stack->prev != NULL) ? stack->prev->value : 0x0,
-			stack->value,
+			(stack->prev != NULL) ? stack->prev->value : 0x0, stack->value,
 			(stack->next != NULL) ? stack->next->value : 0x0);
 		stack = stack->next;
 		if (stack != NULL)
@@ -73,11 +73,11 @@ void	print_elements(t_stack *stack, char title)
 	printf("\n");
 }
 
-void print_stack(t_stack *stack)
+void	print_stack(t_stack *stack)
 {
 	while (stack)
 	{
-		printf("index: %d - %d\n",stack->index, stack->value);
+		printf("index: %d - %d\n", stack->index, stack->value);
 		stack = stack->next;
 	}
 }

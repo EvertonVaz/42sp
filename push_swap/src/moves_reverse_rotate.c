@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 09:28:01 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/30 13:13:14 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:46:11 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,18 @@ int	reverse_rotate(t_stack **stack)
 
 void	rra(t_stack **stack_a)
 {
-	if(reverse_rotate(stack_a))
+	if (reverse_rotate(stack_a))
 		write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack **stack_b)
 {
-	if(reverse_rotate(stack_b))
+	if (reverse_rotate(stack_b))
 		write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	if(reverse_rotate(stack_b) && reverse_rotate(stack_a))
+	if (reverse_rotate(stack_b) && reverse_rotate(stack_a))
 		write(1, "rrr\n", 4);
 }

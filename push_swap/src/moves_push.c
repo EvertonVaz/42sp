@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 19:09:51 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/30 13:29:35 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:47:17 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int	push_move(t_stack **src, t_stack **dest)
 
 void	pa(t_stack **stack_b, t_stack **stack_a)
 {
-	if(push_move(stack_b, stack_a))
+	if (push_move(stack_b, stack_a))
 		write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
-	if(push_move(stack_a, stack_b))
+	if (push_move(stack_a, stack_b))
 		write(1, "pb\n", 3);
 }

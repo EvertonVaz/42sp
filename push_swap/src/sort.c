@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 17:50:18 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/30 18:29:47 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:47:01 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_max(t_stack *stack)
 	return (max);
 }
 
-int get_min(t_stack *stack)
+int	get_min(t_stack *stack)
 {
 	int	min;
 
