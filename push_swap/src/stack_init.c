@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:17:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/06 23:24:41 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/07 08:39:44 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,9 @@ void	stack_init(t_stack **stack_a, char **argv)
 		{
 			temp->index = current_pos + 1;
 			temp = temp->next;
-			current_pos = 0;
+			current_pos = -1;
 		}
-		else
-			current_pos++;
+		current_pos++;
 	}
 }
 

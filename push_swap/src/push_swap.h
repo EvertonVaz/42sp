@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:03 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/06 23:07:35 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/07 08:38:47 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,7 @@ void	find_cost(t_stack *stack);
 void	bubble_sort(char **argv);
 void	sort_3(t_stack **stack);
 void	sort_5(t_stack **stack_a, t_stack **stack_b);
+int		get_min(t_stack *stack);
+int		get_max(t_stack *stack);
 
 #endif
