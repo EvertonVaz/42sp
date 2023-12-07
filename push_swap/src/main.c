@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/06 22:44:52 by codespace        ###   ########.fr       */
+/*   Updated: 2023/12/07 11:13:38 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,14 @@ int	is_sorted(t_stack *stack_a)
 }
 
 #include <stdio.h>
-
-void	print_elements(t_stack *stack, char title)
-{
-	printf("                        STACK %c                       \n", title);
-	printf("|-----------------|-----------------|-----------------|\n");
-	printf("| %-15s | %-15s | %-15s |\n", "prev->value", "value",
-		"next->value");
-	printf("|-----------------|-----------------|-----------------|\n");
-	while (stack)
-	{
-		printf("| %-15d | %-15d | %-15d |\n",
-			(stack->prev != NULL) ? stack->prev->value : 0x0, stack->value,
-			(stack->next != NULL) ? stack->next->value : 0x0);
-		stack = stack->next;
-		if (stack != NULL)
-			printf("|-----------------|-----------------|-----------------|\n");
-	}
-	printf("|-----------------|-----------------|-----------------|\n");
-	printf("\n");
-}
-
 void	print_stack(t_stack *stack)
 {
 	while (stack)
 	{
-		printf("index: %d - %d\n", stack->index, stack->value);
+		printf("index: %d | ", stack->index);
+		printf("current pos %d | ", stack->current_pos);
+		printf("taget pos %d | ", stack->target_pos);
+		printf("value %d\n", stack->value);
 		stack = stack->next;
 	}
 }
@@ -94,11 +76,16 @@ int	main(int argc, char *argv[])
 	stack_init(&stack_a, argv + 1);
 	if (is_sorted(stack_a))
 		return (EXIT_SUCCESS);
-	print_stack(stack_a);
+	find_current_pos(stack_a);
+	// print_stack(stack_a);
 	if (stack_len(stack_a) == 2)
 		sa(&stack_a);
 	if (stack_len(stack_a) == 3)
 		sort_3(&stack_a);
+	else
+		push_swap(&stack_a, &stack_b);
+	find_current_pos(stack_a);
+	// print_stack(stack_a);
 	free_list(stack_a);
 	return (EXIT_SUCCESS);
 }

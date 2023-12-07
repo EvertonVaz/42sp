@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:16:22 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/06 10:45:30 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/07 14:23:23 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	swap(t_stack **head)
 {
-	if (!head || !*head || stack_len(*head) == 1)
+	if (!head || !*head || stack_len(*head) < 2)
 		return (0);
 	*head = (*head)->next;
 	(*head)->prev->prev = *head;
