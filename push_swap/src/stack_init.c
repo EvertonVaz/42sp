@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:17:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/07 10:05:54 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/08 20:28:39 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	append_node(t_stack **stack, int value, int current_pos)
 	if (stack == NULL)
 		return ;
 	node = malloc(sizeof(t_stack));
+	stack_fill(*stack);
 	if (node == NULL)
 		return ;
 	node->next = NULL;
@@ -50,6 +51,17 @@ void	stack_init(t_stack **stack_a, char **argv)
 		append_node(stack_a, value, current_pos++);
 	}
 	find_index(stack_a, argv);
+}
+
+void	stack_fill(t_stack *stack)
+{
+	stack->cost_a = 0;
+	stack->cost_b = 0;
+	stack->current_pos = 0;
+	stack->target_pos = 0;
+	stack->index = 0;
+	stack->next = NULL;
+	stack->prev = NULL;
 }
 
 void	free_list(t_stack *head)

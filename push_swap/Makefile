@@ -18,7 +18,8 @@ MANDATORY_SOURCES_PATH = ./src/
 
 MANDATORY_SOURCES = \
 	main.c stack_init.c stack_utils.c moves_swap.c moves_push.c \
-	moves_rotate.c moves_reverse_rotate.c sort.c find_infos.c
+	moves_rotate.c moves_reverse_rotate.c sort.c find_infos.c \
+	cost_moves.c
 
 OBJECTS = $(addprefix $(BIN_PATH), $(MANDATORY_SOURCES:%.c=%.o))
 
@@ -43,6 +44,9 @@ $(NAME): $(OBJECTS)
 
 $(BIN_PATH):
 	@mkdir -p $(BIN_PATH)
+
+tests:
+	$(CC) $(CFLAGS) /tests/test.c && ./a.out
 
 clean:
 	@echo $(RED)[Removing Objects]$(COLOR_LIMITER)

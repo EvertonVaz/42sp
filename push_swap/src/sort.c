@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 17:50:18 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/07 15:59:10 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/08 20:24:29 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,6 @@ void	sort_5(t_stack **stack_a, t_stack **stack_b)
 	}
 }
 
-/* void	moviment(t_stack **stack_a, t_stack **stack_b)
-{
-	if (stack_a && stack_b && (*stack_b)->next)
-	{
-		if ((*stack_a)->value > (*stack_a)->next->value && (*stack_b)->value < (*stack_b)->next->value)
-			ss(stack_a, stack_b);
-		else if ((*stack_a)->value > (*stack_a)->next->value)
-			sa(stack_a);
-		else if ((*stack_b)->value < (*stack_b)->next->value)
-			sb(stack_b);
-	}
-} */
-
 int	send_to_b(t_stack **stack_a, t_stack **stack_b, int len)
 {
 	int	mid_index;
@@ -83,8 +70,10 @@ int	send_to_b(t_stack **stack_a, t_stack **stack_b, int len)
 }
 
 #include <stdio.h>
-void	test(t_stack *stack, char name)
+static void	test(t_stack *stack, char name)
 {
+	if (!stack)
+		return ;
 	t_stack	*temp;
 	printf("\nPILHA %c\n", name);
 	temp = stack;
@@ -115,6 +104,51 @@ void	test(t_stack *stack, char name)
 		printf("(%4d) ", temp->target_pos);
 		temp = temp->next;
 	}
+	temp = stack;
+	printf("\nCOST   A:\t");
+	while (temp)
+	{
+		printf("|%4d| ", temp->cost_a);
+		temp = temp->next;
+	}
+	temp = stack;
+	printf("\nCOST   b:\t");
+	while (temp)
+	{
+		printf("|%4d| ", temp->cost_b);
+		temp = temp->next;
+	}
+}
+
+void	push_to_a(t_stack **stack_b, t_stack **stack_a)
+{
+	int	index_move;
+	t_stack *temp_b;
+
+	temp_b = *stack_b;
+	while (temp_b)
+	{
+		find_target_pos(stack_a, stack_b);
+		index_move = get_min_cost(temp_b);
+		printf("\n-----------------------------------------------\n");
+		test(*stack_a, 'A');
+		test(*stack_b, 'B');
+		printf("\n-----------------------------------------------\n");
+		if (temp_b->index == index_move)
+		{
+			if ((*stack_b)->cost_a != (*stack_b)->cost_b)
+			{
+				moves_ra(stack_a, (*stack_b)->cost_a);
+				moves_rb(stack_b, (*stack_b)->cost_b);
+			}
+			else
+				moves_rrr(stack_a, stack_b);
+			pa(stack_b, stack_a);
+			temp_b = *stack_b;
+		}
+		else
+			temp_b = temp_b->next;
+	}
 }
 
 void	push_swap(t_stack **stack_a, t_stack **stack_b)
@@ -125,8 +159,8 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b)
 	while (len-- > 3)
 		pb(stack_a, stack_b);
 	sort_3(stack_a);
-
 	find_target_pos(stack_a, stack_b);
-	test(*stack_a, 'A');
-	test(*stack_b, 'B');
+	test(NULL, 'A');
+	// test(*stack_b, 'B');
+	push_to_a(stack_b, stack_a);
 }

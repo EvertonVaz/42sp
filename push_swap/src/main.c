@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/07 11:13:38 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:28:21 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,7 @@ int	is_sorted(t_stack *stack_a)
 	return (1);
 }
 
-#include <stdio.h>
-void	print_stack(t_stack *stack)
-{
-	while (stack)
-	{
-		printf("index: %d | ", stack->index);
-		printf("current pos %d | ", stack->current_pos);
-		printf("taget pos %d | ", stack->target_pos);
-		printf("value %d\n", stack->value);
-		stack = stack->next;
-	}
-}
+
 
 int	main(int argc, char *argv[])
 {
@@ -71,21 +60,17 @@ int	main(int argc, char *argv[])
 
 	stack_a = NULL;
 	stack_b = NULL;
-	(void)stack_b;
+
 	check_args(argc, argv);
 	stack_init(&stack_a, argv + 1);
 	if (is_sorted(stack_a))
 		return (EXIT_SUCCESS);
-	find_current_pos(stack_a);
-	// print_stack(stack_a);
 	if (stack_len(stack_a) == 2)
 		sa(&stack_a);
 	if (stack_len(stack_a) == 3)
 		sort_3(&stack_a);
 	else
 		push_swap(&stack_a, &stack_b);
-	find_current_pos(stack_a);
-	// print_stack(stack_a);
 	free_list(stack_a);
 	return (EXIT_SUCCESS);
 }
