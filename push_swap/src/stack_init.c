@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:17:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/08 20:28:39 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/09 14:20:55 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	append_node(t_stack **stack, int value, int current_pos)
 	if (stack == NULL)
 		return ;
 	node = malloc(sizeof(t_stack));
-	stack_fill(*stack);
+	stack_fill(node);
 	if (node == NULL)
 		return ;
 	node->next = NULL;
