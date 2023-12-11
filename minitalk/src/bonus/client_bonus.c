@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 10:07:41 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/11/16 15:40:01 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/11 12:35:22 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	send_bit(int server_pid, char c)
 		}
 		bit--;
 		while (!g_sync_signal)
-			pause();
+			;
 	}
 }
 
