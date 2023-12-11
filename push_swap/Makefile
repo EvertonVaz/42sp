@@ -1,5 +1,5 @@
 NAME = push_swap
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Werror -Wextra -g3 -Ofast -flto
 
 # Paths for libraries
 LIB_PATH = ./libs/libft

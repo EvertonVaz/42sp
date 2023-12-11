@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:03 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/08 20:24:04 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:27:46 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ int		get_min(t_stack *stack);
 int		get_max(t_stack *stack);
 void	sort_3(t_stack **stack);
 int		total_cost(t_stack *stack);
-int		get_min_cost(t_stack *stack);
+t_stack	*get_min_cost(t_stack *stack);
 void	moves_ra(t_stack **stack, int cost);
 void	moves_rb(t_stack **stack, int cost);
 void	moves_rrr(t_stack **stack_a, t_stack **stack_b);
-void	push_to_a(t_stack **stack_b, t_stack **stack_a);
+void	send_to_a(t_stack **stack_b, t_stack **stack_a);
 void	push_swap(t_stack **stack_a, t_stack **stack_b);
 
 #endif

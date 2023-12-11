@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:36:44 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/09 14:33:28 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:57:21 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	total_cost(t_stack *stack)
 	return (cost);
 }
 
-int	get_min_cost(t_stack *stack)
+t_stack	*get_min_cost(t_stack *stack)
 {
 	int min_cost;
 	t_stack *temp;
@@ -62,8 +62,8 @@ int	get_min_cost(t_stack *stack)
 	while (stack)
 	{
 		if (total_cost(stack) == min_cost)
-			return (stack->index);
+			return (stack);
 		stack = stack->next;
 	}
-	return (-1);
+	return (NULL);
 }
