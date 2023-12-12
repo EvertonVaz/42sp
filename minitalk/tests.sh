@@ -1,7 +1,21 @@
 #!/bin/bash
 
+# Número de testes aleatórios
+num_tests=10
+
+# Tamanho máximo da mensagem
+max_msg_length=100
+
 # Compila os programas
-make
+if [[ $# -eq 2 && $1 == "bonus" ]]; then
+    make bonus
+    server="./server_bonus"
+    client="./client_bonus"
+else
+    make
+    server="./server"
+    client="./client"
+fi
 
 # Funções de cor
 green() {
@@ -24,7 +38,7 @@ gerar_emoji_aleatorio() {
 }
 
 # Inicia o servidor em background e obtém seu PID
-./server > output.txt &
+$server > output.txt &
 sleep 1
 
 # Capturar o PID do servidor a partir da saída
@@ -32,12 +46,6 @@ server_pid=$(grep "Server PID:" output.txt | awk '{print $3}')
 echo "server pid number is $server_pid"
 echo ""
 echo "-----------------------------"
-
-# Número de testes aleatórios
-num_tests=10
-
-# Tamanho máximo da mensagem
-max_msg_length=100
 
 # Gera e envia mensagens aleatórias
 for ((i=1; i<=num_tests; i++))
@@ -67,7 +75,7 @@ do
     echo "$random_msg"
 
     # Inicia o cliente com o PID do servidor e a mensagem aleatória
-    ./client $server_pid "$random_msg"
+    $client $server_pid "$random_msg"
 
     # Aguarda o cliente enviar a mensagem e o servidor escrever no arquivo
     sleep 1
@@ -91,4 +99,5 @@ done
 # Limpa
 sleep 1
 killall -9 server
-rm server client output.txt
+rm output.txt
+make fclean
