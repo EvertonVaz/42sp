@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:36:44 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/11 16:57:21 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:23:04 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	total_cost(t_stack *stack)
 	if (stack->cost_a < 0)
 		cost += stack->cost_a * -1;
 	else
-	 	cost += stack->cost_a;
+		cost += stack->cost_a;
 	if (stack->cost_b < 0)
 		cost += stack->cost_b * -1;
 	else
@@ -48,8 +48,8 @@ int	total_cost(t_stack *stack)
 
 t_stack	*get_min_cost(t_stack *stack)
 {
-	int min_cost;
-	t_stack *temp;
+	int		min_cost;
+	t_stack	*temp;
 
 	min_cost = INT_MAX;
 	temp = stack;

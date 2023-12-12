@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 13:17:28 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/09 14:20:55 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:23:27 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	stack_fill(t_stack *stack)
 	stack->prev = NULL;
 }
 
-void	free_list(t_stack *head)
+int	free_list(t_stack *head)
 {
 	t_stack	*temp;
 
@@ -76,4 +76,5 @@ void	free_list(t_stack *head)
 		head = temp;
 	}
 	free(head);
+	return (EXIT_SUCCESS);
 }

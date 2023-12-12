@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:27:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/08 20:26:49 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:57:04 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ t_stack	*find_last_node(t_stack *head)
 	return (head);
 }
 
-int	get_max(t_stack *stack)
+t_stack	*get_max(t_stack *stack)
 {
-	int	max;
+	int		max;
+	t_stack	*temp;
 
+	temp = stack;
 	max = stack->value;
 	while (stack)
 	{
@@ -47,13 +49,21 @@ int	get_max(t_stack *stack)
 			max = stack->value;
 		stack = stack->next;
 	}
-	return (max);
+	while (temp)
+	{
+		if (temp->value == max)
+			return (temp);
+		temp = temp->next;
+	}
+	return (NULL);
 }
 
-int	get_min(t_stack *stack)
+t_stack	*get_min(t_stack *stack)
 {
-	int	min;
+	int		min;
+	t_stack	*temp;
 
+	temp = stack;
 	min = stack->value;
 	while (stack)
 	{
@@ -61,5 +71,11 @@ int	get_min(t_stack *stack)
 			min = stack->value;
 		stack = stack->next;
 	}
-	return (min);
+	while (temp)
+	{
+		if (temp->value == min)
+			return (temp);
+		temp = temp->next;
+	}
+	return (NULL);
 }

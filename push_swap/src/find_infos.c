@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 09:57:39 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/11 16:38:54 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:13:35 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,30 +68,30 @@ void	find_current_pos(t_stack *stack)
 	}
 }
 
-void	find_target_pos(t_stack **stack_a, t_stack **stack_b)
+void	find_target_pos(t_stack **stack_a, t_stack **stack_b,
+		t_stack *max_value, t_stack *min_value)
 {
 	t_stack	*temp_a;
 	t_stack	*temp_b;
 	int		fill;
 
-	temp_a = *stack_a;
 	temp_b = *stack_b;
-	fill = INT_MAX;
 	find_current_pos(*stack_a);
-	find_current_pos(*stack_b);
 	while (temp_b)
 	{
 		temp_a = *stack_a;
+		fill = stack_len(*stack_a) + stack_len(*stack_b);
 		while (temp_a)
 		{
-			if (temp_b->index < temp_a->index && temp_a->index < fill)
+			if ((temp_b->index < temp_a->index && temp_a->index <= fill))
 			{
 				temp_b->target_pos = temp_a->current_pos;
 				fill = temp_a->index;
 			}
+			if (temp_b->index > max_value->index)
+				temp_b->target_pos = min_value->current_pos;
 			temp_a = temp_a->next;
 		}
-		fill = INT_MAX;
 		temp_b = temp_b->next;
 	}
 	find_cost(*stack_a, *stack_b);
