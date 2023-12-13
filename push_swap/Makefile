@@ -18,7 +18,7 @@ MANDATORY_SOURCES_PATH = ./src/
 
 MANDATORY_SOURCES = \
 	main.c stack_init.c stack_utils.c moves_swap.c moves_push.c \
-	moves_rotate.c moves_reverse_rotate.c sort.c find_infos.c \
+	moves_rotate.c moves_reverse_rotate.c push_swap.c find_infos.c \
 	cost_moves.c calculate_cost.c
 
 OBJECTS = $(addprefix $(BIN_PATH), $(MANDATORY_SOURCES:%.c=%.o))
@@ -46,7 +46,38 @@ $(BIN_PATH):
 	@mkdir -p $(BIN_PATH)
 
 tests:
-	$(CC) $(CFLAGS) /tests/test.c && ./a.out
+	$(CC) $(CFLAGS) /.tests/test.c && ./a.out
+
+test3:		$(NAME)
+		$(eval ARG = $(shell shuf -i 0-50 -n 3))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+test5:		$(NAME)
+		$(eval ARG = $(shell shuf -i 0-50 -n 5))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+test50:		$(NAME)
+		$(eval ARG = $(shell shuf -i 0-5000 -n 50))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+test100:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-1000 -n 100))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
+test500:	$(NAME)
+		$(eval ARG = $(shell shuf -i 0-2000 -n 500))
+		./push_swap $(ARG) | ./checker_linux $(ARG)
+		@echo -n "Instructions: "
+		@./push_swap $(ARG) | wc -l
+
 
 clean:
 	@echo $(RED)[Removing Objects]$(COLOR_LIMITER)
