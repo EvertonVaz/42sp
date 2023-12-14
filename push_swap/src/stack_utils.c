@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:27:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/12 12:57:04 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:42:20 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	stack_len(t_stack *lst)
 {

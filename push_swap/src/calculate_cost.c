@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:36:44 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/12 14:23:04 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:41:59 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	calculate_cost(int len, t_stack *stack, char cost_name, int current_pos)
 {

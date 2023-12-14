@@ -15,6 +15,7 @@ COLOR_LIMITER = "\033[0m"
 # Paths for libraries
 BIN_PATH = ./bin/
 MANDATORY_SOURCES_PATH = ./src/
+INCLUDES_PATH = ./includes/
 
 MANDATORY_SOURCES = \
 	main.c stack_init.c stack_utils.c moves_swap.c moves_push.c \
@@ -32,7 +33,7 @@ endif
 
 $(BIN_PATH)%.o: $(MANDATORY_SOURCES_PATH)%.c
 	@echo $(GREEN)[Compiling push_swap]$(COLOR_LIMITER) $(WHITE)$(notdir $(<))$(COLOR_LIMITER)
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(MANDATORY_SOURCES_PATH)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES_PATH)
 	@echo " "
 
 $(NAME): $(OBJECTS)

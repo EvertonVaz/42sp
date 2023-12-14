@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 19:39:55 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/06 10:46:30 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:42:14 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	rotate(t_stack **stack)
 {

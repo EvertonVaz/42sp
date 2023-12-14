@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:33:11 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/11 15:57:35 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:42:04 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	moves_ra(t_stack **stack, int cost)
 {
