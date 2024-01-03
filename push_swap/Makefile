@@ -101,14 +101,19 @@ test500:	$(NAME)
 
 clean:
 	@echo $(RED)[Removing Objects]$(COLOR_LIMITER)
-	@make clean -C $(LIB_PATH) --no-print-directory
+	@rm -rf $(LIB_PATH)/$(LIB_NAME)
 	@rm -rf $(BIN_PATH)
 
-fclean: clean
+fclean: clean fclean_bonus
 	@echo $(RED)[Removing $(NAME) executable]$(COLOR_LIMITER)
-	@echo $(RED)[Removing $(BONUS_NAME) executable]$(COLOR_LIMITER)
 	@make fclean -C $(LIB_PATH) --no-print-directory
 	@rm -rf $(NAME)
+
+fclean_bonus:
+ifneq ($(wildcard $(BONUS_NAME)),)
+	@echo $(RED)[Removing $(BONUS_NAME) executable]$(COLOR_LIMITER)
+	@rm -rf $(BONUS_NAME)
+endif
 
 re: fclean
 	@make --no-print-directory
