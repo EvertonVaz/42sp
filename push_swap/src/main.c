@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/14 16:42:09 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/03 13:04:22 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	main(int argc, char *argv[])
 	if (is_sorted(stack_a))
 		return (free_list(stack_a));
 	if (stack_len(stack_a) == 2)
-		sa(&stack_a);
+		sa(&stack_a, 0);
 	if (stack_len(stack_a) == 3)
 		sort_3(&stack_a);
 	else

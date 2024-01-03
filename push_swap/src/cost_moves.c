@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:33:11 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/14 16:42:04 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/03 13:05:08 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	moves_ra(t_stack **stack, int cost)
 {
 	if (cost < 0)
-		rra(stack);
+		rra(stack, 0);
 	if (cost > 0)
-		ra(stack);
+		ra(stack, 0);
 }
 
 void	moves_rb(t_stack **stack, int cost)
 {
 	if (cost < 0)
-		rrb(stack);
+		rrb(stack, 0);
 	if (cost > 0)
-		rb(stack);
+		rb(stack, 0);
 }
 
 void	moves_rrr(t_stack **stack_a, t_stack **stack_b)
@@ -34,7 +34,7 @@ void	moves_rrr(t_stack **stack_a, t_stack **stack_b)
 
 	cost = total_cost(*stack_b);
 	if (cost < 0)
-		rrr(stack_a, stack_b);
+		rrr(stack_a, stack_b, 0);
 	if (cost > 0)
-		rr(stack_a, stack_b);
+		rr(stack_a, stack_b, 0);
 }
