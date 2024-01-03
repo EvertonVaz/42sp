@@ -1,6 +1,6 @@
 NAME = push_swap
 BONUS_NAME = checker
-CFLAGS = -Wall -Werror -Wextra -g3 -Ofast -flto
+CFLAGS = -Wall -Werror -Wextra -g3 #-Ofast -flto
 
 # Paths for libraries
 LIB_PATH = ./libs/libft
@@ -22,7 +22,7 @@ INCLUDES_PATH = ./includes/
 MANDATORY_SOURCES = \
 	main.c stack_init.c stack_utils.c moves_swap.c moves_push.c \
 	moves_rotate.c moves_reverse_rotate.c push_swap.c find_infos.c \
-	cost_moves.c calculate_cost.c
+	cost_moves.c calculate_cost.c arguments.c
 
 BONUS_SOURCES = \
 	checker.c
@@ -31,7 +31,7 @@ OBJECTS = $(addprefix $(BIN_PATH), $(MANDATORY_SOURCES:%.c=%.o))
 
 OBJECTS_BONUS = $(addprefix $(BIN_PATH), $(BONUS_SOURCES:%.c=%.o))
 
-all: libft $(BIN_PATH) $(NAME) $(BONUS_NAME)
+all: libft $(BIN_PATH) $(NAME)
 
 libft:
 ifeq ($(wildcard $(LIB_PATH)/$(LIB_NAME)),)
@@ -55,11 +55,11 @@ $(BIN_PATH)%.o: $(BONUS_SOURCES_PATH)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES_PATH)
 	@echo " "
 
-bonus: $(OBJECTS_BONUS) $(NAME)
+bonus: $(OBJECTS_BONUS) $(OBJECTS) $(NAME)
 	@echo $(CYAN)" --------------------------------------------------"$(COLOR_LIMITER)
 	@echo $(CYAN)"| CHECKER executable was created successfully!! |"$(COLOR_LIMITER)
 	@echo $(CYAN)"--------------------------------------------------"$(COLOR_LIMITER)
-	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJECTS_BONUS) -L $(LIB_PATH) -lft
+	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJECTS_BONUS) -L $(OBJECTS) -L $(LIB_PATH) -lft
 	@echo " "
 
 $(BIN_PATH):
@@ -113,4 +113,4 @@ fclean: clean
 re: fclean
 	@make --no-print-directory
 
-.PHONY: all clean fclean re libft
+.PHONY: all clean fclean re libft bonus

@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   arguments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 12:07:43 by egeraldo          #+#    #+#             */
-/*   Updated: 2024/01/03 17:58:21 by egeraldo         ###   ########.fr       */
+/*   Created: 2024/01/03 14:07:42 by egeraldo          #+#    #+#             */
+/*   Updated: 2024/01/03 14:08:15 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char *argv[])
+void	end_program(void)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
 
-	stack_a = NULL;
-	stack_b = NULL;
-	check_args(argc, argv);
-	stack_init(&stack_a, argv + 1);
-	if (is_sorted(stack_a))
-		return (free_list(stack_a));
-	if (stack_len(stack_a) == 2)
-		sa(&stack_a, 0);
-	if (stack_len(stack_a) == 3)
-		sort_3(&stack_a);
-	else
-		push_swap(&stack_a, &stack_b);
-	return (free_list(stack_a));
+void	check_args(int n_args, char *args[])
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (n_args < 2)
+		exit(EXIT_FAILURE);
+	while (++i < n_args)
+	{
+		if ((!args[i][0] || !ft_isnum(args[i])) || (ft_atol(args[i]) > INT_MAX)
+			|| (ft_atol(args[i]) < INT_MIN))
+			end_program();
+		j = i + 1;
+		while (j < (n_args))
+		{
+			if (ft_atol(args[i]) == ft_atol(args[j++]))
+				end_program();
+		}
+	}
 }
