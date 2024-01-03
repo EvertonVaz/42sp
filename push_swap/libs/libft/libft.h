@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 20:16:53 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/14 16:37:24 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:15:47 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int			ft_isnum(char *str);
+char		*get_next_line(int fd);
 
 #endif

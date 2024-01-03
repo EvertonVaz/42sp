@@ -1,4 +1,5 @@
 NAME = push_swap
+BONUS_NAME = checker
 CFLAGS = -Wall -Werror -Wextra -g3 -Ofast -flto
 
 # Paths for libraries
@@ -15,6 +16,7 @@ COLOR_LIMITER = "\033[0m"
 # Paths for libraries
 BIN_PATH = ./bin/
 MANDATORY_SOURCES_PATH = ./src/
+BONUS_SOURCES_PATH = ./src/bonus/
 INCLUDES_PATH = ./includes/
 
 MANDATORY_SOURCES = \
@@ -22,9 +24,14 @@ MANDATORY_SOURCES = \
 	moves_rotate.c moves_reverse_rotate.c push_swap.c find_infos.c \
 	cost_moves.c calculate_cost.c
 
+BONUS_SOURCES = \
+	checker.c
+
 OBJECTS = $(addprefix $(BIN_PATH), $(MANDATORY_SOURCES:%.c=%.o))
 
-all: libft $(BIN_PATH) $(NAME)
+OBJECTS_BONUS = $(addprefix $(BIN_PATH), $(BONUS_SOURCES:%.c=%.o))
+
+all: libft $(BIN_PATH) $(NAME) $(BONUS_NAME)
 
 libft:
 ifeq ($(wildcard $(LIB_PATH)/$(LIB_NAME)),)
@@ -41,6 +48,18 @@ $(NAME): $(OBJECTS)
 	@echo $(CYAN)"| PUSH_SWAP executable was created successfully!! |"$(COLOR_LIMITER)
 	@echo $(CYAN)"--------------------------------------------------"$(COLOR_LIMITER)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) -L $(LIB_PATH) -lft
+	@echo " "
+
+$(BIN_PATH)%.o: $(BONUS_SOURCES_PATH)%.c
+	@echo $(GREEN)[Compiling checker]$(COLOR_LIMITER) $(WHITE)$(notdir $(<))$(COLOR_LIMITER)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES_PATH)
+	@echo " "
+
+bonus: $(OBJECTS_BONUS) $(NAME)
+	@echo $(CYAN)" --------------------------------------------------"$(COLOR_LIMITER)
+	@echo $(CYAN)"| CHECKER executable was created successfully!! |"$(COLOR_LIMITER)
+	@echo $(CYAN)"--------------------------------------------------"$(COLOR_LIMITER)
+	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJECTS_BONUS) -L $(LIB_PATH) -lft
 	@echo " "
 
 $(BIN_PATH):
@@ -87,6 +106,7 @@ clean:
 
 fclean: clean
 	@echo $(RED)[Removing $(NAME) executable]$(COLOR_LIMITER)
+	@echo $(RED)[Removing $(BONUS_NAME) executable]$(COLOR_LIMITER)
 	@make fclean -C $(LIB_PATH) --no-print-directory
 	@rm -rf $(NAME)
 

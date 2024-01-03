@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 12:21:30 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/07/28 17:04:43 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:29:35 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*alloc;
+	char	*alloc;
 	size_t	total_size;
 
 	total_size = nmemb * size;
@@ -22,6 +22,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (malloc(0));
 	alloc = malloc(total_size);
 	if (alloc != NULL)
-		ft_bzero(alloc, total_size);
-	return (alloc);
+		while (total_size)
+			alloc[--total_size] = 0;
+	return ((void *)alloc);
 }

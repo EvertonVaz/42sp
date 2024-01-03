@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:03 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/12 14:22:48 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/14 17:15:26 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libs/libft/libft.h"
 # include "stdlib.h"
-# include "unistd.h"
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648

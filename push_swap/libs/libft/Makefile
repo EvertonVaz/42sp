@@ -6,7 +6,7 @@
 #    By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/14 19:13:08 by egeraldo          #+#    #+#              #
-#    Updated: 2023/11/28 17:02:46 by egeraldo         ###   ########.fr        #
+#    Updated: 2023/12/14 17:00:13 by egeraldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ M_SRC = ft_atoi.c     ft_isalpha.c  ft_memchr.c   ft_memset.c   ft_strlcpy.c \
 	ft_memmove.c  ft_strlcat.c  ft_strnstr.c  ft_substr.c   ft_strjoin.c \
 	ft_strtrim.c  ft_split.c    ft_itoa.c     ft_strmapi.c  ft_striteri.c \
 	ft_putchar_fd.c  ft_putstr_fd.c  ft_putendl_fd.c  ft_putnbr_fd.c \
-	ft_isnum.c ft_atol.c
+	ft_isnum.c ft_atol.c get_next_line.c
 
 
 B_SRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
