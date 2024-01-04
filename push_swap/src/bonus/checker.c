@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:51:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2024/01/03 18:05:47 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/04 13:30:16 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	choice_function(char *function, t_stack **stack_a, t_stack **stack_b)
 		rrr(stack_a, stack_b, 1);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	char	*function;
 	t_stack	*stack_a;
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 	check_args(argc, argv);
 	stack_init(&stack_a, argv + 1);
 	function = "";
-	while(function)
+	while (function)
 	{
 		function = get_next_line(0);
 		choice_function(function, &stack_a, &stack_b);

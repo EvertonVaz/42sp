@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:03 by egeraldo          #+#    #+#             */
-/*   Updated: 2024/01/03 17:58:58 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/04 11:26:36 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_stack
 void				check_args(int n_args, char *args[]);
 void				end_program(void);
 void				stack_fill(t_stack *stack);
+void				append_node(t_stack **stack, int value, int current_pos);
 void				stack_init(t_stack **stack_a, char **argv);
 int					is_sorted(t_stack *stack_a);
 int					stack_len(t_stack *lst);
