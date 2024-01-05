@@ -1,6 +1,6 @@
 NAME = push_swap
 BONUS_NAME = checker
-CFLAGS = -Wall -Werror -Wextra -g3 -Ofast -flto
+CFLAGS = -Wall -Werror -Wextra -g3 #-Ofast -flto
 
 # Paths for libraries
 LIB_PATH = ./libs/libft
