@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 16:51:19 by egeraldo          #+#    #+#             */
-/*   Updated: 2024/01/05 08:45:26 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/08 10:56:16 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ void	choice_function(char *function, t_stack **stack_a, t_stack **stack_b)
 		rrr(stack_a, stack_b, 1);
 }
 
-void check_instructions(char *function)
+void	check_instructions(char *function)
 {
-	char *instructions;
+	char	*instructions;
 
 	instructions = "sa\n sb\n ss\n pa\n pb\n ra\n rb\n rr\n rra\n rrb\n rrr\n";
 	if (!function)

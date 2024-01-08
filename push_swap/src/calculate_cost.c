@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:36:44 by egeraldo          #+#    #+#             */
-/*   Updated: 2024/01/05 11:51:01 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/08 10:55:47 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	total_cost(t_stack *stack)
 	cost += abs(stack->cost_b);
 	return (cost);
 }
-
 
 t_stack	*get_min_cost(t_stack *stack)
 {
