@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 15:47:16 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/14 16:37:00 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/15 11:34:56 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,15 @@ static char	*get_line(char *backup, char *buffer, int fd)
 	return (backup);
 }
 
-static char	*free_alloc(char *buffer, char *line)
+static char	*free_alloc(char *buffer, char *line, char *backup, int fd)
 {
 	if (line == NULL || *line == '\0')
 	{
 		free(line);
 		line = NULL;
 	}
+	if (fd == 1)
+		free(backup);
 	free(buffer);
 	buffer = NULL;
 	return (line);
@@ -83,5 +85,5 @@ char	*get_next_line(int fd)
 	if (line == NULL && backup[fd])
 		free(backup[fd]);
 	backup[fd] = after_line(line);
-	return (free_alloc(buffer, line));
+	return (free_alloc(buffer, line, backup[fd], fd));
 }

@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 18:36:44 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/14 16:41:59 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/08 10:55:47 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,8 @@ int	total_cost(t_stack *stack)
 	int	cost;
 
 	cost = 0;
-	if (stack->cost_a < 0)
-		cost += stack->cost_a * -1;
-	else
-		cost += stack->cost_a;
-	if (stack->cost_b < 0)
-		cost += stack->cost_b * -1;
-	else
-		cost += stack->cost_b;
+	cost += abs(stack->cost_a);
+	cost += abs(stack->cost_b);
 	return (cost);
 }
 

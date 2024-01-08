@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 18:27:31 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/14 16:42:20 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/04 19:02:04 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,15 @@ t_stack	*get_min(t_stack *stack)
 		temp = temp->next;
 	}
 	return (NULL);
+}
+
+int	is_sorted(t_stack *stack_a)
+{
+	while (stack_a->next)
+	{
+		if (stack_a->value > stack_a->next->value)
+			return (0);
+		stack_a = stack_a->next;
+	}
+	return (1);
 }

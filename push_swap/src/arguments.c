@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cost_moves.c                                       :+:      :+:    :+:   */
+/*   arguments.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 14:33:11 by egeraldo          #+#    #+#             */
-/*   Updated: 2024/01/03 13:05:08 by egeraldo         ###   ########.fr       */
+/*   Created: 2024/01/03 14:07:42 by egeraldo          #+#    #+#             */
+/*   Updated: 2024/01/03 14:08:15 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	moves_ra(t_stack **stack, int cost)
+void	end_program(void)
 {
-	if (cost < 0)
-		rra(stack, 0);
-	if (cost > 0)
-		ra(stack, 0);
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }
 
-void	moves_rb(t_stack **stack, int cost)
+void	check_args(int n_args, char *args[])
 {
-	if (cost < 0)
-		rrb(stack, 0);
-	if (cost > 0)
-		rb(stack, 0);
-}
+	int	i;
+	int	j;
 
-void	moves_rrr(t_stack **stack_a, t_stack **stack_b)
-{
-	int	cost;
-
-	cost = total_cost(*stack_b);
-	if (cost < 0)
-		rrr(stack_a, stack_b, 0);
-	if (cost > 0)
-		rr(stack_a, stack_b, 0);
+	i = 0;
+	if (n_args < 2)
+		exit(EXIT_FAILURE);
+	while (++i < n_args)
+	{
+		if ((!args[i][0] || !ft_isnum(args[i])) || (ft_atol(args[i]) > INT_MAX)
+			|| (ft_atol(args[i]) < INT_MIN))
+			end_program();
+		j = i + 1;
+		while (j < (n_args))
+		{
+			if (ft_atol(args[i]) == ft_atol(args[j++]))
+				end_program();
+		}
+	}
 }
