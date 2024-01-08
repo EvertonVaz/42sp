@@ -69,19 +69,19 @@ tests:
 	$(CC) $(CFLAGS) /.tests/test.c && ./a.out
 
 test3:		$(NAME)
-		$(eval ARG = $(shell shuf -i 0-50 -n 3))
+		$(eval ARG = $(shell shuf -i 0-3 -n 3))
 		./push_swap $(ARG) | ./checker $(ARG)
 		@echo -n "Instructions: "
 		@./push_swap $(ARG) | wc -l
 
 test5:		$(NAME)
-		$(eval ARG = $(shell shuf -i 0-50 -n 5))
+		$(eval ARG = $(shell shuf -i 0-5 -n 5))
 		./push_swap $(ARG) | ./checker $(ARG)
 		@echo -n "Instructions: "
 		@./push_swap $(ARG) | wc -l
 
-test50:		$(NAME)
-		$(eval ARG = $(shell shuf -i 0-5000 -n 50))
+test10:		$(NAME)
+		$(eval ARG = $(shell shuf -i 0-9 -n 10))
 		./push_swap $(ARG) | ./checker $(ARG)
 		@echo -n "Instructions: "
 		@./push_swap $(ARG) | wc -l
@@ -93,7 +93,7 @@ test100:	$(NAME)
 		@./push_swap $(ARG) | wc -l
 
 test500:	$(NAME)
-		$(eval ARG = $(shell shuf -i 0-2000 -n 500))
+		$(eval ARG = $(shell shuf -i 0-1000 -n 500))
 		./push_swap $(ARG) | ./checker $(ARG)
 		@echo -n "Instructions: "
 		@./push_swap $(ARG) | wc -l
