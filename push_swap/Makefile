@@ -1,6 +1,6 @@
 NAME = push_swap
 BONUS_NAME = checker
-CFLAGS = -Wall -Werror -Wextra -g3 #-Ofast -flto
+CFLAGS = -Wall -Werror -Wextra -g3 -Ofast -flto
 
 # Paths for libraries
 LIB_PATH = ./libs/libft
@@ -25,7 +25,7 @@ MANDATORY_SOURCES = \
 	cost_moves.c calculate_cost.c arguments.c
 
 BONUS_SOURCES = \
-	checker.c
+	checker_bonus.c
 
 OBJECTS = $(addprefix $(BIN_PATH), $(MANDATORY_SOURCES:%.c=%.o))
 
