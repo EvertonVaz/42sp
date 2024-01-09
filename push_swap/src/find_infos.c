@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 09:57:39 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/12 14:13:35 by egeraldo         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:42:07 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	bubble_sort(char **argv)
 {

@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 19:39:55 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/06 10:46:30 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/03 11:23:43 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	rotate(t_stack **stack)
 {
@@ -29,20 +29,20 @@ int	rotate(t_stack **stack)
 	return (1);
 }
 
-void	ra(t_stack **stack_a)
+void	ra(t_stack **stack_a, int checker)
 {
-	if (rotate(stack_a))
+	if (rotate(stack_a) && !checker)
 		write(1, "ra\n", 3);
 }
 
-void	rb(t_stack **stack_b)
+void	rb(t_stack **stack_b, int checker)
 {
-	if (rotate(stack_b))
+	if (rotate(stack_b) && !checker)
 		write(1, "rb\n", 3);
 }
 
-void	rr(t_stack **stack_a, t_stack **stack_b)
+void	rr(t_stack **stack_a, t_stack **stack_b, int checker)
 {
-	if (rotate(stack_b) && rotate(stack_a))
+	if (rotate(stack_b) && rotate(stack_a) && !checker)
 		write(1, "rr\n", 3);
 }

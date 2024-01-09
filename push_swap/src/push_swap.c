@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 17:50:18 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/13 15:28:41 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/03 11:25:11 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	sort_3(t_stack **stack)
 {
@@ -18,11 +18,11 @@ void	sort_3(t_stack **stack)
 
 	max = get_max(*stack)->value;
 	if ((*stack)->value == max)
-		ra(stack);
+		ra(stack, 0);
 	else if ((*stack)->next->value == max)
-		rra(stack);
+		rra(stack, 0);
 	if ((*stack)->value > (*stack)->next->value)
-		sa(stack);
+		sa(stack, 0);
 }
 
 int	send_to_b(t_stack **stack_a, t_stack **stack_b, int len)
@@ -34,11 +34,11 @@ int	send_to_b(t_stack **stack_a, t_stack **stack_b, int len)
 	{
 		if ((*stack_a)->index <= mid_index)
 		{
-			pb(stack_a, stack_b);
+			pb(stack_a, stack_b, 0);
 			len--;
 		}
 		else
-			ra(stack_a);
+			ra(stack_a, 0);
 	}
 	return (len);
 }
@@ -59,7 +59,7 @@ void	send_to_a(t_stack **stack_b, t_stack **stack_a)
 		else
 			moves_rrr(stack_a, stack_b);
 		if ((*stack_b)->index == index_move->index && total_cost(*stack_b) == 0)
-			pa(stack_b, stack_a);
+			pa(stack_b, stack_a, 0);
 	}
 	find_current_pos(*stack_a);
 }
@@ -72,7 +72,7 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b)
 
 	len = send_to_b(stack_a, stack_b, stack_len(*stack_a));
 	while (len-- > 3)
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, 0);
 	sort_3(stack_a);
 	send_to_a(stack_b, stack_a);
 	len = stack_len(*stack_a) / 2;
@@ -86,8 +86,8 @@ void	push_swap(t_stack **stack_a, t_stack **stack_b)
 	while ((*stack_a)->index != 1)
 	{
 		if (first_pos <= len)
-			ra(stack_a);
+			ra(stack_a, 0);
 		else
-			rra(stack_a);
+			rra(stack_a, 0);
 	}
 }

@@ -6,11 +6,11 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 15:16:22 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/07 14:23:23 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/03 11:23:19 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 int	swap(t_stack **head)
 {
@@ -26,20 +26,20 @@ int	swap(t_stack **head)
 	return (1);
 }
 
-void	sa(t_stack **a)
+void	sa(t_stack **a, int checker)
 {
-	if (swap(a))
+	if (swap(a) && !checker)
 		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack **b)
+void	sb(t_stack **b, int checker)
 {
-	if (swap(b))
+	if (swap(b) && !checker)
 		write(1, "sb\n", 3);
 }
 
-void	ss(t_stack **a, t_stack **b)
+void	ss(t_stack **a, t_stack **b, int checker)
 {
-	if (swap(b) && swap(a))
+	if (swap(b) && swap(a) && !checker)
 		write(1, "sb\n", 3);
 }

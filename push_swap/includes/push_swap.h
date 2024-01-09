@@ -6,7 +6,7 @@
 /*   By: egeraldo <egeraldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:07:03 by egeraldo          #+#    #+#             */
-/*   Updated: 2023/12/12 14:22:48 by egeraldo         ###   ########.fr       */
+/*   Updated: 2024/01/04 11:26:36 by egeraldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../libs/libft/libft.h"
 # include "stdlib.h"
-# include "unistd.h"
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
@@ -32,25 +31,29 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
+void				check_args(int n_args, char *args[]);
+void				end_program(void);
 void				stack_fill(t_stack *stack);
+void				append_node(t_stack **stack, int value, int current_pos);
 void				stack_init(t_stack **stack_a, char **argv);
+int					is_sorted(t_stack *stack_a);
 int					stack_len(t_stack *lst);
 t_stack				*find_last_node(t_stack *head);
 int					swap(t_stack **head);
 int					push_move(t_stack **src, t_stack **dest);
 int					rotate(t_stack **stack);
 int					reverse_rotate(t_stack **stack);
-void				sa(t_stack **stack_a);
-void				sb(t_stack **stack_b);
-void				ss(t_stack **stack_a, t_stack **stack_b);
-void				pa(t_stack **stack_b, t_stack **stack_a);
-void				pb(t_stack **stack_a, t_stack **stack_b);
-void				ra(t_stack **stack_a);
-void				rb(t_stack **stack_b);
-void				rr(t_stack **stack_a, t_stack **stack_b);
-void				rra(t_stack **stack_a);
-void				rrb(t_stack **stack_b);
-void				rrr(t_stack **stack_a, t_stack **stack_b);
+void				sa(t_stack **stack_a, int checker);
+void				sb(t_stack **stack_b, int checker);
+void				ss(t_stack **stack_a, t_stack **stack_b, int checker);
+void				pa(t_stack **stack_b, t_stack **stack_a, int checker);
+void				pb(t_stack **stack_a, t_stack **stack_b, int checker);
+void				ra(t_stack **stack_a, int checker);
+void				rb(t_stack **stack_b, int checker);
+void				rr(t_stack **stack_a, t_stack **stack_b, int checker);
+void				rra(t_stack **stack_a, int checker);
+void				rrb(t_stack **stack_b, int checker);
+void				rrr(t_stack **stack_a, t_stack **stack_b, int checker);
 int					free_list(t_stack *head);
 void				find_index(t_stack **stack_a, char **argv);
 void				find_current_pos(t_stack *stack);
