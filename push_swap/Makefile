@@ -55,12 +55,15 @@ $(BIN_PATH)%.o: $(BONUS_SOURCES_PATH)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES_PATH)
 	@echo " "
 
-bonus: $(OBJECTS_BONUS) $(OBJECTS) $(NAME)
+bonus: $(BONUS_NAME) $(NAME) $(OBJECTS) libft
+
+$(BONUS_NAME): $(OBJECTS_BONUS)
 	@echo $(CYAN)" --------------------------------------------------"$(COLOR_LIMITER)
 	@echo $(CYAN)"| CHECKER executable was created successfully!! |"$(COLOR_LIMITER)
 	@echo $(CYAN)"--------------------------------------------------"$(COLOR_LIMITER)
 	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(OBJECTS_BONUS) -L $(OBJECTS) -L $(LIB_PATH) -lft
 	@echo " "
+
 
 $(BIN_PATH):
 	@mkdir -p $(BIN_PATH)
