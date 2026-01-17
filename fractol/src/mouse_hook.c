@@ -37,7 +37,7 @@ void	zoom_scroll(double xdelta, double ydelta, void *param)
 	double		zoom_factor;
 
 	st = param;
-	xdelta = 0;
+	(void)xdelta;
 	zoom_factor = 1.1;
 	mlx_get_mouse_pos(st->mlx, &st->xpos, &st->ypos);
 	st->xzoom = st->xmin + st->xpos * ((st->xmax - st->xmin) / st->width);

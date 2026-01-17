@@ -41,6 +41,8 @@ static void	tricorn_color(int iter, t_fractol *st)
 	double		interpolate;
 	t_colors	c;
 
+	color = 0;
+
 	init_color(&c);
 	interpolate = (double)iter / (double)st->max_iter;
 	c.smooth = pow(interpolate, 0.347);

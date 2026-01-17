@@ -14,14 +14,17 @@
 
 void	args_error(void)
 {
-	write(1, "Welcome to egeraldo fractal's\n", 31);
-	write(1, "\nUSAGE:\n", 8);
-	write(1, "\t./fractol [fractal name][params]\n", 34);
-	write(1, "\nEXAMPLES:\n", 11);
-	write(1, "\tfractol mandelbrot\t\tMandelbrot fractal\n", 40);
-	write(1, "\tfractol julia 0.285 +0.01i\tJulia fractal\n", 42);
-	write(1, "\tfractol burn\t\t\tBurning ship fractal\n", 37);
-	write(1, "\tfractol tricorn\t\t\tTricorn fractal\n", 36);
+	ssize_t	ret;
+
+	ret = write(1, "Welcome to egeraldo fractal's\n", 31);
+	ret = write(1, "\nUSAGE:\n", 8);
+	ret = write(1, "\t./fractol [fractal name][params]\n", 34);
+	ret = write(1, "\nEXAMPLES:\n", 11);
+	ret = write(1, "\tfractol mandelbrot\t\tMandelbrot fractal\n", 40);
+	ret = write(1, "\tfractol julia 0.285 +0.01i\tJulia fractal\n", 42);
+	ret = write(1, "\tfractol burn\t\t\tBurning ship fractal\n", 37);
+	ret = write(1, "\tfractol tricorn\t\t\tTricorn fractal\n", 36);
+	(void)ret;
 }
 
 int	check_args(t_fractol st)
