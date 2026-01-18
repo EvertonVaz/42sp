@@ -1,0 +1,3 @@
+[submodule "fractol"]
+	path = fractol
+	url = git@github.com:EvertonVaz/fractol.git
